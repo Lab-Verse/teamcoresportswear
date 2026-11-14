@@ -1,3 +1,4 @@
+import {toast} from 'sonner'
 import { useEffect, useState } from 'react'
 import { SEOHead } from '@/components/common/SEOHead'
 import { LoadingSpinner } from '@/components/common/LoadingSpinner'
@@ -15,7 +16,7 @@ export default function ReviewsPage() {
 
   useEffect(() => {
     if (!user) return
-    reviewsApi.list({ userId: user.id, limit: 50 }).then((res) => setReviews(res.data)).catch(() => {}).finally(() => setLoading(false))
+    reviewsApi.list({ userId: user.id, limit: 50 }).then((res) => setReviews(res.data)).catch(() => {toast.error('Could not load account information. Please refresh and try again.')}).finally(() => setLoading(false))
   }, [user])
 
   if (loading) return <div className="flex justify-center py-16"><LoadingSpinner /></div>

@@ -1,50 +1,67 @@
-import { useEffect, useState } from 'react'
-import { SEOHead } from '@/components/common/SEOHead'
-import { LoadingSpinner } from '@/components/common/LoadingSpinner'
-import { EmptyState } from '@/components/common/EmptyState'
-import { notificationsApi } from '@/services/api'
-import { Button } from '@/components/ui/button'
-import type { Notification } from '@/types'
-import { formatRelativeTime } from '@/lib/format'
-import { Bell, Check, Trash2 } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { toast } from 'sonner'
+import { useEffect, useState } from "react";
+import { SEOHead } from "@/components/common/SEOHead";
+import { LoadingSpinner } from "@/components/common/LoadingSpinner";
+import { EmptyState } from "@/components/common/EmptyState";
+import { notificationsApi } from "@/services/api";
+import { Button } from "@/components/ui/button";
+import type { Notification } from "@/types";
+import { formatRelativeTime } from "@/lib/format";
+import { Bell, Check, Trash2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 export default function NotificationsPage() {
-  const [notifications, setNotifications] = useState<Notification[]>([])
-  const [loading, setLoading] = useState(true)
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    notificationsApi.list({ limit: 50 }).then((res) => setNotifications(res.data)).catch(() => {}).finally(() => setLoading(false))
-  }, [])
+    notificationsApi
+      .list({ limit: 50 })
+      .then((res) => setNotifications(res.data))
+      .catch(() => {
+        toast.error(
+          "Could not load account information. Please refresh and try again.",
+        );
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   const markRead = async (id: string) => {
     try {
-      await notificationsApi.markRead(id)
-      setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, isRead: true } : n)))
-    } catch { /* silent */ }
-  }
+      await notificationsApi.markRead(id);
+      setNotifications((prev) =>
+        prev.map((n) => (n.id === id ? { ...n, isRead: true } : n)),
+      );
+    } catch {
+      /* silent */
+    }
+  };
 
   const markAllRead = async () => {
     try {
-      await notificationsApi.markAllRead()
-      setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })))
-      toast.success('All notifications marked as read')
+      await notificationsApi.markAllRead();
+      setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
+      toast.success("All notifications marked as read");
     } catch {
-      toast.error('Failed to mark all as read')
+      toast.error("Failed to mark all as read");
     }
-  }
+  };
 
   const handleDelete = async (id: string) => {
     try {
-      await notificationsApi.delete(id)
-      setNotifications((prev) => prev.filter((n) => n.id !== id))
+      await notificationsApi.delete(id);
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
     } catch {
-      toast.error('Failed to delete notification')
+      toast.error("Failed to delete notification");
     }
-  }
+  };
 
-  if (loading) return <div className="flex justify-center py-16"><LoadingSpinner /></div>
+  if (loading)
+    return (
+      <div className="flex justify-center py-16">
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <>
@@ -60,28 +77,55 @@ export default function NotificationsPage() {
         </div>
 
         {notifications.length === 0 ? (
-          <EmptyState icon={<Bell className="h-16 w-16" />} title="No notifications" description="You're all caught up!" />
+          <EmptyState
+            icon={<Bell className="h-16 w-16" />}
+            title="No notifications"
+            description="You're all caught up!"
+          />
         ) : (
           <div className="space-y-2">
             {notifications.map((n) => (
               <div
                 key={n.id}
                 className={cn(
-                  'flex gap-3 p-4 rounded-xl border transition-colors',
-                  n.isRead ? 'bg-card border-border' : 'bg-primary-light border-primary/30',
+                  "flex gap-3 p-4 rounded-xl border transition-colors",
+                  n.isRead
+                    ? "bg-card border-border"
+                    : "bg-primary-light border-primary/30",
                 )}
               >
-                <Bell className={cn('h-5 w-5 mt-0.5 shrink-0', n.isRead ? 'text-text-secondary' : 'text-primary')} />
+                <Bell
+                  className={cn(
+                    "h-5 w-5 mt-0.5 shrink-0",
+                    n.isRead ? "text-text-secondary" : "text-primary",
+                  )}
+                />
                 <div className="flex-1 min-w-0">
-                  {n.title && <p className="text-sm font-medium text-text-primary">{n.title}</p>}
-                  {n.body && <p className="text-sm text-text-secondary">{n.body}</p>}
-                  <p className="text-xs text-text-muted mt-1">{formatRelativeTime(n.createdAt)}</p>
+                  {n.title && (
+                    <p className="text-sm font-medium text-text-primary">
+                      {n.title}
+                    </p>
+                  )}
+                  {n.body && (
+                    <p className="text-sm text-text-secondary">{n.body}</p>
+                  )}
+                  <p className="text-xs text-text-muted mt-1">
+                    {formatRelativeTime(n.createdAt)}
+                  </p>
                 </div>
                 <div className="flex gap-1 shrink-0">
                   {!n.isRead && (
-                    <button onClick={() => markRead(n.id)} className="text-xs text-primary hover:underline cursor-pointer">Read</button>
+                    <button
+                      onClick={() => markRead(n.id)}
+                      className="text-xs text-primary hover:underline cursor-pointer"
+                    >
+                      Read
+                    </button>
                   )}
-                  <button onClick={() => handleDelete(n.id)} className="text-text-secondary hover:text-danger cursor-pointer p-1">
+                  <button
+                    onClick={() => handleDelete(n.id)}
+                    className="text-text-secondary hover:text-danger cursor-pointer p-1"
+                  >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
                 </div>
@@ -91,5 +135,5 @@ export default function NotificationsPage() {
         )}
       </div>
     </>
-  )
+  );
 }

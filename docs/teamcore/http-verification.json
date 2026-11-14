@@ -1,0 +1,13 @@
+{
+  "checkedOn": "2026-10-13",
+  "target": "isolated loopback review API",
+  "checks": [
+    "six categories, 37 designs and real variant options",
+    "valid basket and rejected MOQ violation",
+    "quote-only items cannot enter direct checkout",
+    "quotation submission, ownership, explicit acceptance and duplicate acceptance safety",
+    "payment unavailable state, unpaid order and private order access",
+    "design creation, saved document and ownership isolation",
+    "server-priced direct preview, increments and disabled checkout creates no order"
+  ]
+}

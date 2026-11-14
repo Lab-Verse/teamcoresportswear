@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+dotenv.config({ path: '.env.local' });
 dotenv.config();
 
 const isCompiled = __filename.endsWith('.js');
@@ -15,7 +16,9 @@ export const AppDataSource = new DataSource({
   entities: isCompiled
     ? ['dist/src/modules/**/entities/*.entity.js']
     : ['src/modules/**/entities/*.entity.ts'],
-  migrations: isCompiled ? ['dist/src/migrations/*.js'] : ['src/migrations/*.ts'],
+  migrations: isCompiled
+    ? ['dist/src/migrations/*.js']
+    : ['src/migrations/*.ts'],
   synchronize: false,
   logging: process.env.TYPEORM_LOGGING === 'true',
   namingStrategy: new SnakeNamingStrategy(),

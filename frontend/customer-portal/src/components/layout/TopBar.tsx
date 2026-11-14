@@ -1,63 +1,17 @@
 import { Link } from "react-router-dom";
-import { MapPin, HelpCircle, Globe, Moon, Sun, FileText } from "lucide-react";
-import { useThemeStore } from "@/store/theme.store";
-
+import { MapPin, ArrowUpRight } from "lucide-react";
 export function TopBar() {
-  const { theme, toggleTheme } = useThemeStore();
-
   return (
-    <div className="bg-gradient-to-r from-primary/5 via-surface/80 to-secondary/5 backdrop-blur-sm border-b border-border/50 text-xs text-text-secondary">
-      <div className="container-main flex items-center justify-between h-9">
-        <div className="flex items-center gap-4">
-          <Link
-            to="/"
-            className="flex items-center gap-1 hover:text-primary transition-colors"
-          >
-            <MapPin className="h-3 w-3" />
-            <span>Deliver to Pakistan</span>
+    <div className="top-strip">
+      <div className="container-main">
+        <span>
+          <MapPin size={12} /> CUSTOM TEAMWEAR · SIALKOT, PAKISTAN
+        </span>
+        <div>
+          <Link to="/help">Help & support</Link>
+          <Link to="/wholesale">
+            Team & wholesale orders <ArrowUpRight size={12} />
           </Link>
-        </div>
-        <div className="flex items-center gap-4">
-          <Link
-            to="/flash-sales"
-            className="hover:text-primary transition-colors"
-          >
-            Today&apos;s Deals
-          </Link>
-          <Link
-            to="/cart"
-            className="flex items-center gap-1 hover:text-primary transition-colors font-medium"
-          >
-            <FileText className="h-3 w-3" />
-            <span>Request Wholesale Quote</span>
-          </Link>
-          <Link
-            to="/account/chat"
-            className="hidden sm:flex items-center gap-1 hover:text-primary transition-colors"
-          >
-            <HelpCircle className="h-3 w-3" />
-            <span>Help</span>
-          </Link>
-          <button
-            onClick={toggleTheme}
-            className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer"
-            aria-label={
-              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
-            }
-          >
-            {theme === "dark" ? (
-              <Sun className="h-3.5 w-3.5" />
-            ) : (
-              <Moon className="h-3.5 w-3.5" />
-            )}
-            <span className="hidden sm:inline">
-              {theme === "dark" ? "Light" : "Dark"}
-            </span>
-          </button>
-          <button className="flex items-center gap-1 hover:text-primary transition-colors cursor-pointer">
-            <Globe className="h-3 w-3" />
-            <span>EN</span>
-          </button>
         </div>
       </div>
     </div>

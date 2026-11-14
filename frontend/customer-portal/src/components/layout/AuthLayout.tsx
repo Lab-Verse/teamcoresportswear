@@ -1,28 +1,32 @@
-import { Outlet } from 'react-router-dom'
-import { ShieldCheck } from 'lucide-react'
-
+import { Outlet, Link } from "react-router-dom";
+import { Brand } from "@/components/common/Brand";
 export function AuthLayout() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary-light to-background flex flex-col items-center justify-center px-4 py-12">
-      <div className="w-full max-w-[440px]">
-        <div className="bg-card rounded-2xl shadow-[var(--shadow-modal)] border border-border/60 p-8 md:p-10">
-          {/* Logo */}
-          <div className="flex flex-col items-center mb-8 gap-3">
-            <div className="bg-gradient-to-br from-primary to-secondary text-white font-bold text-2xl w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/25">
-              Z
-            </div>
-            <span className="text-lg font-bold text-text-primary tracking-tight">Zaroox</span>
-          </div>
-
+    <div className="auth-shell">
+      <aside>
+        <Brand inverse />
+        <div>
+          <p className="eyebrow">WELCOME TO YOUR NEXT CHAPTER</p>
+          <h2>
+            One account.
+            <br />
+            Every game.
+          </h2>
+          <p>
+            Keep your orders, wholesale quotes and conversations in one place.
+          </p>
+        </div>
+        <Link to="/products">← Back to the range</Link>
+      </aside>
+      <main>
+        <div className="auth-card">
           <Outlet />
         </div>
-
-        {/* Security footer */}
-        <div className="flex items-center justify-center gap-1.5 mt-6 text-xs text-text-muted">
-          <ShieldCheck className="h-3.5 w-3.5" />
-          <span>Secured by enterprise-grade encryption</span>
-        </div>
-      </div>
+        <p className="text-sm text-text-muted mt-8">
+          <Link to="/privacy-policy">Privacy</Link> ·{" "}
+          <Link to="/help">Need a hand?</Link>
+        </p>
+      </main>
     </div>
-  )
+  );
 }

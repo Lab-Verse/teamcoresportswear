@@ -1,407 +1,118 @@
 import { Link } from "react-router-dom";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
-  ChevronUp,
-  Smartphone,
-  Linkedin,
-} from "lucide-react";
-import { ROUTES } from "@/constants/routes";
-
+import { ArrowUpRight, Mail, MapPin, Phone, Instagram } from "lucide-react";
+import { Brand } from "@/components/common/Brand";
+import { brand, sports } from "@/config/brand";
 export function Footer() {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   return (
-    <footer className="bg-footer-bg text-footer-text text-[14px] leading-relaxed">
-      {/* ═══════════ MAIN LINKS — 5 Columns ═══════════ */}
-      <div className="border-b border-footer-divider">
-        <div className="container-main py-12 md:py-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-10 md:gap-8 lg:gap-12">
-            {/* Get Support */}
-            <div>
-              <h4 className="text-white font-bold text-[15px] mb-5">
-                Get support
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to={ROUTES.ACCOUNT_CHAT}
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={ROUTES.ACCOUNT_CHAT}
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Live chat
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={ROUTES.ACCOUNT_ORDERS}
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Check order status
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={ROUTES.ACCOUNT_RETURNS}
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Refunds
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Report abuse
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Wholesale support */}
-            <div>
-              <h4 className="text-white font-bold text-[15px] mb-5">
-                Wholesale support
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to="/cart"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Request a quotation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/account/wholesale"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Track inquiries
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    On-time shipping
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    After-sales protections
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Product monitoring services
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Source on Zaroox */}
-            <div>
-              <h4 className="text-white font-bold text-[15px] mb-5">
-                Source on Zaroox
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Request for Quotation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Membership program
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Zaroox Reads
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Sales tax and VAT
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Wholesale buying */}
-            <div>
-              <h4 className="text-white font-bold text-[15px] mb-5">
-                Wholesale buying
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Browse products
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Build an inquiry basket
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Request bulk pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Track quotations
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Contact our sales team
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Get to know us + Stay Connected */}
-            <div>
-              <h4 className="text-white font-bold text-[15px] mb-5">
-                Get to know us
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    About Zaroox
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Corporate responsibility
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    News center
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className="text-footer-text/70 hover:text-white transition-colors"
-                  >
-                    Careers
-                  </Link>
-                </li>
-              </ul>
-              <h4 className="text-white font-bold text-[15px] mt-8 mb-4">
-                Stay Connected
-              </h4>
-              <div className="flex items-center gap-3">
-                {[
-                  {
-                    href: "https://facebook.com",
-                    icon: Facebook,
-                    label: "Facebook",
-                  },
-                  {
-                    href: "https://linkedin.com",
-                    icon: Linkedin,
-                    label: "LinkedIn",
-                  },
-                  {
-                    href: "https://twitter.com",
-                    icon: Twitter,
-                    label: "Twitter",
-                  },
-                  {
-                    href: "https://instagram.com",
-                    icon: Instagram,
-                    label: "Instagram",
-                  },
-                  {
-                    href: "https://youtube.com",
-                    icon: Youtube,
-                    label: "YouTube",
-                  },
-                ].map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-footer-text/50 hover:text-white transition-colors"
-                    aria-label={label}
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
+    <footer className="site-footer tc-footer">
+      <div className="container-main">
+        <div className="tc-footer-cta">
+          <div>
+            <p className="eyebrow">LET'S BUILD YOUR NEXT KIT</p>
+            <h2>
+              Made for your team.
+              <br />
+              Ready for your next chapter.
+            </h2>
           </div>
+          <Link className="action action-red" to="/wholesale">
+            Talk about your order <ArrowUpRight size={19} />
+          </Link>
         </div>
-      </div>
-
-      {/* ═══════════ APP DOWNLOAD ROW ═══════════ */}
-      <div className="border-b border-footer-divider">
-        <div className="container-main py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-[13px] text-footer-text/60">
-              Trade on the go with the{" "}
-              <Link
-                to="/"
-                className="text-white font-semibold underline underline-offset-2"
-              >
-                Zaroox app
-              </Link>
+        <div className="footer-grid">
+          <div>
+            <Brand inverse />
+            <p className="footer-description">
+              Custom sports uniforms and teamwear. A direct manufacturing
+              partner for clubs, teams and apparel brands.
             </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 border border-footer-divider rounded-lg px-4 py-2 hover:bg-white/5 transition-colors"
-              >
-                <Smartphone className="h-5 w-5 text-footer-text/70" />
-                <div className="text-left">
-                  <p className="text-[10px] text-footer-text/50 leading-none">
-                    Download on the
-                  </p>
-                  <p className="text-[13px] text-white font-semibold leading-tight">
-                    App Store
-                  </p>
-                </div>
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 border border-footer-divider rounded-lg px-4 py-2 hover:bg-white/5 transition-colors"
-              >
-                <Smartphone className="h-5 w-5 text-footer-text/70" />
-                <div className="text-left">
-                  <p className="text-[10px] text-footer-text/50 leading-none">
-                    Get it on
-                  </p>
-                  <p className="text-[13px] text-white font-semibold leading-tight">
-                    Google Play
-                  </p>
-                </div>
-              </a>
-            </div>
+            <a
+              href={brand.instagram}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Team Core Sports Wear on Instagram"
+            >
+              <Instagram size={21} />
+            </a>
+          </div>
+          <div>
+            <h3>Shop by sport</h3>
+            {sports.map((s) => (
+              <Link key={s.slug} to={`/categories/${s.slug}`}>
+                {s.name}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <h3>Made for you</h3>
+            {[
+              ["/custom-uniforms", "Custom uniforms"],
+              ["/private-label", "Private label"],
+              ["/design-studio", "Design your kit"],
+              ["/wholesale", "Wholesale & team orders"],
+              ["/manufacturing-process", "Our process"],
+              ["/about", "About Team Core"],
+            ].map(([url, label]) => (
+              <Link key={url} to={url}>
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <h3>Here to help</h3>
+            {[
+              ["/help", "Help centre"],
+              ["/size-guide", "Size guidance"],
+              ["/shipping-delivery", "Shipping & delivery"],
+              ["/returns-refunds", "Returns & refunds"],
+              ["/account/orders", "Your orders"],
+              ["/account/wholesale", "Your quotations"],
+            ].map(([url, label]) => (
+              <Link key={url} to={url}>
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div className="tc-footer-contact">
+            <h3>Get in touch</h3>
+            <p>
+              <MapPin size={17} />
+              <span>{brand.location}</span>
+            </p>
+            <a href={brand.phoneHref}>
+              <Phone size={17} />
+              <span>{brand.phone}</span>
+            </a>
+            <a href={`mailto:${brand.email}`}>
+              <Mail size={17} />
+              <span>{brand.email}</span>
+            </a>
+            <a href={brand.whatsapp} target="_blank" rel="noreferrer">
+              <span>Chat on WhatsApp</span> <ArrowUpRight size={15} />
+            </a>
+            <Link to="/contact">
+              <span>Send us a message</span> <ArrowUpRight size={15} />
+            </Link>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} {brand.name}
+          </span>
+          <div>
+            {[
+              ["/privacy-policy", "Privacy"],
+              ["/terms", "Terms"],
+              ["/cookie-policy", "Cookies"],
+              ["/accessibility", "Accessibility"],
+            ].map(([url, label]) => (
+              <Link key={url} to={url}>
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* ═══════════ BOTTOM SECTION ═══════════ */}
-      <div className="container-main py-8">
-        {/* Related site links */}
-        <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1 text-[13px] text-footer-text/50 mb-3">
-          {[
-            "Wholesale Catalog",
-            "Zaroox Admin",
-            "Zaroox Deals",
-            "Zaroox Fashion",
-            "Zaroox Electronics",
-            "Zaroox Home",
-          ].map((link, i, arr) => (
-            <span key={link}>
-              <Link to="/" className="hover:text-white transition-colors px-1">
-                {link}
-              </Link>
-              {i < arr.length - 1 && (
-                <span className="text-footer-text/30">|</span>
-              )}
-            </span>
-          ))}
-        </div>
-
-        {/* Policy links */}
-        <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1 text-[12px] text-footer-text/40 mb-3">
-          {[
-            "Policies and rules",
-            "Legal Notice",
-            "Product Listing Policy",
-            "Intellectual Property Protection",
-            "Privacy Policy",
-            "Terms of Use",
-          ].map((link, i, arr) => (
-            <span key={link}>
-              <Link
-                to="/"
-                className="hover:text-white transition-colors px-0.5"
-              >
-                {link}
-              </Link>
-              {i < arr.length - 1 && (
-                <span className="text-footer-text/20">·</span>
-              )}
-            </span>
-          ))}
-        </div>
-
-        {/* Copyright */}
-        <p className="text-center text-[12px] text-footer-text/30">
-          © 1999-{new Date().getFullYear()} Zaroox.com. All rights reserved.
-        </p>
-      </div>
-
-      {/* ═══════════ BACK TO TOP — floating ═══════════ */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-6 right-6 h-11 w-11 rounded-full bg-footer-bg border border-footer-divider hover:bg-white/10 flex items-center justify-center text-footer-text/60 hover:text-white transition-all shadow-lg z-50 cursor-pointer"
-        aria-label="Back to top"
-      >
-        <ChevronUp className="h-5 w-5" />
-      </button>
     </footer>
   );
 }

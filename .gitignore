@@ -1,5 +1,8 @@
 # Dependencies
 node_modules/
+__pycache__/
+.local/
+backend/private-designs/
 
 # Build outputs
 dist/
@@ -45,3 +48,5 @@ coverage/
 *.local
 *.tsbuildinfo
 customer-portal.tar.gz
+
+frontend/customer-portal/server-build/

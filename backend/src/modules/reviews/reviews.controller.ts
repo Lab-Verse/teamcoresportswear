@@ -49,7 +49,7 @@ export class ReviewsController {
   }
 
   @Get()
-  @Public()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'List reviews with filters' })
   @ApiQuery({
     name: 'productId',
@@ -71,6 +71,7 @@ export class ReviewsController {
   })
   @ApiResponse({ status: 200, description: 'Reviews list returned' })
   findAll(
+    @CurrentUser() user: { id: string; role?: string },
     @Query('productId') productId?: string,
     @Query('userId') userId?: string,
     @Query('status') status?: string,
@@ -79,7 +80,8 @@ export class ReviewsController {
   ) {
     return this.svc.findAll({
       productId,
-      userId,
+      userId:
+        user.role === 'admin' || user.role === 'super_admin' ? userId : user.id,
       status,
       page: page ? Math.max(1, +page) : 1,
       limit: limit ? Math.min(Math.max(1, +limit), 100) : 20,
@@ -96,12 +98,15 @@ export class ReviewsController {
   }
 
   @Get(':id')
-  @Public()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get review by ID' })
   @ApiParam({ name: 'id', description: 'Review UUID' })
   @ApiResponse({ status: 200, description: 'Review found' })
-  findOne(@Param('id') id: string) {
-    return this.svc.findOne(id);
+  findOne(
+    @Param('id') id: string,
+    @CurrentUser() user: { id: string; role?: string },
+  ) {
+    return this.svc.findOwned(id, user);
   }
 
   @Put(':id')
@@ -122,10 +127,7 @@ export class ReviewsController {
   @ApiOperation({ summary: 'Reply to a review (Admin only)' })
   @ApiParam({ name: 'id', description: 'Review UUID' })
   @ApiResponse({ status: 200, description: 'Reply added' })
-  reply(
-    @Param('id') id: string,
-    @Body() dto: ReplyReviewDto,
-  ) {
+  reply(@Param('id') id: string, @Body() dto: ReplyReviewDto) {
     return this.svc.reply(id, dto.body);
   }
 

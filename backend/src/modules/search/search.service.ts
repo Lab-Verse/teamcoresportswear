@@ -62,8 +62,8 @@ export class SearchService {
       storeId?: string;
     },
   ): Promise<{ data: Product[]; total: number; query: string }> {
-    const pg = options?.page || 1;
-    const lm = options?.limit || 20;
+    const pg = Math.max(1, Math.trunc(options?.page || 1));
+    const lm = Math.min(100, Math.max(1, Math.trunc(options?.limit || 20)));
 
     const qb = this.productRepo
       .createQueryBuilder('p')
@@ -76,6 +76,10 @@ export class SearchService {
       '(p.name ILIKE :q OR p.shortDesc ILIKE :q OR p.fullDesc ILIKE :q OR p.slug ILIKE :q)',
       { q: `%${query}%` },
     );
+    qb.andWhere('p.isActive = true AND p.status = :status', {
+      status: 'active',
+    });
+    qb.andWhere('store.isActive = true AND store.singletonKey = true');
 
     if (options?.categoryId) {
       qb.andWhere('p.categoryId = :categoryId', {

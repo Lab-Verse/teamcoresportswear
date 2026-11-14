@@ -6,6 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import Stripe from 'stripe';
 import { SafeLogger } from '../../common/utils/logger.util';
+import { minorAmount } from '../storefront/commerce-rules';
 
 @Injectable()
 export class StripeService {
@@ -14,9 +15,10 @@ export class StripeService {
 
   constructor(private config: ConfigService) {
     const key = this.config.get<string>('STRIPE_SECRET_KEY', '').trim();
-    this.stripe = key && !key.includes('your_')
-      ? new Stripe(key, { apiVersion: '2026-02-25.clover' })
-      : null;
+    this.stripe =
+      key && !key.includes('your_')
+        ? new Stripe(key, { apiVersion: '2026-02-25.clover' })
+        : null;
     this.currency = this.config.get<string>('STRIPE_CURRENCY') || 'pkr';
   }
 
@@ -43,25 +45,35 @@ export class StripeService {
     successUrl: string;
     cancelUrl: string;
     metadata?: Record<string, string>;
+    currency?: string;
+    idempotencyKey?: string;
   }): Promise<Stripe.Checkout.Session> {
-    return this.client().checkout.sessions.create({
-      payment_method_types: ['card'],
-      mode: 'payment',
-      customer_email: params.customerEmail,
-      line_items: [
-        {
-          price_data: {
-            currency: this.currency,
-            product_data: { name: `Order #${params.orderId}` },
-            unit_amount: Math.round(params.amount * 100),
+    return this.client().checkout.sessions.create(
+      {
+        payment_method_types: ['card'],
+        mode: 'payment',
+        customer_email: params.customerEmail,
+        line_items: [
+          {
+            price_data: {
+              currency: (params.currency || this.currency).toLowerCase(),
+              product_data: { name: `Order #${params.orderId}` },
+              unit_amount: minorAmount(
+                params.amount,
+                (params.currency || this.currency).toUpperCase(),
+              ),
+            },
+            quantity: 1,
           },
-          quantity: 1,
-        },
-      ],
-      metadata: { orderId: params.orderId, ...params.metadata },
-      success_url: params.successUrl,
-      cancel_url: params.cancelUrl,
-    });
+        ],
+        metadata: { orderId: params.orderId, ...params.metadata },
+        success_url: params.successUrl,
+        cancel_url: params.cancelUrl,
+      },
+      params.idempotencyKey
+        ? { idempotencyKey: params.idempotencyKey }
+        : undefined,
+    );
   }
 
   /**

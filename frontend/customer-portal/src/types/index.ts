@@ -163,6 +163,9 @@ export interface Store {
 
 // ─── Products ───
 export interface Product {
+  purchaseMode?: "direct" | "quote_only" | "both";
+  minimumOrderQuantity?: number;
+  quantityIncrement?: number;
   id: string;
   storeId: string;
   store?: Store;
@@ -188,6 +191,10 @@ export interface Product {
 }
 
 export interface ProductVariant {
+  attributeValues?: {
+    attributeKey?: { name: string };
+    attributeValue?: { value: string; displayValue?: string };
+  }[];
   id: string;
   productId: string;
   sku: string;
@@ -286,6 +293,9 @@ export interface WishlistItem {
 
 // ─── Orders ───
 export interface Order {
+  source?: string;
+  currency: string;
+  orderNumber?: string;
   id: string;
   userId: string;
   user?: User;
@@ -308,6 +318,8 @@ export interface Order {
 }
 
 export interface OrderItem {
+  designRevisionId?: string;
+  designProofId?: string;
   id: string;
   orderId: string;
   variantId: string;
@@ -580,6 +592,7 @@ export type WholesaleQuotationStatus =
   | "superseded";
 
 export interface WholesaleInquiryItem {
+  designRevisionId?: string;
   id: string;
   variantId: string;
   requestedQuantity: number;
@@ -591,6 +604,8 @@ export interface WholesaleInquiryItem {
 }
 
 export interface WholesaleQuotationItem {
+  designRevisionId?: string;
+  designProofId?: string;
   id: string;
   variantId: string;
   quantity: number;
@@ -634,6 +649,7 @@ export interface WholesaleInquiry {
   contactPhone?: string;
   deliveryCountry: string;
   deliveryCity?: string;
+  deliveryAddress?: string;
   notes?: string;
   status: WholesaleInquiryStatus;
   createdAt: string;
@@ -648,6 +664,7 @@ export interface CreateWholesaleInquiryPayload {
   contactPhone?: string;
   deliveryCountry: string;
   deliveryCity?: string;
+  deliveryAddress?: string;
   notes?: string;
   items: Array<{
     variantId: string;

@@ -3,7 +3,7 @@ import { SEOHead } from "@/components/common/SEOHead";
 import { LoadingSpinner } from "@/components/common/LoadingSpinner";
 import { EmptyState } from "@/components/common/EmptyState";
 import { Button } from "@/components/ui/button";
-import { wishlistApi, cartApi } from "@/services/api";
+import { wishlistApi } from "@/services/api";
 import { useAuthStore } from "@/store/auth.store";
 import type { WishlistItem } from "@/types";
 import { formatPrice } from "@/lib/format";
@@ -29,7 +29,7 @@ export default function WishlistPage() {
           if (!cancelled) setItems(wlItems);
         }
       })
-      .catch(() => {})
+      .catch(() => {toast.error('Could not load account information. Please refresh and try again.')})
       .finally(() => {
         if (!cancelled) setLoading(false);
       });
@@ -49,12 +49,7 @@ export default function WishlistPage() {
   };
 
   const handleAddToCart = async (item: WishlistItem) => {
-    try {
-      await cartApi.addItem({ variantId: item.variantId, quantity: 1 });
-      toast.success("Added to inquiry basket!");
-    } catch {
-      toast.error("Failed to add to inquiry basket");
-    }
+    if(item.variant?.product)window.location.assign('/products/'+encodeURIComponent(item.variant.product.slug));
   };
 
   if (loading)
@@ -112,12 +107,12 @@ export default function WishlistPage() {
                       {product?.name ?? "Product"}
                     </Link>
                     <p className="text-base font-bold text-danger mt-1">
-                      {formatPrice(price)}
+                      {formatPrice(price,product?.currency)}
                     </p>
                     <div className="flex gap-2 mt-2">
                       <Button size="sm" onClick={() => handleAddToCart(item)}>
-                        <ShoppingCart className="h-3.5 w-3.5 mr-1" /> Add to
-                        Inquiry
+                        <ShoppingCart className="h-3.5 w-3.5 mr-1" /> View
+                        options
                       </Button>
                       <Button
                         size="sm"

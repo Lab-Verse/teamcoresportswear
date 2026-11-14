@@ -1,13 +1,13 @@
 # ─── Build stage ───
-FROM node:20-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 COPY . .
 RUN npm run build
 
 # ─── Production stage ───
-FROM node:20-alpine
+FROM node:24-alpine
 WORKDIR /app
 
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
@@ -15,7 +15,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/package.json ./
 COPY --from=build /app/package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --legacy-peer-deps
 
 USER appuser
 ENV NODE_ENV=production

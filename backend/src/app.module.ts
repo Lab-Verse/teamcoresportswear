@@ -45,6 +45,8 @@ import { StorageModule } from './modules/storage/storage.module';
 import { StripeModule } from './modules/stripe/stripe.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
 import { WholesaleModule } from './modules/wholesale/wholesale.module';
+import { StorefrontModule } from './modules/storefront/storefront.module';
+import { DesignModule } from './modules/design-studio/design.module';
 
 @Module({
   imports: [
@@ -106,6 +108,8 @@ import { WholesaleModule } from './modules/wholesale/wholesale.module';
     StripeModule,
     CheckoutModule,
     WholesaleModule,
+    StorefrontModule,
+    DesignModule,
   ],
   controllers: [AppController],
   providers: [

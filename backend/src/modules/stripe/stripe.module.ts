@@ -6,6 +6,7 @@ import { PaymentsModule } from '../payments/payments.module';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { SubscriptionsModule } from '../subscriptions/subscriptions.module';
 import { OrdersModule } from '../orders/orders.module';
+import { PaymentSettlementService } from './payment-settlement.service';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { OrdersModule } from '../orders/orders.module';
     OrdersModule,
   ],
   controllers: [StripeController],
-  providers: [StripeService],
+  providers: [StripeService, PaymentSettlementService],
   exports: [StripeService],
 })
 export class StripeModule {}

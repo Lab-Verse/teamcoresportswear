@@ -24,7 +24,10 @@ import {
   WholesaleQuotation,
   WholesaleQuotationItem,
 } from './entities';
+import { assertQuantity } from '../storefront/commerce-rules';
+import { Store } from '../sellers/entities/store.entity';
 import { InquiryStatus, QuotationStatus } from './enums/wholesale.enum';
+import { MailService } from '../../common/modules/mail/mail.service';
 
 const ADMIN_ROLES = new Set(['admin', 'super_admin']);
 const ADMIN_STATUS_TRANSITIONS: Record<InquiryStatus, InquiryStatus[]> = {
@@ -51,6 +54,7 @@ export class WholesaleService {
     private readonly inquiryRepo: Repository<WholesaleInquiry>,
     private readonly dataSource: DataSource,
     private readonly notifications: NotificationHelperService,
+    private readonly mail: MailService,
   ) {}
 
   async createInquiry(customerId: string, dto: CreateWholesaleInquiryDto) {
@@ -72,12 +76,33 @@ export class WholesaleService {
         'One or more product variants are missing or inactive',
       );
     }
+    const store = await this.dataSource
+      .getRepository(Store)
+      .findOne({ where: { singletonKey: true, isActive: true } });
+    for (const item of dto.items) {
+      const variant = variants.find((v) => v.id === item.variantId)!;
+      if (
+        !store ||
+        variant.product.storeId !== store.id ||
+        !variant.product.isActive ||
+        variant.product.status !== 'active' ||
+        variant.product.purchaseMode === 'direct'
+      )
+        throw new BadRequestException(
+          'A product is not available for quotation',
+        );
+      assertQuantity(
+        item.requestedQuantity,
+        variant.product.minimumOrderQuantity,
+        variant.product.quantityIncrement,
+      );
+    }
     const variantMap = new Map(
       variants.map((variant) => [variant.id, variant]),
     );
     const reference = this.makeReference('RFQ');
 
-    return this.dataSource.transaction(async (manager) => {
+    const result = await this.dataSource.transaction(async (manager) => {
       const inquiry = manager.create(WholesaleInquiry, {
         reference,
         customerId,
@@ -87,6 +112,7 @@ export class WholesaleService {
         contactPhone: dto.contactPhone || null,
         deliveryCountry: dto.deliveryCountry.toUpperCase(),
         deliveryCity: dto.deliveryCity?.trim() || null,
+        deliveryAddress: dto.deliveryAddress?.trim() || null,
         notes: dto.notes?.trim() || null,
         status: InquiryStatus.SUBMITTED,
       });
@@ -107,6 +133,30 @@ export class WholesaleService {
       saved.items = items;
       return saved;
     });
+    await this.mail.sendActivity(
+      result.contactEmail,
+      'Quote request received',
+      `We received your request ${result.reference}. Our team will review it and prepare a quotation.`,
+      `/account/wholesale/${result.id}`,
+    );
+    await this.mail.sendBusinessAlert(
+      'New quote request',
+      [
+        `Reference: ${result.reference}`,
+        `Company: ${result.companyName}`,
+        `Contact: ${result.contactName} <${result.contactEmail}>`,
+        ...(result.contactPhone ? [`Phone: ${result.contactPhone}`] : []),
+        `Delivery: ${[result.deliveryCity, result.deliveryCountry].filter(Boolean).join(', ')}`,
+        '',
+        ...result.items.map(
+          (item) =>
+            `${item.requestedQuantity} × ${item.productNameSnapshot} (${item.skuSnapshot})`,
+        ),
+        ...(result.notes ? ['', `Notes: ${result.notes}`] : []),
+      ].join('\n'),
+      { replyTo: result.contactEmail, path: '/wholesale' },
+    );
+    return result;
   }
 
   async listInquiries(
@@ -153,7 +203,8 @@ export class WholesaleService {
       .leftJoinAndSelect('quotations.items', 'quotationItems')
       .where('inquiry.id = :id', { id })
       .orderBy('quotations.createdAt', 'DESC');
-    if (this.isAdmin(actor.role)) qb.addSelect('quotations.internalNotes');
+    if (this.isAdmin(actor.role))
+      qb.addSelect(['quotations.internalNotes', 'inquiry.adminNotes']);
     const inquiry = await qb.getOne();
     if (!inquiry) throw new NotFoundException('Wholesale inquiry not found');
     this.assertOwnerOrAdmin(inquiry, actor);
@@ -188,7 +239,15 @@ export class WholesaleService {
     }
     if (dto.adminNotes !== undefined)
       inquiry.adminNotes = dto.adminNotes.trim() || null;
-    return this.inquiryRepo.save(inquiry);
+    const saved = await this.inquiryRepo.save(inquiry);
+    if (dto.status)
+      await this.mail.sendActivity(
+        saved.contactEmail,
+        'Quote request updated',
+        `Request ${saved.reference} is now ${saved.status.replace(/_/g, ' ')}.`,
+        `/account/wholesale/${saved.id}`,
+      );
+    return saved;
   }
 
   async cancelInquiry(id: string, customerId: string) {
@@ -204,7 +263,12 @@ export class WholesaleService {
       throw new ConflictException('This inquiry can no longer be cancelled');
     }
     inquiry.status = InquiryStatus.CANCELLED;
-    return this.inquiryRepo.save(inquiry);
+    const saved = await this.inquiryRepo.save(inquiry);
+    await this.mail.sendBusinessAlert(
+      'Quote request cancelled',
+      `The customer cancelled ${saved.reference}.`,
+    );
+    return saved;
   }
 
   async createQuotation(
@@ -242,16 +306,18 @@ export class WholesaleService {
       }
 
       const requested = new Map(
-        inquiry.items.map((item) => [item.variantId, item]),
+        inquiry.items.map((item) => [this.designLineKey(item), item]),
       );
-      const uniqueIds = new Set(dto.items.map((item) => item.variantId));
+      const uniqueIds = new Set(
+        dto.items.map((item) => this.designLineKey(item)),
+      );
       if (uniqueIds.size !== dto.items.length) {
         throw new BadRequestException(
           'Each quotation variant may appear only once',
         );
       }
       for (const item of dto.items) {
-        const requestItem = requested.get(item.variantId);
+        const requestItem = requested.get(this.designLineKey(item));
         if (!requestItem)
           throw new BadRequestException(
             'Quotation contains a variant not in the inquiry',
@@ -261,6 +327,32 @@ export class WholesaleService {
             'Quoted quantity cannot exceed requested quantity',
           );
         }
+        if (
+          requestItem.designRevisionId &&
+          item.quantity !== requestItem.requestedQuantity
+        )
+          throw new BadRequestException(
+            'Design quantities are pinned to the approved roster. Request a revised design to change them.',
+          );
+      }
+      if (
+        inquiry.items.some((i) => i.designRevisionId) &&
+        dto.items.length !== inquiry.items.length
+      )
+        throw new BadRequestException(
+          'A custom quotation must include every approved size.',
+        );
+      const designProofs = new Map<string, string>();
+      for (const revisionId of [
+        ...new Set(dto.items.map((i) => i.designRevisionId).filter(Boolean)),
+      ].sort()) {
+        const revision = await this.checkedDesign(
+          manager,
+          revisionId,
+          inquiry.id,
+          inquiry.customerId,
+        );
+        designProofs.set(revisionId, revision.approved_proof_id);
       }
 
       const subtotal = this.money(
@@ -289,7 +381,7 @@ export class WholesaleService {
       });
       const saved = await manager.save(quotation);
       const items = dto.items.map((item) => {
-        const requestItem = requested.get(item.variantId)!;
+        const requestItem = requested.get(this.designLineKey(item))!;
         const unitPrice = this.money(item.unitPrice);
         return manager.create(WholesaleQuotationItem, {
           quotationId: saved.id,
@@ -299,13 +391,19 @@ export class WholesaleService {
           lineTotal: this.money(unitPrice * item.quantity),
           skuSnapshot: requestItem.skuSnapshot,
           productNameSnapshot: requestItem.productNameSnapshot,
+          designRevisionId: requestItem.designRevisionId || null,
+          designProofId: designProofs.get(requestItem.designRevisionId) || null,
         });
       });
       await manager.save(items);
       inquiry.status = InquiryStatus.QUOTED;
       await manager.save(inquiry);
       saved.items = items;
-      return { saved, customerId: inquiry.customerId };
+      return {
+        saved,
+        customerId: inquiry.customerId,
+        email: inquiry.contactEmail,
+      };
     });
 
     this.notifications
@@ -315,6 +413,12 @@ export class WholesaleService {
         reference: quote.saved.reference,
       })
       .catch(() => undefined);
+    await this.mail.sendActivity(
+      quote.email,
+      'Your quotation is ready',
+      `Quotation ${quote.saved.reference} is ready to review. Sign in to view prices, terms and the expiry date.`,
+      `/account/wholesale/${inquiryId}`,
+    );
     return quote.saved;
   }
 
@@ -324,10 +428,20 @@ export class WholesaleService {
     response: QuotationStatus.ACCEPTED | QuotationStatus.DECLINED,
   ) {
     const result = await this.dataSource.transaction(async (manager) => {
+      const snapshot = await manager.findOne(WholesaleQuotation, {
+        where: { id: quotationId },
+      });
+      if (!snapshot)
+        throw new NotFoundException('Wholesale quotation not found');
+      const inquiry = await manager.findOne(WholesaleInquiry, {
+        where: { id: snapshot.inquiryId },
+        lock: { mode: 'pessimistic_write' },
+      });
       const quote = await manager.findOne(WholesaleQuotation, {
         where: { id: quotationId },
         lock: { mode: 'pessimistic_write' },
       });
+      if (quote) quote.inquiry = inquiry!;
       if (!quote) throw new NotFoundException('Wholesale quotation not found');
       if (!quote.inquiry) {
         quote.inquiry = await manager.findOne(WholesaleInquiry, {
@@ -338,6 +452,8 @@ export class WholesaleService {
         throw new NotFoundException('Wholesale inquiry not found');
       if (quote.inquiry.customerId !== customerId)
         throw new ForbiddenException('You do not own this quotation');
+      if (quote.inquiry.status === InquiryStatus.ACCEPTED)
+        throw new ConflictException('An order already exists for this inquiry');
       if (quote.status !== QuotationStatus.SENT) {
         throw new ConflictException(`Quotation is already ${quote.status}`);
       }
@@ -364,6 +480,16 @@ export class WholesaleService {
       return { expired: false as const, quote };
     });
     if (result.expired) throw new ConflictException('Quotation has expired');
+    await this.mail.sendActivity(
+      result.quote.inquiry.contactEmail,
+      'Quotation response recorded',
+      `Quotation ${result.quote.reference} was ${response}.`,
+      `/account/wholesale/${result.quote.inquiryId}`,
+    );
+    await this.mail.sendBusinessAlert(
+      'Quotation response',
+      `Quotation ${result.quote.reference} was ${response}.`,
+    );
     return result.quote;
   }
 
@@ -376,7 +502,27 @@ export class WholesaleService {
     });
     if (existing) return existing;
 
-    const variantIds = quote.items.map((item) => item.variantId);
+    const designModes = new Map<string, string>();
+    for (const revisionId of [
+      ...new Set(quote.items.map((i) => i.designRevisionId).filter(Boolean)),
+    ].sort()) {
+      const revision = await this.checkedDesign(
+        manager,
+        revisionId,
+        quote.inquiryId,
+        quote.inquiry.customerId,
+      );
+      if (
+        quote.items
+          .filter((i) => i.designRevisionId === revisionId)
+          .some((i) => i.designProofId !== revision.approved_proof_id)
+      )
+        throw new ConflictException(
+          'The design proof changed. Request a new quotation.',
+        );
+      designModes.set(revisionId, revision.fulfilment);
+    }
+    const variantIds = [...new Set(quote.items.map((item) => item.variantId))];
     const variants: Array<{ id: string; store_id: string }> =
       await manager.query(
         `SELECT pv.id, p.store_id
@@ -395,22 +541,28 @@ export class WholesaleService {
       variantId: string;
       quantity: number;
     }> = [];
-    for (const item of quote.items) {
+    for (const item of [...quote.items].sort((a, b) =>
+      a.variantId.localeCompare(b.variantId),
+    )) {
+      if (
+        item.designRevisionId &&
+        designModes.get(item.designRevisionId) === 'made_to_order'
+      )
+        continue;
       const rows: Array<{
         warehouse_id: string;
         qty_on_hand: number;
         qty_reserved: number;
       }> = await manager.query(
-        `SELECT warehouse_id, qty_on_hand, qty_reserved
-         FROM inventory
-         WHERE variant_id = $1 AND qty_on_hand > qty_reserved
-         ORDER BY warehouse_id
-         FOR UPDATE`,
+        `SELECT i.warehouse_id, i.qty_on_hand, i.qty_reserved
+         FROM inventory i JOIN warehouses w ON w.id=i.warehouse_id
+         WHERE i.variant_id = $1 AND i.qty_on_hand > i.qty_reserved AND w.is_active=true
+         ORDER BY i.warehouse_id
+         FOR UPDATE OF i`,
         [item.variantId],
       );
       const available = rows.reduce(
-        (sum, row) =>
-          sum + Number(row.qty_on_hand) - Number(row.qty_reserved),
+        (sum, row) => sum + Number(row.qty_on_hand) - Number(row.qty_reserved),
         0,
       );
       if (available < item.quantity) {
@@ -443,7 +595,7 @@ export class WholesaleService {
       orderNumber: `WHO-${quote.reference.replace(/^QUO-/, '')}`,
       userId: quote.inquiry.customerId,
       idempotencyKey: `wholesale:${quote.id}`,
-      status: 'confirmed',
+      status: 'pending_payment',
       currency: quote.currency,
       source: 'wholesale',
       wholesaleQuotationId: quote.id,
@@ -452,6 +604,7 @@ export class WholesaleService {
       shippingAmount: quote.shippingAmount,
       taxAmount: quote.taxAmount,
       totalAmount: quote.totalAmount,
+      shippingLine1: quote.inquiry.deliveryAddress,
       shippingCity: quote.inquiry.deliveryCity,
       shippingCountry: quote.inquiry.deliveryCountry,
     });
@@ -482,10 +635,46 @@ export class WholesaleService {
         taxAmount: 0,
         totalAmount: item.lineTotal,
         flashSaleId: null,
+        designRevisionId: item.designRevisionId || null,
+        designProofId: item.designProofId || null,
       }),
     );
     await manager.save(orderItems);
+    for (const revisionId of designModes.keys())
+      await manager.query(
+        "UPDATE design_revisions SET state='ordered' WHERE id=$1",
+        [revisionId],
+      );
     return savedOrder;
+  }
+
+  private designLineKey(item: {
+    variantId: string;
+    designRevisionId?: string | null;
+  }) {
+    return item.variantId + ':' + (item.designRevisionId || 'standard');
+  }
+
+  private async checkedDesign(
+    manager: EntityManager,
+    revisionId: string,
+    inquiryId: string,
+    ownerId: string,
+  ) {
+    const [revision] = await manager.query(
+      `SELECT r.*,p.owner_id,t.spec->>'fulfilment' AS fulfilment FROM design_revisions r
+      JOIN design_projects p ON p.id=r.project_id JOIN design_templates t ON t.id=r.template_id
+      JOIN design_proofs f ON f.id=r.approved_proof_id AND f.status='approved'
+      WHERE r.id=$1 AND r.inquiry_id=$2 AND p.owner_id=$3 AND r.state='approved' AND r.capacity_notes IS NOT NULL
+      AND t.spec->>'sampleApproved'='true'
+      FOR UPDATE OF r`,
+      [revisionId, inquiryId, ownerId],
+    );
+    if (!revision)
+      throw new ConflictException(
+        'The customer must approve the current production proof and TEAM CORE must confirm a sample-approved garment and fulfilment before quotation acceptance.',
+      );
+    return revision;
   }
 
   private async supersedeOtherQuotes(

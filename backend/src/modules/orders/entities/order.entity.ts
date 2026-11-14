@@ -15,7 +15,13 @@ export class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'order_number', type: 'varchar', length: 50, unique: true, nullable: true })
+  @Column({
+    name: 'order_number',
+    type: 'varchar',
+    length: 50,
+    unique: true,
+    nullable: true,
+  })
   orderNumber: string | null;
 
   @Column({ type: 'char', length: 3, default: 'PKR' })
@@ -24,7 +30,12 @@ export class Order {
   @Column({ type: 'varchar', length: 30, default: 'retail' })
   source: string;
 
-  @Column({ name: 'wholesale_quotation_id', type: 'uuid', nullable: true, unique: true })
+  @Column({
+    name: 'wholesale_quotation_id',
+    type: 'uuid',
+    nullable: true,
+    unique: true,
+  })
   wholesaleQuotationId: string | null;
 
   @Column({ name: 'user_id', type: 'uuid' })
@@ -34,8 +45,21 @@ export class Order {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column({ name: 'idempotency_key', type: 'varchar', length: 100, nullable: true })
+  @Column({
+    name: 'idempotency_key',
+    type: 'varchar',
+    length: 100,
+    nullable: true,
+  })
   idempotencyKey: string | null;
+
+  @Column({
+    name: 'checkout_fingerprint',
+    type: 'varchar',
+    length: 64,
+    nullable: true,
+  })
+  checkoutFingerprint: string | null;
 
   @Column({ name: 'coupon_id', type: 'uuid', nullable: true })
   couponId: string | null;

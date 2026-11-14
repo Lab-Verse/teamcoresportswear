@@ -1,21 +1,22 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-import type { Product } from '@/types'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { Product } from "@/types";
 
 interface UIState {
-  isMobileMenuOpen: boolean
-  isMegaMenuOpen: boolean
-  activeMegaMenuCategory: string | null
-  isSearchOpen: boolean
-  recentlyViewed: Product[]
-  setMobileMenuOpen: (open: boolean) => void
-  setMegaMenuOpen: (open: boolean) => void
-  setActiveMegaMenuCategory: (categoryId: string | null) => void
-  setSearchOpen: (open: boolean) => void
-  addRecentlyViewed: (product: Product) => void
+  isMobileMenuOpen: boolean;
+  isMegaMenuOpen: boolean;
+  activeMegaMenuCategory: string | null;
+  isSearchOpen: boolean;
+  recentlyViewed: string[];
+  clearRecentlyViewed: () => void;
+  setMobileMenuOpen: (open: boolean) => void;
+  setMegaMenuOpen: (open: boolean) => void;
+  setActiveMegaMenuCategory: (categoryId: string | null) => void;
+  setSearchOpen: (open: boolean) => void;
+  addRecentlyViewed: (product: Product) => void;
 }
 
-const MAX_RECENTLY_VIEWED = 20
+const MAX_RECENTLY_VIEWED = 20;
 
 export const useUIStore = create<UIState>()(
   persist(
@@ -25,18 +26,44 @@ export const useUIStore = create<UIState>()(
       activeMegaMenuCategory: null,
       isSearchOpen: false,
       recentlyViewed: [],
+      clearRecentlyViewed: () => set({ recentlyViewed: [] }),
       setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
       setMegaMenuOpen: (open) => set({ isMegaMenuOpen: open }),
-      setActiveMegaMenuCategory: (categoryId) => set({ activeMegaMenuCategory: categoryId }),
+      setActiveMegaMenuCategory: (categoryId) =>
+        set({ activeMegaMenuCategory: categoryId }),
       setSearchOpen: (open) => set({ isSearchOpen: open }),
       addRecentlyViewed: (product) => {
-        const existing = get().recentlyViewed.filter((p) => p.id !== product.id)
-        set({ recentlyViewed: [product, ...existing].slice(0, MAX_RECENTLY_VIEWED) })
+        const existing = get().recentlyViewed.filter(
+          (slug) => slug !== product.slug,
+        );
+        set({
+          recentlyViewed: [product.slug, ...existing].slice(
+            0,
+            MAX_RECENTLY_VIEWED,
+          ),
+        });
       },
     }),
     {
-      name: 'customer-ui',
+      name: "teamcore-browsing-v2",
+      merge: (persisted, current) => {
+        const slugs = (persisted as { recentlyViewed?: unknown } | undefined)
+          ?.recentlyViewed;
+        return {
+          ...current,
+          recentlyViewed: Array.isArray(slugs)
+            ? [
+                ...new Set(
+                  slugs.filter(
+                    (s): s is string =>
+                      typeof s === "string" && s.length > 0 && s.length <= 200,
+                  ),
+                ),
+              ].slice(0, MAX_RECENTLY_VIEWED)
+            : [],
+        };
+      },
       partialize: (state) => ({ recentlyViewed: state.recentlyViewed }),
     },
   ),
-)
+);

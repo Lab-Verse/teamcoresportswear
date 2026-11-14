@@ -1,3 +1,4 @@
+import {toast} from 'sonner'
 import { useEffect, useState } from 'react'
 import { SEOHead } from '@/components/common/SEOHead'
 import { LoadingSpinner } from '@/components/common/LoadingSpinner'
@@ -20,21 +21,21 @@ export default function ReturnsPage() {
   const orderId = searchParams.get('orderId')
 
   useEffect(() => {
-    returnsApi.list({ limit: 50 }).then((res) => setReturns(res.data)).catch(() => {}).finally(() => setLoading(false))
+    returnsApi.list({ limit: 50 }).then((res) => setReturns(res.data)).catch(() => {toast.error('Could not load account information. Please refresh and try again.')}).finally(() => setLoading(false))
 
     // Auto-open form if orderId is in URL
     if (orderId) {
       ordersApi.get(orderId).then((order) => {
         setSelectedOrder(order)
         setShowForm(true)
-      }).catch(() => {})
+      }).catch(() => {toast.error('Could not load account information. Please refresh and try again.')})
     }
   }, [orderId])
 
   const handleReturnSuccess = () => {
     setShowForm(false)
     setSelectedOrder(null)
-    returnsApi.list({ limit: 50 }).then((res) => setReturns(res.data)).catch(() => {})
+    returnsApi.list({ limit: 50 }).then((res) => setReturns(res.data)).catch(() => {toast.error('Could not load account information. Please refresh and try again.')})
   }
 
   if (loading) return <div className="flex justify-center py-16"><LoadingSpinner /></div>

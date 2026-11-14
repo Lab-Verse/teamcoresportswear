@@ -1,0 +1,302 @@
+{
+  "checkedOn": "2026-10-13",
+  "source": "https://teamcoresportswear.com/",
+  "logo": {
+    "source": "https://teamcoresportswear.com/wp-content/themes/theme/image/logo.jpeg",
+    "local": "team-core-source-logo.jpeg",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "D2FB483D30091A08F1F2A5E14336BAEA33C85B1AF369DF9315E7A70D4FAAFA06",
+    "format": "JPEG; black background; no transparency"
+  },
+  "categories": [
+    {
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american-football.html",
+      "title": "Custom American Football Uniforms Manufacturer – Team Core Sports Wear",
+      "imageReferences": [
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/01.jpg",
+          "alt": "Elite Sublimated Football Jersey SMAF-101",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/02.jpg",
+          "alt": "Pro-Cut Football Game Jersey SMAF-102",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/03.jpg",
+          "alt": "Championship Team Jersey SMAF-103",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/04.jpg",
+          "alt": "Custom Practice Game Jersey SMAF-104",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/05.jpg",
+          "alt": "Sublimated Youth Game Jersey SMAF-105",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/06.JPG",
+          "alt": "Custom Spandex Fit Jersey SMAF-106",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/07.JPG",
+          "alt": "Premium Integrated Football Pants SMAF-107",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/08.JPG",
+          "alt": "Pro-Vent Mesh Football Pants SMAF-108",
+          "status": "reference-listed; download and product identity not verified"
+        }
+      ]
+    },
+    {
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball.html",
+      "title": "Custom Baseball Uniforms Manufacturer – Team Core Sports Wear",
+      "imageReferences": [
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/11.jpg",
+          "alt": "Elite Full-Button Baseball Jersey SMBS-101",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/12.jpg",
+          "alt": "Custom Pinstripe Game Jersey SMBS-102",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/13.jpg",
+          "alt": "Two-Button Team Game Jersey SMBS-103",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/14.jpg",
+          "alt": "Youth Sublimated Baseball Jersey SMBS-104",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/15.jpg",
+          "alt": "Pro Baseball Pants (Belt Loops) SMBS-105",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/16.jpg",
+          "alt": "Custom Pinstripe Baseball Pants SMBS-106",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/17.jpg",
+          "alt": "Sleeveless Team Baseball Vest SMBS-107",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/18.jpg",
+          "alt": "Championship Team Uniform Set SMBS-108",
+          "status": "reference-listed; download and product identity not verified"
+        }
+      ]
+    },
+    {
+      "category": "basketball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball.html",
+      "title": "Custom Basketball Uniforms Manufacturer – Team Core Sports Wear",
+      "imageReferences": [
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20a.jpg",
+          "alt": "Pro Sleeveless Basketball Jersey SMBB-101",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20b.jpg",
+          "alt": "Pro Sleeveless Game Kit SMBB-102",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20c.jpg",
+          "alt": "Pro Sleeveless Back View SMBB-103",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/02%20a.jpg",
+          "alt": "Reversible Team Game Jersey SMBB-104",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/02%20b.jpg",
+          "alt": "Reversible Team Game Kit SMBB-105",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/03%20a.jpg",
+          "alt": "Retro Knit Basketball Jersey SMBB-106",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/03%20b.jpg",
+          "alt": "Retro Knit Basketball Shorts SMBB-107",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/04%20a.jpg",
+          "alt": "Prime Shooter Jersey SMBB-108",
+          "status": "reference-listed; download and product identity not verified"
+        }
+      ]
+    },
+    {
+      "category": "ice-hockey",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice-hockey.html",
+      "title": "Custom Ice Hockey Uniforms Manufacturer – Team Core Sports Wear",
+      "imageReferences": [
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20a.jpg",
+          "alt": "Pro Sublimated Hockey Jersey SMIH-101",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20b.jpg",
+          "alt": "Pro Sublimated Hockey Kit SMIH-102",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20c.jpg",
+          "alt": "Pro Sublimated Back View SMIH-103",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20d.jpg",
+          "alt": "Pro Sublimated Side Details SMIH-104",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20a.jpg",
+          "alt": "Custom Team Game Jersey SMIH-105",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20b.jpg",
+          "alt": "Custom Team Game Kit SMIH-106",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20c.jpg",
+          "alt": "Custom Team Socks View SMIH-107",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20d.jpg",
+          "alt": "Custom Team Side Details SMIH-108",
+          "status": "reference-listed; download and product identity not verified"
+        }
+      ]
+    },
+    {
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby.html",
+      "title": "Custom Rugby Uniforms Manufacturer – Team Core Sports Wear",
+      "imageReferences": [
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/01.jpg",
+          "alt": "Elite Sublimated Rugby Jersey SMRB-101",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/02.jpg",
+          "alt": "Custom Stripes Rugby Jersey SMRB-102",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/03.jpg",
+          "alt": "Two-Tone Match Rugby Jersey SMRB-103",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/04.jpg",
+          "alt": "Youth Sublimated Jersey SMRB-104",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/05.jpg",
+          "alt": "Pro Heavy-Duty Rugby Shorts SMRB-105",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/06.jpg",
+          "alt": "Sublimated Drawstring Shorts SMRB-106",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/07.jpg",
+          "alt": "Sleeveless Training Singlet SMRB-107",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/08.jpg",
+          "alt": "Championship Team Match Kit SMRB-108",
+          "status": "reference-listed; download and product identity not verified"
+        }
+      ]
+    },
+    {
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer.html",
+      "title": "Custom Soccer Uniforms Manufacturer – Team Core Sports Wear",
+      "imageReferences": [
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/01.jpg",
+          "alt": "Elite Sublimated Soccer Jersey SMSC-101",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/02.jpg",
+          "alt": "Pro Striped Soccer Kit SMSC-102",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/03.jpg",
+          "alt": "Classic Team Soccer Jersey SMSC-103",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/04.jpg",
+          "alt": "Youth Sublimated Soccer Uniform SMSC-104",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/05.jpg",
+          "alt": "Custom Team Soccer Kit (Set) SMSC-105",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/06.jpg",
+          "alt": "Training Soccer Bibs/Vests SMSC-106",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/07.jpg",
+          "alt": "Premium Soccer Shorts SMSC-107",
+          "status": "reference-listed; download and product identity not verified"
+        },
+        {
+          "url": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/08.jpg",
+          "alt": "Championship Soccer Uniform Set SMSC-108",
+          "status": "reference-listed; download and product identity not verified"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Image references are not automatically distinct saleable products. Several names identify a back view, side detail or kit view.",
+    "Homepage category image paths contain /generated/; treat them as illustration references until provenance is established.",
+    "No catalogue records or product prices have been imported.",
+    "Only logo and one reference homepage screenshot are stored locally in this planning pass."
+  ]
+}

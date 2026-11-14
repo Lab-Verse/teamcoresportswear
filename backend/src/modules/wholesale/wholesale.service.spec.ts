@@ -4,6 +4,7 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { WholesaleService } from './wholesale.service';
+import { WholesaleInquiry } from './entities';
 import { InquiryStatus, QuotationStatus } from './enums/wholesale.enum';
 
 describe('WholesaleService', () => {
@@ -11,10 +12,73 @@ describe('WholesaleService', () => {
   const notifications = { notify: jest.fn() } as any;
 
   function serviceWith(dataSource: any) {
-    return new WholesaleService(inquiryRepo, dataSource, notifications);
+    return new WholesaleService(inquiryRepo, dataSource, notifications, {
+      sendActivity: jest.fn().mockResolvedValue(true),
+      sendBusinessAlert: jest.fn().mockResolvedValue(true),
+    } as any);
   }
 
   beforeEach(() => jest.clearAllMocks());
+
+  it('emails a saved quotation request to the buyer and sales with its details', async () => {
+    const variant = {
+      id: 'variant-id',
+      sku: 'TC-SOCCER-101',
+      product: {
+        storeId: 'store-id',
+        isActive: true,
+        status: 'active',
+        purchaseMode: 'quote_only',
+        minimumOrderQuantity: 1,
+        quantityIncrement: 1,
+        name: 'Soccer uniform',
+      },
+    };
+    const manager = {
+      create: jest.fn((_entity, value) => value),
+      save: jest.fn(async (value) =>
+        Array.isArray(value) ? value : { ...value, id: 'inquiry-id' },
+      ),
+    };
+    const dataSource = {
+      getRepository: jest.fn(() => ({
+        find: jest.fn().mockResolvedValue([variant]),
+        findOne: jest.fn().mockResolvedValue({ id: 'store-id' }),
+      })),
+      transaction: jest.fn((work: any) => work(manager)),
+    };
+    const mail = { sendActivity: jest.fn(), sendBusinessAlert: jest.fn() };
+    const service = new WholesaleService(
+      inquiryRepo,
+      dataSource as any,
+      notifications,
+      mail as any,
+    );
+    const result = await service.createInquiry('customer-id', {
+      companyName: 'Example Club',
+      contactName: 'Buyer',
+      contactEmail: 'buyer@example.com',
+      deliveryCountry: 'PK',
+      deliveryCity: 'Sialkot',
+      notes: 'Custom crest please',
+      items: [{ variantId: 'variant-id', requestedQuantity: 30 }],
+    });
+    expect(mail.sendActivity).toHaveBeenCalledWith(
+      'buyer@example.com',
+      'Quote request received',
+      expect.stringContaining(result.reference),
+      '/account/wholesale/inquiry-id',
+    );
+    expect(mail.sendBusinessAlert).toHaveBeenCalledWith(
+      'New quote request',
+      expect.stringContaining('30 × Soccer uniform (TC-SOCCER-101)'),
+      { replyTo: 'buyer@example.com', path: '/wholesale' },
+    );
+    const message = mail.sendBusinessAlert.mock.calls[0][1];
+    expect(message).toContain('Example Club');
+    expect(message).toContain('Sialkot, PK');
+    expect(message).toContain('Custom crest please');
+  });
 
   it('rejects duplicate variants in an inquiry before accessing the database', async () => {
     const dataSource = { getRepository: jest.fn() };
@@ -69,7 +133,13 @@ describe('WholesaleService', () => {
       inquiry: { customerId: 'owner-id' },
       items: [],
     };
-    const manager = { findOne: jest.fn().mockResolvedValue(quote) };
+    const manager = {
+      findOne: jest
+        .fn()
+        .mockImplementation(async (entity) =>
+          entity === WholesaleInquiry ? quote.inquiry : quote,
+        ),
+    };
     const dataSource = {
       transaction: jest.fn((work: any) => work(manager)),
     };
@@ -93,7 +163,11 @@ describe('WholesaleService', () => {
       items: [],
     };
     const manager = {
-      findOne: jest.fn().mockResolvedValue(quote),
+      findOne: jest
+        .fn()
+        .mockImplementation(async (entity) =>
+          entity === WholesaleInquiry ? quote.inquiry : quote,
+        ),
       save: jest.fn().mockResolvedValue(quote),
     };
     const dataSource = {

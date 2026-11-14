@@ -1,11 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, ShoppingCart, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { formatPrice, calculateDiscount } from "@/lib/format";
-import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, Shirt } from "lucide-react";
+import { formatPrice } from "@/lib/format";
 import type { Product } from "@/types";
-
-interface ProductCardProps {
+interface Props {
   product?: Product;
   flashPrice?: number;
   compact?: boolean;
@@ -14,179 +12,68 @@ interface ProductCardProps {
   onToggleWishlist?: () => void;
   isWishlisted?: boolean;
 }
-
-export function ProductCard({
-  product,
-  flashPrice,
-  compact,
-  className,
-  onAddToCart,
-  onToggleWishlist,
-  isWishlisted,
-}: ProductCardProps) {
+export function ProductCard({ product, className = "" }: Props) {
+  const [failed, setFailed] = useState(false);
   if (!product) return null;
-
-  const primaryImage =
-    product.images?.find((i) => i.isPrimary) || product.images?.[0];
-  const secondaryImage = product.images?.find(
-    (i) => !i.isPrimary && i.id !== primaryImage?.id,
-  );
-  const displayPrice =
-    flashPrice ?? product.variants?.[0]?.price ?? product.basePrice;
-  const originalPrice = flashPrice ? product.basePrice : undefined;
-  const discountPercent = originalPrice
-    ? calculateDiscount(originalPrice, displayPrice)
-    : null;
-
-  const productLink = `/products/${product.slug}`;
-
+  const photo = product.images?.find((i) => i.isPrimary) || product.images?.[0];
+  const quote = product.purchaseMode === "quote_only";
   return (
-    <div
-      className={cn(
-        "group bg-card rounded-2xl border border-border overflow-hidden flex flex-col hover:border-primary/20 hover:shadow-[var(--shadow-card-hover)] transition-all duration-300",
-        className,
-      )}
-    >
-      {/* Image Container */}
-      <div className="relative overflow-hidden">
-        <Link
-          to={productLink}
-          className="block aspect-square overflow-hidden bg-surface"
-        >
-          {primaryImage ? (
-            <>
-              <img
-                src={primaryImage.url}
-                alt={primaryImage.altText ?? product.name}
-                className={cn(
-                  "h-full w-full object-cover transition-all duration-500",
-                  secondaryImage && "group-hover:opacity-0",
-                )}
-                loading="lazy"
-              />
-              {secondaryImage && (
-                <img
-                  src={secondaryImage.url}
-                  alt={secondaryImage.altText ?? product.name}
-                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-all duration-500 group-hover:opacity-100"
-                  loading="lazy"
-                />
-              )}
-            </>
-          ) : (
-            <div className="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-surface to-surface-hover">
-              <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-3">
-                <span className="text-2xl font-bold text-primary/60">
-                  {product.name?.charAt(0) || "Z"}
-                </span>
-              </div>
-              <p className="text-xs text-text-muted px-4 text-center line-clamp-1">
-                {product.name}
-              </p>
-            </div>
-          )}
-        </Link>
-
-        {/* Badges */}
-        <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5">
-          {flashPrice && (
-            <Badge className="bg-danger text-white border-0 font-semibold text-[10px] px-2 py-0.5 rounded-md shadow-sm">
-              Flash Sale
-            </Badge>
-          )}
-          {discountPercent && discountPercent > 0 && (
-            <Badge className="bg-danger text-white border-0 font-semibold text-[10px] px-2 py-0.5 rounded-md shadow-sm">
-              -{discountPercent}%
-            </Badge>
-          )}
-        </div>
-
-        {/* Wishlist Button */}
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            onToggleWishlist?.();
-          }}
-          className={cn(
-            "absolute top-2.5 right-2.5 h-9 w-9 rounded-full bg-card/90 backdrop-blur-sm flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer hover:bg-card hover:scale-110",
-            isWishlisted && "opacity-100",
-          )}
-          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
-        >
-          <Heart
-            className={cn(
-              "h-4 w-4",
-              isWishlisted ? "fill-danger text-danger" : "text-text-secondary",
-            )}
+    <article className={`sport-product tc-product ${className}`}>
+      <Link
+        to={`/products/${product.slug}`}
+        className="sport-product-image"
+        aria-label={`View ${product.name}`}
+      >
+        {photo && !failed ? (
+          <img
+            src={photo.url}
+            alt={photo.altText || product.name}
+            width="550"
+            height="550"
+            loading="lazy"
+            onError={() => setFailed(true)}
           />
-        </button>
-
-        {/* Quick Add */}
-        {!compact && (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onAddToCart?.();
-            }}
-            className="absolute bottom-0 inset-x-0 bg-primary/95 backdrop-blur-sm text-white text-sm font-semibold py-2.5 text-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <ShoppingCart className="h-4 w-4" /> Add to Inquiry
-          </button>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className={cn("flex flex-col flex-1 p-4", compact && "p-3")}>
-        {/* Store */}
-        {product.store && !compact && (
-          <Link
-            to={`/stores/${product.store.slug}`}
-            className="text-[11px] text-text-muted hover:text-primary transition-colors mb-2 line-clamp-1 uppercase tracking-wider font-medium"
-          >
-            {product.store.name}
-          </Link>
-        )}
-
-        {/* Title */}
-        <Link to={productLink} className="block mb-2.5">
-          <h3
-            className={cn(
-              "text-sm text-text-primary hover:text-primary line-clamp-2 font-medium leading-snug transition-colors",
-              compact && "text-xs",
-            )}
-          >
-            {product.name}
-          </h3>
-        </Link>
-
-        {/* Rating */}
-        {!compact && (
-          <div className="flex items-center gap-1.5 mb-2.5">
-            <Star className="h-3.5 w-3.5 fill-star text-star" />
-            <span className="text-xs font-medium text-text-secondary">4.5</span>
-            <span className="text-xs text-text-muted">(128)</span>
+        ) : (
+          <div className="product-monogram">
+            <Shirt size={65} aria-hidden="true" />
+            <span>TEAM CORE</span>
           </div>
         )}
-
-        {/* Price */}
-        <div className="mt-auto pt-1.5">
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span
-              className={cn(
-                "font-bold text-text-primary",
-                compact ? "text-sm" : "text-base",
+        <span className="product-mode">
+          {quote ? "CUSTOM ORDER" : "EXPLORE UNIFORM"}
+        </span>
+        <span className="product-arrow">
+          <ArrowUpRight size={19} />
+        </span>
+      </Link>
+      <div className="sport-product-info">
+        <p>{product.category?.name || "Team Core Sports Wear"}</p>
+        <h3>
+          <Link to={`/products/${product.slug}`}>{product.name}</Link>
+        </h3>
+        <div className="tc-product-facts">
+          <span>
+            {quote
+              ? "Request pricing"
+              : formatPrice(product.basePrice, product.currency)}
+          </span>
+          {product.minimumOrderQuantity && (
+            <small>
+              {quote && product.minimumOrderQuantity === 1 ? (
+                "Quantity by quotation"
+              ) : (
+                <>
+                  Min. {product.minimumOrderQuantity}{" "}
+                  {product.minimumOrderQuantity === 1 ? "unit" : "units"}
+                </>
               )}
-            >
-              {formatPrice(displayPrice)}
-            </span>
-            {originalPrice && originalPrice > displayPrice && (
-              <span className="text-xs text-text-muted line-through">
-                {formatPrice(originalPrice)}
-              </span>
-            )}
-          </div>
+            </small>
+          )}
         </div>
+        <Link className="tc-product-detail" to={`/products/${product.slug}`}>
+          View details <ArrowUpRight size={15} />
+        </Link>
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,0 +1,234 @@
+[
+  {
+    "requested": "https://zipasports.com/",
+    "url": "https://zipasports.com/",
+    "title": "Checking your browser before accessing. Just a moment...",
+    "state": "complete",
+    "headings": [
+      "Checking your browser before accessing\nzipasports.com"
+    ],
+    "frames": [],
+    "timing": {
+      "lcp": 1800,
+      "cls": 0
+    },
+    "fcp": 1800,
+    "ttfb": 836.3999999761581,
+    "navigationStatus": 403,
+    "forms": 0,
+    "images": 0,
+    "links": [],
+    "bodyLength": 89
+  },
+  {
+    "requested": "https://www.jugglesports.com/",
+    "url": "https://www.jugglesports.com/",
+    "title": "Custom sublimated teamwear from Sialkot | Juggle Sports",
+    "state": "complete",
+    "headings": [
+      "Kits for the whole squad."
+    ],
+    "frames": [],
+    "timing": {
+      "lcp": 2072,
+      "cls": 0
+    },
+    "fcp": 2072,
+    "ttfb": 851.1999999880791,
+    "navigationStatus": 200,
+    "forms": 0,
+    "images": 24,
+    "links": [
+      [
+        "How it works",
+        "https://www.jugglesports.com/how-custom-orders-work/"
+      ],
+      [
+        "Contact",
+        "https://www.jugglesports.com/contact/"
+      ],
+      [
+        "Request a quote",
+        "https://www.jugglesports.com/request-a-quote/"
+      ],
+      [
+        "How it works",
+        "https://www.jugglesports.com/how-custom-orders-work/"
+      ],
+      [
+        "Contact",
+        "https://www.jugglesports.com/contact/"
+      ],
+      [
+        "Request a quote",
+        "https://www.jugglesports.com/request-a-quote/"
+      ],
+      [
+        "Request a quote",
+        "https://www.jugglesports.com/request-a-quote/"
+      ],
+      [
+        "See the full process",
+        "https://www.jugglesports.com/how-custom-orders-work/"
+      ],
+      [
+        "Football kits\n\nArt # 2201",
+        "https://www.jugglesports.com/request-a-quote/?item=2201"
+      ],
+      [
+        "Football kits\n\nArt # 2202",
+        "https://www.jugglesports.com/request-a-quote/?item=2202"
+      ],
+      [
+        "Basketball uniforms\n\nArt # 1605",
+        "https://www.jugglesports.com/request-a-quote/?item=1605"
+      ],
+      [
+        "Netball dresses\n\nArt # 1702",
+        "https://www.jugglesports.com/request-a-quote/?item=1702"
+      ],
+      [
+        "Running singlets\n\nArt # 2101",
+        "https://www.jugglesports.com/request-a-quote/?item=2101"
+      ],
+      [
+        "Leggings\n\nArt # 2602",
+        "https://www.jugglesports.com/request-a-quote/?item=2602"
+      ],
+      [
+        "Rash guards\n\nArt # 3203",
+        "https://www.jugglesports.com/request-a-quote/?item=3203"
+      ],
+      [
+        "Varsity jackets\n\nArt # 1105",
+        "https://www.jugglesports.com/request-a-quote/?item=1105"
+      ],
+      [
+        "Request a quote",
+        "https://www.jugglesports.com/request-a-quote/"
+      ],
+      [
+        "How it works",
+        "https://www.jugglesports.com/how-custom-orders-work/"
+      ],
+      [
+        "Contact",
+        "https://www.jugglesports.com/contact/"
+      ]
+    ],
+    "bodyLength": 2519
+  },
+  {
+    "requested": "https://www.shazbro.com/",
+    "url": "https://www.shazbro.com/",
+    "title": "Checking your browser before accessing. Just a moment...",
+    "state": "complete",
+    "headings": [
+      "Checking your browser before accessing\nwww.shazbro.com"
+    ],
+    "frames": [],
+    "timing": {
+      "lcp": 1820,
+      "cls": 0
+    },
+    "fcp": 1820,
+    "ttfb": 591.2999999523163,
+    "navigationStatus": 403,
+    "forms": 0,
+    "images": 0,
+    "links": [],
+    "bodyLength": 90
+  },
+  {
+    "requested": "https://ahmyzimpex.com/",
+    "url": "https://ahmyzimpex.com/",
+    "title": "Ahmyz Impex — Custom Sports Uniform Manufacturer",
+    "state": "loading",
+    "headings": [
+      "UNIFORMS\nBUILT FOR THE GAME"
+    ],
+    "frames": [],
+    "timing": {
+      "lcp": 2756,
+      "cls": 0.15262430670501792
+    },
+    "fcp": 2756,
+    "ttfb": 1525.0999999642372,
+    "navigationStatus": 200,
+    "forms": 1,
+    "images": 2,
+    "links": [
+      [
+        "Request Quote",
+        "https://ahmyzimpex.com/#contact"
+      ],
+      [
+        "Request Quote",
+        "https://ahmyzimpex.com/#contact"
+      ],
+      [
+        "REQUEST A QUOTE",
+        "https://ahmyzimpex.com/#contact"
+      ],
+      [
+        "REQUEST A QUOTE",
+        "https://ahmyzimpex.com/#contact"
+      ],
+      [
+        "get in touch",
+        "https://ahmyzimpex.com/#contact"
+      ],
+      [
+        "DESIGN MY KIT FREE",
+        "https://ahmyzimpex.com/#mockup"
+      ],
+      [
+        "SEND IDEA ON WHATSAPP",
+        "https://wa.me/923466860557?text=Hello%20Ahmyz%20Impex!%20I%27d%20like%20a%20free%20mockup%20and%20quote."
+      ]
+    ],
+    "bodyLength": null
+  },
+  {
+    "requested": "https://deltacraft.biz/",
+    "url": "chrome-error://chromewebdata/",
+    "title": "deltacraft.biz",
+    "state": "complete",
+    "headings": [
+      "This site can’t be reached"
+    ],
+    "frames": [],
+    "timing": {
+      "lcp": 22392,
+      "cls": 0
+    },
+    "fcp": 22392,
+    "ttfb": 0.800000011920929,
+    "navigationStatus": 0,
+    "forms": 0,
+    "images": 2,
+    "links": [],
+    "bodyLength": 238
+  },
+  {
+    "requested": "https://teamcoresportswear.org/",
+    "url": "chrome-error://chromewebdata/",
+    "title": "teamcoresportswear.org",
+    "state": "complete",
+    "headings": [
+      "Your connection was interrupted"
+    ],
+    "frames": [],
+    "timing": {
+      "lcp": 4520,
+      "cls": 0
+    },
+    "fcp": 4520,
+    "ttfb": 0.3999999761581421,
+    "navigationStatus": 0,
+    "forms": 0,
+    "images": 2,
+    "links": [],
+    "bodyLength": 91
+  }
+]

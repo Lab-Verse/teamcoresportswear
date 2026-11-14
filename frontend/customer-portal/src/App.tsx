@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -6,213 +6,221 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  hydrate,
+} from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "sonner";
-import { ROUTES } from "@/constants/routes";
 import { useAuthStore } from "@/store/auth.store";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { PageLoader } from "@/components/common/LoadingSpinner";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-
-// Layouts
 import { MainLayout } from "@/components/layout/MainLayout";
 import { AuthLayout } from "@/components/layout/AuthLayout";
 import { AccountLayout } from "@/components/layout/AccountLayout";
-
-// Lazy-loaded pages
-const HomePage = lazy(() => import("@/pages/HomePage"));
-const ProductListingPage = lazy(() => import("@/pages/ProductListingPage"));
-const ProductDetailPage = lazy(() => import("@/pages/ProductDetailPage"));
-const StorePage = lazy(() => import("@/pages/StorePage"));
-const FlashSalePage = lazy(() => import("@/pages/FlashSalePage"));
-const CartPage = lazy(() => import("@/pages/CartPage"));
-const QuoteRequestPage = lazy(() => import("@/pages/QuoteRequestPage"));
-
-// Auth
-const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
-const RegisterPage = lazy(() => import("@/pages/auth/RegisterPage"));
-const ForgotPasswordPage = lazy(
-  () => import("@/pages/auth/ForgotPasswordPage"),
+import Information, {
+  informationPaths,
+  NotFoundPage,
+  FAQPage,
+} from "@/pages/InformationPage";
+const Home = lazy(() => import("@/pages/HomePage"));
+const Products = lazy(() => import("@/pages/ProductListingPage"));
+const Product = lazy(() => import("@/pages/ProductDetailPage"));
+const Categories = lazy(() => import("@/pages/CategoriesPage"));
+const Contact = lazy(() => import("@/pages/ContactPage"));
+const Studio = lazy(() => import("@/features/design/Studio"));
+const Designs = lazy(() => import("@/features/design/Designs"));
+const Basket = lazy(() => import("@/pages/BasketPage"));
+const Quote = lazy(() => import("@/pages/QuoteRequestPage"));
+const QuoteSuccess = lazy(() =>
+  import("@/pages/QuoteRequestPage").then((m) => ({
+    default: m.QuoteSuccessPage,
+  })),
 );
-const ResetPasswordPage = lazy(() => import("@/pages/auth/ResetPasswordPage"));
-const VerifyEmailPage = lazy(() => import("@/pages/auth/VerifyEmailPage"));
-
-// Account
-const ProfilePage = lazy(() => import("@/pages/account/ProfilePage"));
-const OrdersPage = lazy(() => import("@/pages/account/OrdersPage"));
-const OrderDetailPage = lazy(() => import("@/pages/account/OrderDetailPage"));
-const AddressesPage = lazy(() => import("@/pages/account/AddressesPage"));
-const WishlistPage = lazy(() => import("@/pages/account/WishlistPage"));
-const NotificationsPage = lazy(
-  () => import("@/pages/account/NotificationsPage"),
+const Checkout = lazy(() => import("@/pages/CheckoutPage"));
+const CheckoutReturn = lazy(() =>
+  import("@/pages/CheckoutPage").then((m) => ({
+    default: m.CheckoutReturnPage,
+  })),
 );
-const ReviewsPage = lazy(() => import("@/pages/account/ReviewsPage"));
-const ReturnsPage = lazy(() => import("@/pages/account/ReturnsPage"));
-const SettingsPage = lazy(() => import("@/pages/account/SettingsPage"));
-const ChatPage = lazy(() => import("@/pages/account/ChatPage"));
-const WholesaleInquiriesPage = lazy(
-  () => import("@/pages/account/WholesaleInquiriesPage"),
-);
-
-const queryClient = new QueryClient({
+const Login = lazy(() => import("@/pages/auth/LoginPage"));
+const Register = lazy(() => import("@/pages/auth/RegisterPage"));
+const Forgot = lazy(() => import("@/pages/auth/ForgotPasswordPage"));
+const Reset = lazy(() => import("@/pages/auth/ResetPasswordPage"));
+const Verify = lazy(() => import("@/pages/auth/VerifyEmailPage"));
+const Overview = lazy(() => import("@/pages/account/OverviewPage"));
+const Profile = lazy(() => import("@/pages/account/ProfilePage"));
+const Orders = lazy(() => import("@/pages/account/OrdersPage"));
+const OrderDetail = lazy(() => import("@/pages/account/OrderDetailPage"));
+const Addresses = lazy(() => import("@/pages/account/AddressesPage"));
+const Wishlist = lazy(() => import("@/pages/account/WishlistPage"));
+const Notifications = lazy(() => import("@/pages/account/NotificationsPage"));
+const Reviews = lazy(() => import("@/pages/account/ReviewsPage"));
+const Returns = lazy(() => import("@/pages/account/ReturnsPage"));
+const Settings = lazy(() => import("@/pages/account/SettingsPage"));
+const Chat = lazy(() => import("@/pages/account/ChatPage"));
+const Wholesale = lazy(() => import("@/pages/account/WholesaleInquiriesPage"));
+const client = new QueryClient({
   defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000,
-      refetchOnWindowFocus: false,
-      retry: 1,
-    },
+    queries: { staleTime: 60000, retry: 1, refetchOnWindowFocus: false },
   },
 });
-
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuthStore();
-  const loc = useLocation();
-  if (!isAuthenticated)
-    return (
-      <Navigate to={ROUTES.LOGIN} state={{ from: loc.pathname }} replace />
-    );
-  return <>{children}</>;
+const initialState = document.getElementById("teamcore-query-state")?.textContent;
+if (initialState) {
+  try {
+    hydrate(client, JSON.parse(initialState));
+  } catch {
+    /* Refresh from API if the initial snapshot is unavailable. */
+  }
 }
-
-function GuestRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuthStore();
-  if (isAuthenticated) return <Navigate to={ROUTES.HOME} replace />;
-  return <>{children}</>;
+function Protected({ children }: { children: React.ReactNode }) {
+  const signedIn = useAuthStore((s) => s.isAuthenticated);
+  const location = useLocation();
+  return signedIn ? (
+    <>{children}</>
+  ) : (
+    <Navigate
+      to="/login"
+      state={{ from: location.pathname + location.search }}
+      replace
+    />
+  );
 }
-
+function NavigationEffects() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  useEffect(
+    () =>
+      useAuthStore.subscribe((next, previous) => {
+        if (next.user?.id !== previous.user?.id) client.clear();
+      }),
+    [],
+  );
+  return null;
+}
 export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
         <HelmetProvider>
-          <QueryClientProvider client={queryClient}>
+          <QueryClientProvider client={client}>
             <BrowserRouter>
+              <NavigationEffects />
               <Suspense fallback={<PageLoader />}>
                 <Routes>
-                  {/* Main layout */}
                   <Route element={<MainLayout />}>
-                    <Route path={ROUTES.HOME} element={<HomePage />} />
+                    <Route index element={<Home />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/design-studio" element={<Studio />} />
+                    <Route path="/products/:slug" element={<Product />} />
+                    <Route path="/categories" element={<Categories />} />
+                    <Route path="/categories/:slug" element={<Products />} />
+                    <Route path="/search" element={<Products />} />
                     <Route
-                      path={ROUTES.PRODUCTS}
-                      element={<ProductListingPage />}
+                      path="/brands"
+                      element={<Navigate to="/products" replace />}
                     />
                     <Route
-                      path={ROUTES.PRODUCT_DETAIL}
-                      element={<ProductDetailPage />}
+                      path="/brands/:slug"
+                      element={<Navigate to="/products" replace />}
                     />
+                    <Route path="/stores/:slug" element={<NotFoundPage />} />
                     <Route
-                      path={ROUTES.SEARCH}
-                      element={<ProductListingPage />}
+                      path="/flash-sales"
+                      element={<Navigate to="/products" replace />}
                     />
+                    <Route path="/cart" element={<Basket />} />
+                    <Route path="/quote-basket" element={<Basket quote />} />
                     <Route
-                      path={ROUTES.CATEGORY}
-                      element={<ProductListingPage />}
-                    />
-                    <Route
-                      path={ROUTES.BRAND}
-                      element={<ProductListingPage />}
-                    />
-                    <Route path={ROUTES.STORE} element={<StorePage />} />
-                    <Route
-                      path={ROUTES.FLASH_SALES}
-                      element={<FlashSalePage />}
-                    />
-                    <Route path={ROUTES.CART} element={<CartPage />} />
-                    <Route
-                      path={ROUTES.REQUEST_QUOTE}
+                      path="/request-quote"
                       element={
-                        <ProtectedRoute>
-                          <QuoteRequestPage />
-                        </ProtectedRoute>
+                        <Protected>
+                          <Quote />
+                        </Protected>
                       }
                     />
+                    <Route
+                      path="/request-quote/success/:id"
+                      element={
+                        <Protected>
+                          <QuoteSuccess />
+                        </Protected>
+                      }
+                    />
+                    <Route
+                      path="/checkout"
+                      element={
+                        <Protected>
+                          <Checkout />
+                        </Protected>
+                      }
+                    />
+                    <Route
+                      path="/checkout/return"
+                      element={
+                        <Protected>
+                          <CheckoutReturn />
+                        </Protected>
+                      }
+                    />
+                    <Route
+                      path="/checkout/cancelled"
+                      element={
+                        <Protected>
+                          <CheckoutReturn />
+                        </Protected>
+                      }
+                    />
+                    {informationPaths.map((path) => (
+                      <Route key={path} path={path} element={<Information />} />
+                    ))}
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/faq" element={<FAQPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                   </Route>
-
-                  {/* Auth layout */}
+                  <Route element={<AuthLayout />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/forgot-password" element={<Forgot />} />
+                    <Route path="/reset-password" element={<Reset />} />
+                    <Route path="/verify-email" element={<Verify />} />
+                  </Route>
                   <Route
                     element={
-                      <GuestRoute>
-                        <AuthLayout />
-                      </GuestRoute>
-                    }
-                  >
-                    <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-                    <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
-                    <Route
-                      path={ROUTES.FORGOT_PASSWORD}
-                      element={<ForgotPasswordPage />}
-                    />
-                    <Route
-                      path={ROUTES.RESET_PASSWORD}
-                      element={<ResetPasswordPage />}
-                    />
-                    <Route
-                      path={ROUTES.VERIFY_EMAIL}
-                      element={<VerifyEmailPage />}
-                    />
-                  </Route>
-
-                  {/* Account layout (protected) */}
-                  <Route
-                    element={
-                      <ProtectedRoute>
+                      <Protected>
                         <AccountLayout />
-                      </ProtectedRoute>
+                      </Protected>
                     }
                   >
+                    <Route path="/account" element={<Overview />} />
+                    <Route path="/account/designs" element={<Designs />} />
+                    <Route path="/account/designs/:id" element={<Designs />} />
+                    <Route path="/account/profile" element={<Profile />} />
+                    <Route path="/account/orders" element={<Orders />} />
                     <Route
-                      path={ROUTES.ACCOUNT}
-                      element={<Navigate to={ROUTES.ACCOUNT_PROFILE} replace />}
+                      path="/account/orders/:id"
+                      element={<OrderDetail />}
                     />
+                    <Route path="/account/addresses" element={<Addresses />} />
+                    <Route path="/account/wishlist" element={<Wishlist />} />
                     <Route
-                      path={ROUTES.ACCOUNT_PROFILE}
-                      element={<ProfilePage />}
+                      path="/account/notifications"
+                      element={<Notifications />}
                     />
+                    <Route path="/account/reviews" element={<Reviews />} />
+                    <Route path="/account/returns" element={<Returns />} />
+                    <Route path="/account/settings" element={<Settings />} />
+                    <Route path="/account/chat" element={<Chat />} />
+                    <Route path="/account/wholesale" element={<Wholesale />} />
                     <Route
-                      path={ROUTES.ACCOUNT_ORDERS}
-                      element={<OrdersPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_ORDER_DETAIL}
-                      element={<OrderDetailPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_ADDRESSES}
-                      element={<AddressesPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_WISHLIST}
-                      element={<WishlistPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_NOTIFICATIONS}
-                      element={<NotificationsPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_REVIEWS}
-                      element={<ReviewsPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_RETURNS}
-                      element={<ReturnsPage />}
-                    />
-                    <Route
-                      path={ROUTES.ACCOUNT_SETTINGS}
-                      element={<SettingsPage />}
-                    />
-                    <Route path={ROUTES.ACCOUNT_CHAT} element={<ChatPage />} />
-                    <Route
-                      path={ROUTES.ACCOUNT_WHOLESALE}
-                      element={<WholesaleInquiriesPage />}
+                      path="/account/wholesale/:id"
+                      element={<Wholesale />}
                     />
                   </Route>
-
-                  {/* Catch-all */}
-                  <Route
-                    path="*"
-                    element={<Navigate to={ROUTES.HOME} replace />}
-                  />
                 </Routes>
               </Suspense>
             </BrowserRouter>

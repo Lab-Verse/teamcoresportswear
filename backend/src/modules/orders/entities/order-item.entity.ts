@@ -12,6 +12,11 @@ import { FlashSale } from '../../cart/entities/flash-sale.entity';
 
 @Entity('order_items')
 export class OrderItem {
+  @Column({ name: 'design_revision_id', type: 'uuid', nullable: true })
+  designRevisionId: string | null;
+
+  @Column({ name: 'design_proof_id', type: 'uuid', nullable: true })
+  designProofId: string | null;
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

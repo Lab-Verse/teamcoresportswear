@@ -14,6 +14,7 @@ import { enforceOwnerOrAdmin } from '../../common/guards/ownership.helper';
 @Injectable()
 export class OrdersService {
   private static readonly STATUS_TRANSITIONS: Record<string, string[]> = {
+    pending_payment: ['confirmed', 'cancelled'],
     pending: ['confirmed', 'cancelled'],
     confirmed: ['processing', 'cancelled'],
     processing: ['shipped', 'cancelled'],
@@ -95,7 +96,8 @@ export class OrdersService {
           [variantId],
         );
         const available = rows.reduce(
-          (sum, row) => sum + Number(row.qty_on_hand) - Number(row.qty_reserved),
+          (sum, row) =>
+            sum + Number(row.qty_on_hand) - Number(row.qty_reserved),
           0,
         );
         if (available < requiredQty) {
@@ -249,6 +251,17 @@ export class OrdersService {
   async updateStatus(id: string, status: string): Promise<Order> {
     if (status === 'cancelled') return this.cancelAndRestore(id);
     const order = await this.findOne(id);
+    if (['processing', 'shipped', 'delivered'].includes(status)) {
+      const blocked = await this.dataSource.query(
+        `SELECT i.id FROM order_items i JOIN design_revisions r ON r.id=i.design_revision_id
+        WHERE i.order_id=$1 AND r.production_released_at IS NULL LIMIT 1`,
+        [id],
+      );
+      if (blocked.length)
+        throw new BadRequestException(
+          'Release the approved custom design for production before advancing this order.',
+        );
+    }
     const previousStatus = order.status;
     const allowed = OrdersService.STATUS_TRANSITIONS[previousStatus] || [];
     if (!allowed.includes(status)) {
@@ -292,7 +305,11 @@ export class OrdersService {
   ): Promise<Order> {
     const order = await this.findOne(id, callerId, callerRole);
     if (order.status === 'cancelled') return order;
-    if (!['pending_payment', 'pending', 'confirmed', 'processing'].includes(order.status)) {
+    if (
+      !['pending_payment', 'pending', 'confirmed', 'processing'].includes(
+        order.status,
+      )
+    ) {
       throw new BadRequestException(
         'Orders cannot be cancelled after shipment',
       );
@@ -309,7 +326,8 @@ export class OrdersService {
   }
 
   private async cancelAndRestore(id: string): Promise<Order> {
-    return this.dataSource.transaction(async (manager) => {
+    let changed = false;
+    const result = await this.dataSource.transaction(async (manager) => {
       const rows = await manager.query(
         `SELECT id, user_id, status FROM orders WHERE id = $1 FOR UPDATE`,
         [id],
@@ -320,8 +338,30 @@ export class OrdersService {
       if (current.status === 'cancelled') {
         return manager.findOneOrFail(Order, { where: { id } });
       }
-      if (!['pending_payment', 'pending', 'confirmed', 'processing'].includes(current.status)) {
-        throw new BadRequestException('Orders cannot be cancelled after shipment');
+      const payments = await manager.query(
+        "SELECT id FROM payments WHERE order_id=$1 AND status='paid'",
+        [id],
+      );
+      if (payments.length)
+        throw new BadRequestException(
+          'Paid orders require a return or refund review before cancellation',
+        );
+      const sessions = await manager.query(
+        'SELECT session_id FROM storefront_payment_sessions WHERE order_id=$1 AND expires_at>now()',
+        [id],
+      );
+      if (sessions.length)
+        throw new BadRequestException(
+          'Payment is still in progress. Wait for the payment session to finish before cancellation',
+        );
+      if (
+        !['pending_payment', 'pending', 'confirmed', 'processing'].includes(
+          current.status,
+        )
+      ) {
+        throw new BadRequestException(
+          'Orders cannot be cancelled after shipment',
+        );
       }
       const movements = await manager.query(
         `SELECT warehouse_id, variant_id, -SUM(quantity)::int AS quantity
@@ -330,7 +370,9 @@ export class OrdersService {
          GROUP BY warehouse_id, variant_id`,
         [id],
       );
-      const movementRows = Array.isArray(movements?.[0]) ? movements[0] : movements;
+      const movementRows = Array.isArray(movements?.[0])
+        ? movements[0]
+        : movements;
       for (const movement of movementRows || []) {
         await manager.query(
           `UPDATE inventory SET qty_on_hand = qty_on_hand + $1
@@ -345,7 +387,23 @@ export class OrdersService {
         );
       }
       await manager.update(Order, id, { status: 'cancelled' });
+      changed = true;
       return manager.findOneOrFail(Order, { where: { id } });
     });
+    if (changed) {
+      const order = await this.findOne(id);
+      if (order.user)
+        await this.mailService.sendOrderCancellation(
+          order.user.email,
+          order.user.firstName || 'Customer',
+          order.orderNumber,
+          'The unpaid order was cancelled.',
+        );
+      await this.mailService.sendBusinessAlert(
+        'Order cancelled',
+        `Order ${order.orderNumber} was cancelled.`,
+      );
+    }
+    return result;
   }
 }

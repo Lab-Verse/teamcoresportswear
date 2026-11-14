@@ -16,15 +16,15 @@ function baseTemplate(title: string, bodyContent: string): string {
   <style>
     body { margin: 0; padding: 0; background-color: #f4f6f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     .container { max-width: 600px; margin: 0 auto; background: #ffffff; }
-    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px 40px; text-align: center; }
+    .header { background: linear-gradient(135deg, #c6010b 0%, #373435 100%); padding: 30px 40px; text-align: center; }
     .header h1 { color: #ffffff; margin: 0; font-size: 26px; letter-spacing: 1px; }
     .header p { color: rgba(255,255,255,0.85); margin: 6px 0 0; font-size: 13px; }
     .body { padding: 36px 40px; color: #333333; line-height: 1.7; font-size: 15px; }
     .body h2 { color: #333; margin-top: 0; }
-    .info-box { background: #f0f4ff; border-left: 4px solid #667eea; padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+    .info-box { background: #f6f4f2; border-left: 4px solid #c6010b; padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; }
     .info-box p { margin: 4px 0; }
     .info-box strong { color: #444; }
-    .btn { display: inline-block; padding: 12px 32px; background: #667eea; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 16px 0; }
+    .btn { display: inline-block; padding: 12px 32px; background: #c6010b; color: #ffffff !important; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 16px 0; }
     .status-badge { display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
     .status-success { background: #d4edda; color: #155724; }
     .status-warning { background: #fff3cd; color: #856404; }
@@ -33,7 +33,7 @@ function baseTemplate(title: string, bodyContent: string): string {
     .footer { background: #f8f9fa; padding: 24px 40px; text-align: center; border-top: 1px solid #e9ecef; }
     .footer p { margin: 4px 0; color: #888; font-size: 12px; }
     table.items { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    table.items th { background: #f0f4ff; padding: 10px 12px; text-align: left; font-size: 13px; color: #555; border-bottom: 2px solid #667eea; }
+    table.items th { background: #f6f4f2; padding: 10px 12px; text-align: left; font-size: 13px; color: #555; border-bottom: 2px solid #c6010b; }
     table.items td { padding: 10px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
     @media (max-width: 620px) {
       .body, .header, .footer { padding-left: 20px; padding-right: 20px; }
@@ -43,15 +43,15 @@ function baseTemplate(title: string, bodyContent: string): string {
 <body>
   <div class="container">
     <div class="header">
-      <h1>Labverse</h1>
-      <p>E-Commerce Platform</p>
+      <h1>Team Core Sports Wear</h1>
+      <p>Your team. Your colours.</p>
     </div>
     <div class="body">
       ${bodyContent}
     </div>
     <div class="footer">
-      <p>&copy; ${new Date().getFullYear()} Labverse. All rights reserved.</p>
-      <p>This is an automated message. Please do not reply directly.</p>
+      <p>&copy; ${new Date().getFullYear()} Team Core Sports Wear. All rights reserved.</p>
+      <p>For help, reply to reach our support team.</p>
     </div>
   </div>
 </body>
@@ -65,19 +65,44 @@ export interface EmailTemplate {
   html: string;
 }
 
+export function escapeEmailText(value: string): string {
+  return value.replace(
+    /[&<>"']/g,
+    (char) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
+        char
+      ]!,
+  );
+}
+
+export function activityEmail(
+  title: string,
+  message: string,
+  url: string,
+  actionLabel = 'View your account',
+): EmailTemplate {
+  return {
+    subject: `Team Core Sports Wear — ${title.replace(/[\r\n]/g, ' ')}`,
+    html: baseTemplate(
+      escapeEmailText(title),
+      `<h2>${escapeEmailText(title)}</h2><p style="white-space:pre-line">${escapeEmailText(message)}</p><a class="btn" href="${escapeEmailText(url)}">${escapeEmailText(actionLabel)}</a>`,
+    ),
+  };
+}
+
 // ── Auth Templates ──────────────────────────────────────────────────────────────
 
 export function welcomeEmail(name: string): EmailTemplate {
   return {
-    subject: 'Welcome to Labverse!',
+    subject: 'Welcome to Team Core Sports Wear!',
     html: baseTemplate(
       'Welcome',
       `
       <h2>Welcome aboard, ${name}! 🎉</h2>
-      <p>Thank you for creating your account on <strong>Labverse</strong>. We're excited to have you with us!</p>
+      <p>Thank you for creating your account on <strong>Team Core Sports Wear</strong>. We're excited to have you with us!</p>
       <div class="info-box">
         <p><strong>What you can do now:</strong></p>
-        <p>✔ Browse thousands of products</p>
+        <p>✔ Browse our sports range</p>
         <p>✔ Add items to your cart and wishlist</p>
         <p>✔ Track your orders in real time</p>
         <p>✔ Get exclusive deals and promotions</p>
@@ -118,7 +143,7 @@ export function passwordResetEmail(
 ): EmailTemplate {
   const resetUrl = `${frontendUrl}/reset-password?token=${resetToken}`;
   return {
-    subject: 'Password Reset Request – Labverse',
+    subject: 'Password Reset Request – Team Core Sports Wear',
     html: baseTemplate(
       'Password Reset',
       `
@@ -129,7 +154,7 @@ export function passwordResetEmail(
         <a href="${resetUrl}" class="btn">Reset Password</a>
       </div>
       <p style="font-size: 13px; color: #888;">If the button doesn't work, copy and paste this URL into your browser:</p>
-      <p style="font-size: 13px; word-break: break-all; color: #667eea;">${resetUrl}</p>
+      <p style="font-size: 13px; word-break: break-all; color: #c6010b;">${resetUrl}</p>
       <div class="info-box">
         <p>⏰ This link expires in <strong>1 hour</strong>.</p>
         <p>If you didn't request a password reset, you can safely ignore this email.</p>
@@ -141,7 +166,7 @@ export function passwordResetEmail(
 
 export function passwordChangedEmail(name: string): EmailTemplate {
   return {
-    subject: 'Password Changed Successfully – Labverse',
+    subject: 'Password Changed Successfully – Team Core Sports Wear',
     html: baseTemplate(
       'Password Changed',
       `
@@ -165,7 +190,7 @@ export function emailVerificationEmail(
 ): EmailTemplate {
   const verifyUrl = `${frontendUrl}/verify-email?token=${verificationToken}`;
   return {
-    subject: 'Verify Your Email – Labverse',
+    subject: 'Verify Your Email – Team Core Sports Wear',
     html: baseTemplate(
       'Verify Email',
       `
@@ -176,7 +201,7 @@ export function emailVerificationEmail(
         <a href="${verifyUrl}" class="btn">Verify Email</a>
       </div>
       <p style="font-size: 13px; color: #888;">If the button doesn't work, copy and paste this URL into your browser:</p>
-      <p style="font-size: 13px; word-break: break-all; color: #667eea;">${verifyUrl}</p>
+      <p style="font-size: 13px; word-break: break-all; color: #c6010b;">${verifyUrl}</p>
       <div class="info-box">
         <p>⏰ This link expires in <strong>24 hours</strong>.</p>
         <p>If you didn't create an account, you can safely ignore this email.</p>
@@ -706,13 +731,13 @@ export function reviewStatusEmail(
 
 export function sellerApplicationReceivedEmail(name: string): EmailTemplate {
   return {
-    subject: 'Seller Application Received – Labverse',
+    subject: 'Seller Application Received – Team Core Sports Wear',
     html: baseTemplate(
       'Seller Application',
       `
       <h2>Seller Application Received</h2>
       <p>Hi ${name},</p>
-      <p>Thank you for applying to become a seller on <strong>Labverse</strong>. Your application is under review.</p>
+      <p>Thank you for applying to become a seller on <strong>Team Core Sports Wear</strong>. Your application is under review.</p>
       <div class="info-box">
         <p><strong>Status:</strong> <span class="status-badge status-warning">Pending Review</span></p>
         <p>We typically review applications within 1–3 business days.</p>
@@ -756,7 +781,7 @@ export function sellerVerificationEmail(
   if (!isApproved)
     badgeClass = isSuspended ? 'status-warning' : 'status-danger';
   return {
-    subject: `Seller Account ${formatStatus(status)} – Labverse`,
+    subject: `Seller Account ${formatStatus(status)} – Team Core Sports Wear`,
     html: baseTemplate(
       'Seller Verification',
       `
@@ -895,7 +920,7 @@ export function subscriptionCreatedEmail(
   frequency: string,
 ): EmailTemplate {
   return {
-    subject: 'Subscription Created – Labverse',
+    subject: 'Subscription Created – Team Core Sports Wear',
     html: baseTemplate(
       'Subscription Created',
       `
@@ -918,7 +943,7 @@ export function subscriptionCancelledEmail(
   reason?: string,
 ): EmailTemplate {
   return {
-    subject: 'Subscription Cancelled – Labverse',
+    subject: 'Subscription Cancelled – Team Core Sports Wear',
     html: baseTemplate(
       'Subscription Cancelled',
       `
@@ -940,7 +965,7 @@ export function subscriptionPausedEmail(
   productName: string,
 ): EmailTemplate {
   return {
-    subject: 'Subscription Paused – Labverse',
+    subject: 'Subscription Paused – Team Core Sports Wear',
     html: baseTemplate(
       'Subscription Paused',
       `
@@ -962,7 +987,7 @@ export function subscriptionResumedEmail(
   nextDelivery: string,
 ): EmailTemplate {
   return {
-    subject: 'Subscription Resumed – Labverse',
+    subject: 'Subscription Resumed – Team Core Sports Wear',
     html: baseTemplate(
       'Subscription Resumed',
       `
@@ -984,7 +1009,7 @@ export function subscriptionRenewalEmail(
   nextDelivery: string,
 ): EmailTemplate {
   return {
-    subject: 'Subscription Renewed – Labverse',
+    subject: 'Subscription Renewed – Team Core Sports Wear',
     html: baseTemplate(
       'Subscription Renewed',
       `
@@ -1004,7 +1029,7 @@ export function subscriptionRenewalEmail(
 
 export function testEmail(): EmailTemplate {
   return {
-    subject: 'Labverse – Test Email',
+    subject: 'Team Core Sports Wear – Test Email',
     html: baseTemplate(
       'Test Email',
       `

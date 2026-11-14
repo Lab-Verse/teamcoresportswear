@@ -16,6 +16,20 @@ import { ProductVariant } from './product-variant.entity';
 
 @Entity('products')
 export class Product {
+  @Column({
+    name: 'purchase_mode',
+    type: 'varchar',
+    length: 20,
+    default: 'both',
+  })
+  purchaseMode: 'direct' | 'quote_only' | 'both';
+
+  @Column({ name: 'minimum_order_quantity', type: 'int', default: 1 })
+  minimumOrderQuantity: number;
+
+  @Column({ name: 'quantity_increment', type: 'int', default: 1 })
+  quantityIncrement: number;
+
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

@@ -10,6 +10,8 @@ import { WholesaleInquiry } from './wholesale-inquiry.entity';
 
 @Entity('wholesale_inquiry_items')
 export class WholesaleInquiryItem {
+  @Column({ name: 'design_revision_id', type: 'uuid', nullable: true })
+  designRevisionId: string | null;
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

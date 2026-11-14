@@ -9,6 +9,7 @@ import {
   HttpCode,
   UsePipes,
   ValidationPipe,
+  GoneException,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -20,13 +21,12 @@ import { StripeService } from './stripe.service';
 import { CreateCheckoutDto } from './dto/create-checkout.dto';
 import { CreateSubscriptionSessionDto } from './dto/create-subscription-session.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { OrdersService } from '../orders/orders.service';
-import { PaymentsService } from '../payments/payments.service';
 import { SubscriptionsService } from '../subscriptions/subscriptions.service';
 import { NotificationHelperService } from '../notifications/notification-helper.service';
 import { SafeLogger } from '../../common/utils/logger.util';
 import { Public } from '../../common/decorators/public.decorator';
 import { DataSource } from 'typeorm';
+import { PaymentSettlementService } from './payment-settlement.service';
 
 @ApiTags('Stripe')
 @Controller('stripe')
@@ -34,18 +34,20 @@ import { DataSource } from 'typeorm';
 export class StripeController {
   constructor(
     private readonly stripeService: StripeService,
-    private readonly ordersService: OrdersService,
-    private readonly paymentsService: PaymentsService,
     private readonly subscriptionsService: SubscriptionsService,
     private readonly notificationHelper: NotificationHelperService,
     private readonly dataSource: DataSource,
+    private readonly settlement: PaymentSettlementService,
   ) {}
 
   @Get('status')
   @Public()
   @ApiOperation({ summary: 'Check whether online payments are configured' })
   getStatus() {
-    return { provider: 'stripe', configured: this.stripeService.isConfigured() };
+    return {
+      provider: 'stripe',
+      configured: this.stripeService.isConfigured(),
+    };
   }
 
   @Post('checkout')
@@ -54,22 +56,11 @@ export class StripeController {
   @ApiOperation({ summary: 'Create a Stripe Checkout Session for an order' })
   @ApiResponse({ status: 201, description: 'Checkout session created' })
   async createCheckout(@Body() body: CreateCheckoutDto, @Req() req: any) {
-    // Verify order exists and belongs to caller
-    const order = await this.ordersService.findOne(
-      body.orderId,
-      req.user.id,
-      req.user.role,
+    void body;
+    void req;
+    throw new GoneException(
+      'Use /storefront/orders/:id/pay for secure payment',
     );
-    const amount = Number(order.totalAmount);
-    const session = await this.stripeService.createCheckoutSession({
-      orderId: body.orderId,
-      amount,
-      customerEmail: req.user.email,
-      successUrl: body.successUrl,
-      cancelUrl: body.cancelUrl,
-      metadata: { userId: req.user.id },
-    });
-    return { sessionId: session.id, url: session.url };
   }
 
   @Post('subscribe')
@@ -119,6 +110,16 @@ export class StripeController {
       signature,
     );
 
+    if (
+      [
+        'checkout.session.completed',
+        'checkout.session.async_payment_succeeded',
+        'checkout.session.expired',
+      ].includes(event.type)
+    ) {
+      return this.settlement.handle(event);
+    }
+
     const claimed = await this.dataSource.query(
       `INSERT INTO payment_webhook_events (id, provider, event_type)
        VALUES ($1, 'stripe', $2)
@@ -131,64 +132,6 @@ export class StripeController {
     }
 
     switch (event.type) {
-      case 'checkout.session.completed': {
-        const session = event.data.object as any;
-        const orderId = session.metadata?.orderId;
-        const userId = session.metadata?.userId;
-        const gatewayTxId = session.payment_intent || session.id;
-
-        if (orderId) {
-          // Idempotency: Check if payment already recorded for this transaction
-          const existingPayments = await this.paymentsService.findAll({
-            orderId,
-          });
-          const alreadyProcessed = existingPayments.some(
-            (p) => p.gatewayTxId === gatewayTxId,
-          );
-          if (alreadyProcessed) {
-            SafeLogger.log(
-              `Duplicate webhook for txn ${gatewayTxId}, skipping`,
-              'StripeWebhook',
-            );
-            break;
-          }
-
-          // Atomic: create payment + update order in a single transaction
-          await this.dataSource.transaction(async (manager) => {
-            await manager.query(
-              `INSERT INTO payments (order_id, user_id, gateway, gateway_tx_id, amount, currency, status)
-               VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-              [
-                orderId,
-                userId || null,
-                'stripe',
-                gatewayTxId,
-                (session.amount_total || 0) / 100,
-                session.currency || 'pkr',
-                'paid',
-              ],
-            );
-            await manager.query(`UPDATE orders SET status = $1 WHERE id = $2`, [
-              'confirmed',
-              orderId,
-            ]);
-          });
-
-          if (userId) {
-            this.notificationHelper
-              .notify(userId, 'PAYMENT_RECEIVED', {
-                orderId,
-                amount: String((session.amount_total || 0) / 100),
-                currency: session.currency || 'PKR',
-              })
-              .catch(() => {});
-          }
-        }
-
-        SafeLogger.log(`Checkout completed: ${session.id}`, 'StripeWebhook');
-        break;
-      }
-
       case 'invoice.payment_succeeded': {
         const invoice = event.data.object as any;
         const subId = invoice.subscription;

@@ -10,6 +10,11 @@ import { WholesaleQuotation } from './wholesale-quotation.entity';
 
 @Entity('wholesale_quotation_items')
 export class WholesaleQuotationItem {
+  @Column({ name: 'design_revision_id', type: 'uuid', nullable: true })
+  designRevisionId: string | null;
+
+  @Column({ name: 'design_proof_id', type: 'uuid', nullable: true })
+  designProofId: string | null;
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

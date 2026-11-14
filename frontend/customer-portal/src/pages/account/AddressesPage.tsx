@@ -42,7 +42,11 @@ export default function AddressesPage() {
     addressesApi
       .list(user.id)
       .then(setAddresses)
-      .catch(() => {})
+      .catch(() => {
+        toast.error(
+          "Could not load account information. Please refresh and try again.",
+        );
+      })
       .finally(() => setLoading(false));
   }, [user]);
 

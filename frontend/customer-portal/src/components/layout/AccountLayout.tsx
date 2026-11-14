@@ -1,88 +1,63 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import {
-  User,
-  MapPin,
+  UserRound,
   ShoppingBag,
+  FileText,
+  MapPin,
   Heart,
   Star,
   Bell,
-  Settings,
   RotateCcw,
   MessageCircle,
-  FileText,
+  Settings,
+  LayoutDashboard,
 } from "lucide-react";
 import { TopBar } from "./TopBar";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { MobileMenu } from "./MobileMenu";
-import { cn } from "@/lib/utils";
-import { ROUTES } from "@/constants/routes";
-
-const accountLinks = [
-  { to: ROUTES.ACCOUNT_PROFILE, label: "My Profile", icon: User },
-  { to: ROUTES.ACCOUNT_WHOLESALE, label: "Quotes & Inquiries", icon: FileText },
-  { to: ROUTES.ACCOUNT_ORDERS, label: "My Orders", icon: ShoppingBag },
-  { to: ROUTES.ACCOUNT_ADDRESSES, label: "Addresses", icon: MapPin },
-  { to: ROUTES.ACCOUNT_WISHLIST, label: "Wishlist", icon: Heart },
-  { to: ROUTES.ACCOUNT_REVIEWS, label: "My Reviews", icon: Star },
-  { to: ROUTES.ACCOUNT_RETURNS, label: "Returns", icon: RotateCcw },
-  { to: ROUTES.ACCOUNT_NOTIFICATIONS, label: "Notifications", icon: Bell },
-  { to: ROUTES.ACCOUNT_CHAT, label: "Help & Support", icon: MessageCircle },
-  { to: ROUTES.ACCOUNT_SETTINGS, label: "Settings", icon: Settings },
-];
-
+import { SEOHead } from "@/components/common/SEOHead";
+const links = [
+  ["/account", "Overview", LayoutDashboard],
+  ["/account/profile", "Your profile", UserRound],
+  ["/account/wholesale", "Quotes & enquiries", FileText],
+  ["/account/designs", "My designs", Star],
+  ["/account/orders", "Your orders", ShoppingBag],
+  ["/account/addresses", "Addresses", MapPin],
+  ["/account/wishlist", "Saved products", Heart],
+  ["/account/reviews", "Reviews", Star],
+  ["/account/returns", "Returns", RotateCcw],
+  ["/account/notifications", "Notifications", Bell],
+  ["/account/chat", "Conversations", MessageCircle],
+  ["/account/settings", "Settings", Settings],
+] as const;
 export function AccountLayout() {
-  const location = useLocation();
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div>
+      <SEOHead title="Your account" />
+      <a href="#account-content" className="skip-to-content">
+        Skip to account content
+      </a>
       <TopBar />
       <Header />
-      <MobileMenu />
-      <main className="flex-1 bg-background py-8">
+      <div className="page-intro">
         <div className="container-main">
-          <div className="flex gap-8">
-            {/* Sidebar */}
-            <aside className="hidden md:block w-[240px] shrink-0">
-              <div className="bg-card rounded-xl border border-border overflow-hidden sticky top-[76px] shadow-[var(--shadow-card)]">
-                <div className="p-4 border-b border-border">
-                  <h2 className="font-semibold text-text-primary">
-                    My Account
-                  </h2>
-                </div>
-                <nav className="py-1">
-                  {accountLinks.map((link) => {
-                    const isActive =
-                      location.pathname === link.to ||
-                      (link.to !== ROUTES.ACCOUNT_PROFILE &&
-                        location.pathname.startsWith(link.to));
-                    return (
-                      <Link
-                        key={link.to}
-                        to={link.to}
-                        className={cn(
-                          "flex items-center gap-3 px-4 py-2.5 text-sm transition-colors",
-                          isActive
-                            ? "bg-primary-light text-primary font-medium border-l-3 border-primary"
-                            : "text-text-secondary hover:bg-surface hover:text-text-primary",
-                        )}
-                      >
-                        <link.icon className="h-4 w-4" />
-                        {link.label}
-                      </Link>
-                    );
-                  })}
-                </nav>
-              </div>
-            </aside>
-
-            {/* Content */}
-            <div className="flex-1 min-w-0">
-              <Outlet />
-            </div>
-          </div>
+          <p className="eyebrow">YOUR TEAM CORE SPORTS WEAR ACCOUNT</p>
+          <h1>Your team. Your account.</h1>
         </div>
-      </main>
+      </div>
+      <div className="container-main section account-layout">
+        <nav className="account-nav" aria-label="Account navigation">
+          {links.map(([url, label, Icon]) => (
+            <NavLink key={url} to={url} end={url === "/account"}>
+              <Icon size={17} />
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+        <main id="account-content" className="account-body" tabIndex={-1}>
+          <Outlet />
+        </main>
+      </div>
       <Footer />
     </div>
   );

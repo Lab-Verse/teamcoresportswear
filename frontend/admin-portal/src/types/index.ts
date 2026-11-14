@@ -152,6 +152,9 @@ export interface Store {
 
 // Products
 export interface Product {
+  purchaseMode?: 'direct' | 'quote_only' | 'both'
+  minimumOrderQuantity?: number
+  quantityIncrement?: number
   id: string
   storeId: string
   store?: Store
@@ -558,6 +561,7 @@ export type WholesaleInquiryStatus =
 export type WholesaleQuotationStatus = 'draft' | 'sent' | 'accepted' | 'declined' | 'expired' | 'superseded'
 
 export interface WholesaleInquiryItem {
+  designRevisionId?: string | null
   id: string
   variantId: string
   requestedQuantity: number
@@ -630,5 +634,5 @@ export interface CreateWholesaleQuotationPayload {
   terms?: string
   internalNotes?: string
   expiresAt: string
-  items: Array<{ variantId: string; quantity: number; unitPrice: number }>
+  items: Array<{ variantId: string; designRevisionId?: string | null; quantity: number; unitPrice: number }>
 }

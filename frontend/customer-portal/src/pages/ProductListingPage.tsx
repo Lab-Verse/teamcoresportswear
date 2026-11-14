@@ -1,211 +1,258 @@
-import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { SEOHead } from '@/components/common/SEOHead'
-import { Breadcrumb } from '@/components/common/Breadcrumb'
-import { ProductGrid } from '@/components/product/ProductGrid'
-import { FilterSidebar } from '@/components/product/FilterSidebar'
-import { SortDropdown } from '@/components/product/SortDropdown'
-import { ActiveFilters } from '@/components/product/ActiveFilters'
-import { EmptyState } from '@/components/common/EmptyState'
-import { Button } from '@/components/ui/button'
-import { productsApi } from '@/services/api'
-import type { Product, PaginatedResponse } from '@/types'
-import { DEFAULT_PAGE_SIZE } from '@/constants/config'
-import { LayoutGrid, List, SlidersHorizontal } from 'lucide-react'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { ProductListItem } from '@/components/product/ProductListItem'
-
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { Search, ArrowUpRight, SlidersHorizontal } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
+import { storefront } from "@/services/storefront";
+import { ProductCard } from "@/components/product/ProductCard";
+import { SEOHead } from "@/components/common/SEOHead";
+import { NotFoundPage } from "@/pages/InformationPage";
+import { BulkOrderFinder } from "@/components/discovery/BuyerGuides";
+import { RecentlyViewed } from "@/components/discovery/RecentlyViewed";
+import { sports } from "@/config/brand";
+import { listingPageSize } from "@/lib/seo";
 export default function ProductListingPage() {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [products, setProducts] = useState<Product[]>([])
-  const [total, setTotal] = useState(0)
-  const [loading, setLoading] = useState(true)
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-
-  const page = parseInt(searchParams.get('page') ?? '1')
-  const search = searchParams.get('search') ?? undefined
-  const categoryId = searchParams.get('categoryId') ?? undefined
-  const brandId = searchParams.get('brandId') ?? undefined
-  const sort = searchParams.get('sort') ?? undefined
-
-  useEffect(() => {
-    let cancelled = false
-    productsApi
-      .list({ page, limit: DEFAULT_PAGE_SIZE, search, categoryId, brandId, sort })
-      .then((res: PaginatedResponse<Product>) => {
-        if (cancelled) return
-        setProducts(res.data)
-        setTotal(res.total)
-      })
-      .catch(() => {
-        if (!cancelled) { setProducts([]); setTotal(0) }
-      })
-      .finally(() => { if (!cancelled) setLoading(false) })
-    return () => { cancelled = true }
-  }, [page, search, categoryId, brandId, sort])
-
-  const totalPages = Math.ceil(total / DEFAULT_PAGE_SIZE)
-
-  const goToPage = (p: number) => {
-    const next = new URLSearchParams(searchParams)
-    next.set('page', String(p))
-    setSearchParams(next)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  const [params, setParams] = useSearchParams();
+  const { slug } = useParams();
+  const page = Math.max(1, Number(params.get("page")) || 1);
+  const categories = useQuery({
+    queryKey: ["storefront", "categories"],
+    queryFn: storefront.categories,
+  });
+  const category = categories.data?.find((c) => c.slug === slug);
+  const sport = sports.find((s) => s.slug === slug);
+  const title = category ? `Custom ${category.name} Uniforms` : "Custom Sports Uniform Catalogue";
+  const description = sport
+    ? `${sport.description} Explore Team Core designs for your squad and request a quote with your quantities, sizes and artwork.`
+    : "Browse custom uniforms for six sports. Compare team kit designs and build a quotation request with your selected products and quantities.";
+  const filter = {
+    page,
+    limit: listingPageSize,
+    search: params.get("search") || "",
+    categorySlug: slug || params.get("category") || "",
+    sort: params.get("sort") || "newest",
+    mode: params.get("mode") || "",
+  };
+  const products = useQuery({
+    queryKey: ["storefront", "products", filter],
+    queryFn: () => storefront.products(filter),
+  });
+  function change(key: string, value: string) {
+    const p = new URLSearchParams(params);
+    if (value) p.set(key, value);
+    else p.delete(key);
+    p.delete("page");
+    setParams(p);
   }
-
+  function pageLink(next: number) {
+    const query = new URLSearchParams(params);
+    if (next === 1) query.delete("page");
+    else query.set("page", String(next));
+    return { search: query.toString() };
+  }
+  if (slug && categories.isSuccess && !category) return <NotFoundPage />;
   return (
     <>
-      <SEOHead title={search ? `Search: ${search}` : 'All Products'} />
-      <div className="container-main py-6">
-        <Breadcrumb items={[{ label: 'Products' }]} />
-
-        {/* Page Header */}
-        {search && (
-          <div className="mt-4 mb-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-text-primary tracking-tight">
-              Search results for &ldquo;{search}&rdquo;
-            </h1>
-          </div>
-        )}
-
-        <div className="flex gap-8 mt-4">
-          {/* Desktop Sidebar */}
-          <div className="hidden lg:block w-[260px] shrink-0">
-            <div className="sticky top-24">
-              <FilterSidebar />
-            </div>
-          </div>
-
-          {/* Main */}
-          <div className="flex-1 min-w-0">
-            {/* Toolbar */}
-            <div className="flex items-center justify-between mb-5 gap-4 flex-wrap bg-card rounded-xl border border-border px-4 py-3">
-              <div className="flex items-center gap-3">
-                <p className="text-sm text-text-secondary font-medium">
-                  {loading ? 'Loading…' : <><span className="text-text-primary font-semibold">{total}</span> results</>}
-                  {search && !loading && <span className="text-text-muted"> for &ldquo;{search}&rdquo;</span>}
-                </p>
-
-                {/* Mobile filter toggle */}
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="outline" size="sm" className="lg:hidden rounded-lg">
-                      <SlidersHorizontal className="h-4 w-4 mr-1.5" /> Filters
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent side="left" className="w-[300px] pt-10">
-                    <FilterSidebar />
-                  </SheetContent>
-                </Sheet>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <SortDropdown />
-                <div className="hidden md:flex items-center border border-border rounded-lg overflow-hidden">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 cursor-pointer transition-all duration-200 ${viewMode === 'grid' ? 'bg-primary text-white' : 'text-text-secondary hover:bg-surface'}`}
-                    aria-label="Grid view"
-                  >
-                    <LayoutGrid className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-2 cursor-pointer transition-all duration-200 ${viewMode === 'list' ? 'bg-primary text-white' : 'text-text-secondary hover:bg-surface'}`}
-                    aria-label="List view"
-                  >
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <ActiveFilters />
-
-            {/* Results */}
-            {loading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="bg-card rounded-2xl border border-border overflow-hidden animate-pulse">
-                    <div className="aspect-square bg-surface" />
-                    <div className="p-3.5 space-y-3">
-                      <div className="h-3 bg-surface rounded-full w-1/3" />
-                      <div className="h-4 bg-surface rounded-full w-3/4" />
-                      <div className="h-4 bg-surface rounded-full w-1/2" />
-                      <div className="h-5 bg-surface rounded-full w-1/3" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : products.length === 0 ? (
-              <EmptyState
-                icon={<LayoutGrid className="h-16 w-16" />}
-                title="No products found"
-                description="Try adjusting your filters or search terms."
-              />
-            ) : (
-              <>
-                {viewMode === 'grid' ? (
-                  <ProductGrid products={products} />
-                ) : (
-                  <div className="space-y-4">
-                    {products.map((p) => (
-                      <ProductListItem key={p.id} product={p} />
-                    ))}
-                  </div>
-                )}
-
-                {/* Pagination */}
-                {totalPages > 1 && (
-                  <div className="flex items-center justify-center gap-1.5 mt-10 mb-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      disabled={page <= 1}
-                      onClick={() => goToPage(page - 1)}
-                      className="rounded-lg px-4"
-                    >
-                      Previous
-                    </Button>
-                    {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
-                      let pageNum: number
-                      if (totalPages <= 7) {
-                        pageNum = i + 1
-                      } else if (page <= 4) {
-                        pageNum = i + 1
-                      } else if (page >= totalPages - 3) {
-                        pageNum = totalPages - 6 + i
-                      } else {
-                        pageNum = page - 3 + i
-                      }
-                      return (
-                        <Button
-                          key={pageNum}
-                          variant={page === pageNum ? 'default' : 'ghost'}
-                          size="sm"
-                          onClick={() => goToPage(pageNum)}
-                          className={`rounded-lg min-w-[36px] ${page === pageNum ? 'shadow-md shadow-primary/20' : ''}`}
-                        >
-                          {pageNum}
-                        </Button>
-                      )
-                    })}
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      disabled={page >= totalPages}
-                      onClick={() => goToPage(page + 1)}
-                      className="rounded-lg px-4"
-                    >
-                      Next
-                    </Button>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+      <SEOHead
+        title={
+          filter.search
+            ? `Search: ${filter.search}`
+            : title + (page > 1 ? ` – Page ${page}` : "")
+        }
+        description={description}
+      />
+      <div className="page-intro">
+        <div className="container-main">
+          <p className="eyebrow">Team Core Sports Wear / THE COLLECTION</p>
+          <h1>
+            {filter.search
+              ? `Results for “${filter.search}”`
+              : title}
+          </h1>
+          <p>{description}</p>
         </div>
       </div>
+      <div className="container-main catalog-layout">
+        <aside className="catalog-sidebar">
+          <h2>Shop by category</h2>
+          <Link
+            className={!filter.categorySlug ? "selected" : ""}
+            to="/products"
+          >
+            All products <ArrowUpRight size={16} />
+          </Link>
+          {categories.data?.map((c) => (
+            <Link
+              key={c.id}
+              className={filter.categorySlug === c.slug ? "selected" : ""}
+              to={`/categories/${c.slug}`}
+            >
+              {c.name}
+              <ArrowUpRight size={16} />
+            </Link>
+          ))}
+          <div className="catalog-help">
+            <span>Buying in bulk?</span>
+            <p>A tailored quotation starts with your requirements.</p>
+            <Link to="/wholesale">Let's talk ↗</Link>
+          </div>
+        </aside>
+        <section className="catalog-results">
+          <div className="catalog-toolbar">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="tc-filter-trigger">
+                  <SlidersHorizontal size={16} /> Filters
+                </button>
+              </SheetTrigger>
+              <SheetContent
+                side="left"
+                className="tc-filter-drawer"
+                aria-describedby={undefined}
+              >
+                <SheetTitle>Find your uniform</SheetTitle>
+                <nav aria-label="Filter by sport">
+                  <SheetClose asChild>
+                    <Link
+                      className={!filter.categorySlug ? "selected" : ""}
+                      to="/products"
+                    >
+                      All sports
+                    </Link>
+                  </SheetClose>
+                  {categories.data?.map((c) => (
+                    <SheetClose asChild key={c.id}>
+                      <Link
+                        className={
+                          filter.categorySlug === c.slug ? "selected" : ""
+                        }
+                        key={c.id}
+                        to={`/categories/${c.slug}`}
+                      >
+                        {c.name}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </nav>
+                <label>
+                  Order type
+                  <select
+                    value={filter.mode}
+                    onChange={(e) => change("mode", e.target.value)}
+                  >
+                    <option value="">All uniforms</option>
+                    <option value="direct">Buy online</option>
+                    <option value="quote">Request a quote</option>
+                  </select>
+                </label>
+                <label>
+                  Sort by
+                  <select
+                    value={filter.sort}
+                    onChange={(e) => change("sort", e.target.value)}
+                  >
+                    <option value="newest">Newest</option>
+                    <option value="name_asc">Name</option>
+                    <option value="price_asc">Price: low to high</option>
+                    <option value="price_desc">Price: high to low</option>
+                  </select>
+                </label>
+                <p className="text-sm text-text-muted">
+                  Choose your size and other available options on the product
+                  page.
+                </p>
+              </SheetContent>
+            </Sheet>
+            <span aria-live="polite">
+              {products.isPending
+                ? "Loading products…"
+                : `${products.data?.total || 0} products`}
+            </span>
+            <label>
+              Purchase type
+              <select
+                value={filter.mode}
+                onChange={(e) => change("mode", e.target.value)}
+              >
+                <option value="">All products</option>
+                <option value="direct">Buy online</option>
+                <option value="quote">Request a quote</option>
+              </select>
+            </label>
+            <label>
+              Sort by
+              <select
+                value={filter.sort}
+                onChange={(e) => change("sort", e.target.value)}
+              >
+                <option value="newest">Newest</option>
+                <option value="name_asc">Name</option>
+                <option value="price_asc">Price: low to high</option>
+                <option value="price_desc">Price: high to low</option>
+              </select>
+            </label>
+          </div>
+          {(filter.mode || filter.search || filter.categorySlug) && (
+            <div className="tc-active-filters">
+              <span>
+                {filter.search && `Search: ${filter.search} · `}
+                {category?.name || ""}
+                {filter.mode &&
+                  ` · ${filter.mode === "quote" ? "Quote available" : "Buy online"}`}
+              </span>
+              <Link to="/products">Clear filters</Link>
+            </div>
+          )}
+          {products.isPending ? (
+            <div className="product-grid catalog-grid">
+              {[0, 1, 2, 3, 4, 5].map((n) => (
+                <div className="product-placeholder skeleton" key={n} />
+              ))}
+            </div>
+          ) : products.isError ? (
+            <div className="data-notice" role="alert">
+              <h2>We couldn't load the range.</h2>
+              <button
+                className="action action-red"
+                onClick={() => products.refetch()}
+              >
+                Try again
+              </button>
+            </div>
+          ) : !products.data?.data.length ? (
+            <div className="data-notice">
+              <Search />
+              <h2>No products match just yet.</h2>
+              <p>Try a different search or explore all categories.</p>
+              <Link className="text-link" to="/products">
+                Clear filters →
+              </Link>
+            </div>
+          ) : (
+            <>
+              <div className="product-grid catalog-grid">
+                {products.data.data.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+              <nav className="pagination" aria-label="Product pages">
+                {page > 1 ? <Link to={pageLink(page - 1)}>← Previous</Link> : <button disabled>← Previous</button>}
+                <span>
+                  Page {page} of {products.data.totalPages}
+                </span>
+                {page < products.data.totalPages ? <Link to={pageLink(page + 1)}>Next →</Link> : <button disabled>Next →</button>}
+              </nav>
+            </>
+          )}
+        </section>
+      </div>
+      <BulkOrderFinder />
+      <RecentlyViewed />
     </>
-  )
+  );
 }

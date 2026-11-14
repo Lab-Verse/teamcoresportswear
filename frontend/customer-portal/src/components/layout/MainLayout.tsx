@@ -1,10 +1,7 @@
-import { Outlet } from 'react-router-dom'
-import { TopBar } from './TopBar'
-import { Header } from './Header'
-import { CategoryNav } from './CategoryNav'
-import { Footer } from './Footer'
-import { MobileMenu } from './MobileMenu'
-
+import { Outlet } from "react-router-dom";
+import { TopBar } from "./TopBar";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 export function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -12,13 +9,18 @@ export function MainLayout() {
         Skip to main content
       </a>
       <TopBar />
+      {import.meta.env.VITE_LOCAL_PREVIEW === "true" && (
+        <div className="tc-local-notice">
+          <strong>Local review:</strong> source-reference designs and test data.
+          Commercial details require confirmation; payments and outbound email
+          are disabled.
+        </div>
+      )}
       <Header />
-      <CategoryNav />
-      <MobileMenu />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1" tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />
     </div>
-  )
+  );
 }

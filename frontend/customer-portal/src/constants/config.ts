@@ -1,4 +1,5 @@
-export const APP_NAME = import.meta.env.VITE_APP_NAME || "Zaroox";
+import { brand } from "@/config/brand";
+export const APP_NAME = brand.name;
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 
 export const PAGINATION = {
@@ -51,4 +52,4 @@ export const SORT_OPTIONS = [
   { value: "name_asc", label: "Name: A to Z" },
 ] as const;
 
-export const CURRENCY = "Rs.";
+export const CURRENCY = "PKR";

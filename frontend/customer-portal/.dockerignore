@@ -1,0 +1,7 @@
+node_modules
+dist
+server-build
+.env*
+test-results
+coverage
+playwright-report

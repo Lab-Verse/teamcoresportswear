@@ -38,6 +38,8 @@ export class OrdersController {
   constructor(private readonly svc: OrdersService) {}
 
   @Post()
+  @UseGuards(RolesGuard)
+  @Roles(RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN)
   @ApiOperation({ summary: 'Create a new order with items' })
   @ApiBody({
     schema: {

@@ -1,0 +1,55 @@
+{
+  "origin": "https://teamcoresportswear.org",
+  "target": "3.87.169.239",
+  "dnsPinnedForPropagation": true,
+  "tlsValidation": true,
+  "publicRoutes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/categories",
+      "status": 200
+    },
+    {
+      "path": "/products",
+      "status": 200
+    },
+    {
+      "path": "/categories/soccer",
+      "status": 200
+    },
+    {
+      "path": "/products/soccer-smsc-101",
+      "status": 200
+    },
+    {
+      "path": "/custom-uniforms",
+      "status": 200
+    },
+    {
+      "path": "/private-label",
+      "status": 200
+    },
+    {
+      "path": "/wholesale",
+      "status": 200
+    },
+    {
+      "path": "/contact",
+      "status": 200
+    },
+    {
+      "path": "/design-studio",
+      "status": 200
+    }
+  ],
+  "hero": true,
+  "capabilities": 12,
+  "mobileOverflow": false,
+  "quoteBasket": true,
+  "adminLogin": true,
+  "apiHealth": true,
+  "pageErrors": []
+}

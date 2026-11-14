@@ -20,6 +20,8 @@ const RolePermissionsPage = lazy(() => import('@/pages/role-permissions'))
 const CategoriesPage = lazy(() => import('@/pages/categories'))
 const BrandsPage = lazy(() => import('@/pages/brands'))
 const StoresPage = lazy(() => import('@/pages/stores'))
+const ContactsPage = lazy(() => import('@/pages/contacts'))
+const DesignStudioPage = lazy(() => import('@/pages/design-studio'))
 const ProductsPage = lazy(() => import('@/pages/products'))
 const OrdersPage = lazy(() => import('@/pages/orders'))
 const WholesalePage = lazy(() => import('@/pages/wholesale'))
@@ -123,6 +125,7 @@ export default function App() {
                     }
                   >
                     <Route index element={<DashboardPage />} />
+                    <Route path="design-studio" element={<RbacRoute allowedRoles={ADMIN_ROLES}><DesignStudioPage /></RbacRoute>} />
                     <Route path="forbidden" element={<ForbiddenPage />} />
                     <Route
                       path="users"
@@ -159,6 +162,14 @@ export default function App() {
                     <Route path="categories" element={<CategoriesPage />} />
                     <Route path="brands" element={<BrandsPage />} />
                     <Route path="stores" element={<StoresPage />} />
+                    <Route
+                      path="contacts"
+                      element={
+                        <RbacRoute allowedRoles={ADMIN_ROLES}>
+                          <ContactsPage />
+                        </RbacRoute>
+                      }
+                    />
                     <Route path="products" element={<ProductsPage />} />
                     <Route path="orders" element={<OrdersPage />} />
                     <Route

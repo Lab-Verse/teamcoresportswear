@@ -1,0 +1,5616 @@
+[
+  {
+    "seed": "https://zipasports.com/",
+    "robots_status": 200,
+    "robots_directives": "# zipasports.com \u2014 robots\n# LLM/AI guidance file: https://zipasports.com/llms.txt (full version: https://zipasports.com/llms-full.txt)\nUser-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /private/\nDisallow: /database/\n# NOTE: /product-detail.html is deliberately NOT disallowed \u2014 it carries\n# noindex + 301/JS redirects that Google must be able to crawl to process.\n\n# AI answer-engine crawlers are welcome\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: Claude-Web\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: CCBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nUser-agent: Applebot-Extended\nAllow: /\n\nUser-agent: Bytespider\nAllow: /\n\nSitemap: https://zipasports.com/sitemap.xml\n",
+    "sitemaps": [
+      {
+        "requested": "https://zipasports.com/sitemap.xml",
+        "final": "https://zipasports.com/sitemap.xml",
+        "status": 200,
+        "kind": "sitemapindex",
+        "locations": 10,
+        "sample": [
+          "https://zipasports.com/sitemap-bags-accessories.xml",
+          "https://zipasports.com/sitemap-buyers.xml",
+          "https://zipasports.com/sitemap-combat-wear.xml",
+          "https://zipasports.com/sitemap-core.xml",
+          "https://zipasports.com/sitemap-dance-teamwear.xml",
+          "https://zipasports.com/sitemap-fitnesswear.xml",
+          "https://zipasports.com/sitemap-guides.xml",
+          "https://zipasports.com/sitemap-motowear.xml",
+          "https://zipasports.com/sitemap-sports-teamwear.xml",
+          "https://zipasports.com/sitemap-workwear.xml"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap_index.xml",
+        "final": "https://zipasports.com/sitemap_index.xml",
+        "status": 404,
+        "kind": null,
+        "locations": 0,
+        "sample": []
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-bags-accessories.xml",
+        "final": "https://zipasports.com/sitemap-bags-accessories.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 137,
+        "sample": [
+          "https://zipasports.com/bags-accessories/caps-headwear/",
+          "https://zipasports.com/bags-accessories/socks-gloves/",
+          "https://zipasports.com/bags-accessories/sports-bags/",
+          "https://zipasports.com/bags-accessories/team-accessories/",
+          "https://zipasports.com/bags-accessories/travel-utility-bags/",
+          "https://zipasports.com/bags-accessories/caps-headwear/balaclava-face-hoods/",
+          "https://zipasports.com/bags-accessories/caps-headwear/beanies/",
+          "https://zipasports.com/bags-accessories/caps-headwear/bucket-hats/",
+          "https://zipasports.com/bags-accessories/caps-headwear/cap-carrier-cases/",
+          "https://zipasports.com/bags-accessories/caps-headwear/caps/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-buyers.xml",
+        "final": "https://zipasports.com/sitemap-buyers.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 72,
+        "sample": [
+          "https://zipasports.com/alternative-to-china/",
+          "https://zipasports.com/for-academies/",
+          "https://zipasports.com/for-academies/athletics/",
+          "https://zipasports.com/for-academies/basketball/",
+          "https://zipasports.com/for-academies/combat-wear/",
+          "https://zipasports.com/for-academies/cricket/",
+          "https://zipasports.com/for-academies/dance-teamwear/",
+          "https://zipasports.com/for-academies/esports/",
+          "https://zipasports.com/for-academies/field-hockey/",
+          "https://zipasports.com/for-academies/football/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-combat-wear.xml",
+        "final": "https://zipasports.com/sitemap-combat-wear.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 298,
+        "sample": [
+          "https://zipasports.com/combat-wear/bjj/",
+          "https://zipasports.com/combat-wear/boxing/",
+          "https://zipasports.com/combat-wear/judo/",
+          "https://zipasports.com/combat-wear/karate/",
+          "https://zipasports.com/combat-wear/kickboxing/",
+          "https://zipasports.com/combat-wear/krav-maga/",
+          "https://zipasports.com/combat-wear/kung-fu/",
+          "https://zipasports.com/combat-wear/mma/",
+          "https://zipasports.com/combat-wear/muay-thai/",
+          "https://zipasports.com/combat-wear/sambo/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-core.xml",
+        "final": "https://zipasports.com/sitemap-core.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 50,
+        "sample": [
+          "https://zipasports.com/",
+          "https://zipasports.com/about.html",
+          "https://zipasports.com/bags-accessories.html",
+          "https://zipasports.com/combat-wear.html",
+          "https://zipasports.com/contact.html",
+          "https://zipasports.com/dance-teamwear.html",
+          "https://zipasports.com/fitnesswear.html",
+          "https://zipasports.com/manufacturing-capabilities/",
+          "https://zipasports.com/manufacturing-process/",
+          "https://zipasports.com/motowear.html"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-dance-teamwear.xml",
+        "final": "https://zipasports.com/sitemap-dance-teamwear.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 154,
+        "sample": [
+          "https://zipasports.com/dance-teamwear/cheerleading/",
+          "https://zipasports.com/dance-teamwear/costumes/",
+          "https://zipasports.com/dance-teamwear/dance-accessories/",
+          "https://zipasports.com/dance-teamwear/dance-bags/",
+          "https://zipasports.com/dance-teamwear/leotards-bodysuits/",
+          "https://zipasports.com/dance-teamwear/skirts-leggings-tights/",
+          "https://zipasports.com/dance-teamwear/tops-jackets-warmups/",
+          "https://zipasports.com/dance-teamwear/cheerleading/bodyliners/",
+          "https://zipasports.com/dance-teamwear/cheerleading/cheer-backpacks/",
+          "https://zipasports.com/dance-teamwear/cheerleading/cheer-bodysuits/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-fitnesswear.xml",
+        "final": "https://zipasports.com/sitemap-fitnesswear.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 158,
+        "sample": [
+          "https://zipasports.com/fitnesswear/compression-yoga/",
+          "https://zipasports.com/fitnesswear/gym-accessories/",
+          "https://zipasports.com/fitnesswear/gym-bags/",
+          "https://zipasports.com/fitnesswear/gym-tops/",
+          "https://zipasports.com/fitnesswear/hoodies-jackets/",
+          "https://zipasports.com/fitnesswear/leggings-shorts/",
+          "https://zipasports.com/fitnesswear/sports-bras-seamless/",
+          "https://zipasports.com/fitnesswear/compression-yoga/bootcut-yoga-pants/",
+          "https://zipasports.com/fitnesswear/compression-yoga/compression-half-tights/",
+          "https://zipasports.com/fitnesswear/compression-yoga/compression-wear/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-guides.xml",
+        "final": "https://zipasports.com/sitemap-guides.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 64,
+        "sample": [
+          "https://zipasports.com/fabrics/600d-polyester-420d-nylon/",
+          "https://zipasports.com/fabrics/cotton-polyester-fleece/",
+          "https://zipasports.com/fabrics/dance-costume-fabrics/",
+          "https://zipasports.com/fabrics/hi-vis-fabric/",
+          "https://zipasports.com/fabrics/moisture-wicking-fabric/",
+          "https://zipasports.com/fabrics/nylon-spandex/",
+          "https://zipasports.com/fabrics/pearl-weave-gi/",
+          "https://zipasports.com/fabrics/performance-fleece/",
+          "https://zipasports.com/fabrics/pique-knit/",
+          "https://zipasports.com/fabrics/polyester-interlock/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-motowear.xml",
+        "final": "https://zipasports.com/sitemap-motowear.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 100,
+        "sample": [
+          "https://zipasports.com/motowear/enduro/",
+          "https://zipasports.com/motowear/motocross/",
+          "https://zipasports.com/motowear/pit-crew/",
+          "https://zipasports.com/motowear/riding-casual/",
+          "https://zipasports.com/motowear/road-racing/",
+          "https://zipasports.com/motowear/enduro/enduro-armour-carrier-shirts/",
+          "https://zipasports.com/motowear/enduro/enduro-base-layer-bottoms/",
+          "https://zipasports.com/motowear/enduro/enduro-base-layer-tops/",
+          "https://zipasports.com/motowear/enduro/enduro-gear-bags/",
+          "https://zipasports.com/motowear/enduro/enduro-gloves/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-sports-teamwear.xml",
+        "final": "https://zipasports.com/sitemap-sports-teamwear.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 628,
+        "sample": [
+          "https://zipasports.com/sports-teamwear/american-football/",
+          "https://zipasports.com/sports-teamwear/athletics/",
+          "https://zipasports.com/sports-teamwear/badminton/",
+          "https://zipasports.com/sports-teamwear/baseball/",
+          "https://zipasports.com/sports-teamwear/basketball/",
+          "https://zipasports.com/sports-teamwear/cricket/",
+          "https://zipasports.com/sports-teamwear/cycling/",
+          "https://zipasports.com/sports-teamwear/esports/",
+          "https://zipasports.com/sports-teamwear/field-hockey/",
+          "https://zipasports.com/sports-teamwear/football/"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sitemap-workwear.xml",
+        "final": "https://zipasports.com/sitemap-workwear.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 130,
+        "sample": [
+          "https://zipasports.com/workwear/coveralls/",
+          "https://zipasports.com/workwear/hi-vis-safety/",
+          "https://zipasports.com/workwear/hospitality-aprons/",
+          "https://zipasports.com/workwear/work-jackets/",
+          "https://zipasports.com/workwear/work-polos-tees/",
+          "https://zipasports.com/workwear/work-trousers-shorts/",
+          "https://zipasports.com/workwear/coveralls/bib-and-brace-overalls/",
+          "https://zipasports.com/workwear/coveralls/boilersuit-shorts/",
+          "https://zipasports.com/workwear/coveralls/cleanroom-coveralls/",
+          "https://zipasports.com/workwear/coveralls/coverall-kit-bags/"
+        ]
+      }
+    ],
+    "home": {
+      "requested": "https://zipasports.com/",
+      "url": "https://zipasports.com/",
+      "status": 200,
+      "type": "text/html",
+      "bytes_decoded": 189147,
+      "x_robots_tag": null,
+      "title": "Custom Sportswear Manufacturer in Sialkot, Pakistan | ZipaSports",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "ZipaSports \u2014 custom sportswear factory in Sialkot, Pakistan (Est. 2005). Kit & apparel for brands, clubs, academies & gyms. MOQ 20\u201325, free remake guarantee.",
+        "robots": "index, follow, max-image-preview:large"
+      },
+      "canonical": "https://zipasports.com/",
+      "h1": [
+        "Custom Sportswear Manufacturer in Sialkot, Pakistan"
+      ],
+      "h2": [
+        "Sports Teamwear",
+        "Combat Wear",
+        "Premium Fitnesswear",
+        "Dance Teamwear",
+        "Moto wear Collection",
+        "Bags & Accessories",
+        "What We Manufacture",
+        "Manufacturing Excellence Since 2005",
+        "Every stage in one building in Sialkot",
+        "One factory for startups, clubs, academies & distributors",
+        "Hot Selling Products",
+        "From Design to Your Door"
+      ],
+      "structured_data_types": [
+        "Answer",
+        "Audience",
+        "Brand",
+        "BreadcrumbList",
+        "Certification",
+        "City",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "ImageObject",
+        "ListItem",
+        "LocalBusiness",
+        "MerchantReturnPolicy",
+        "Offer",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "Place",
+        "PostalAddress",
+        "PropertyValue",
+        "QuantitativeValue",
+        "Question",
+        "Service",
+        "SpeakableSpecification",
+        "WebPage",
+        "WebSite"
+      ],
+      "invalid_jsonld": 0,
+      "hreflang": [],
+      "images": {
+        "count": 68,
+        "missing_alt_attribute": 0,
+        "empty_or_missing_alt": 0,
+        "loading_lazy": 67
+      },
+      "forms": [
+        {
+          "action": "https://zipasports.com/api/contact.php",
+          "method": "post",
+          "labels": [
+            "Your Name *",
+            "Email Address *",
+            "Company / Brand",
+            "Product Category",
+            "Your Message *"
+          ],
+          "fields": [
+            "website",
+            "name",
+            "email",
+            "company",
+            "category",
+            "message"
+          ],
+          "file_upload": false
+        }
+      ],
+      "outbound": [
+        [
+          "Click to see our work",
+          "https://instagram.com/zipasports.official"
+        ],
+        [
+          "WhatsApp",
+          "https://wa.me/923007019281"
+        ],
+        [
+          "Email Us",
+          "mailto:zipasports@gmail.com"
+        ],
+        [
+          "Sialkot, Pakistan",
+          "https://maps.google.com/?cid=6831894808742827305"
+        ],
+        [
+          "zipasports@gmail.com",
+          "mailto:zipasports@gmail.com"
+        ],
+        [
+          "+92 300 7019281",
+          "https://wa.me/923007019281"
+        ],
+        [
+          "Instagram",
+          "https://instagram.com/zipasports.official"
+        ],
+        [
+          "Email",
+          "mailto:zipasports@gmail.com"
+        ],
+        [
+          "Get your free 24h mockup",
+          "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20free%2024h%20mockup%20for%20my%20design."
+        ],
+        [
+          "WhatsApp +92 300 7019281",
+          "https://wa.me/923007019281"
+        ],
+        [
+          "Email zipasports@gmail.com",
+          "mailto:zipasports@gmail.com"
+        ],
+        [
+          "Chat on WhatsApp Now",
+          "https://wa.me/923007019281"
+        ],
+        [
+          "Open in Google Maps",
+          "https://maps.google.com/?cid=6831894808742827305"
+        ],
+        [
+          "Book a live factory tour",
+          "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+        ],
+        [
+          "Directions \u2197",
+          "https://maps.google.com/?cid=6831894808742827305"
+        ],
+        [
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "https://wa.me/923007019281"
+        ],
+        [
+          "\ud83d\udcde +92 300 7019281",
+          "tel:+923007019281"
+        ],
+        [
+          "\u2709 zipasports@gmail.com",
+          "mailto:zipasports@gmail.com"
+        ],
+        [
+          "\ud83d\udcf7 @zipasports.official",
+          "https://instagram.com/zipasports.official"
+        ]
+      ],
+      "internal_unique_urls": 132,
+      "action_labels": [
+        "WhatsApp",
+        "Contact Us",
+        "Get a Quote",
+        "Shop Combat",
+        "See Designs",
+        "\ud83d\ude80 Startup & emerging brands Your first activewear, teamwear, fightwear or dancewear range from 20\u201325 pieces per design \u2014 free 24h mockup, unlimited free revisions, woven labels and retail packaging in-house. No MOQ limit once you are an established b",
+        "\ud83c\udfdf\ufe0f Clubs & teams Home, away and training kit for football, cricket, rugby, basketball, hockey, netball and 15+ more sports \u2014 names, numbers, sponsors and mixed sizes in one order, reorders that match the first batch. Kit manufacturer for clubs \u2192",
+        "\ud83c\udf93 Academies, schools & universities Age-group kit graded from one design, youth to adult, with season-after-season consistency, school PE ranges, academy training wear and a free remake within 3 days on any defect. Kit supplier for academies & school",
+        "\ud83d\udce6 Distributors & resellers Wholesale production under your label for kit suppliers, teamwear resellers, promotional-merchandise companies and retailers \u2014 repeat-order consistency and export documents handled for you. Wholesale programme \u2192",
+        "Sports Teamwear Football Match Jerseys Made-to-order Football Match Jerseys for Football teams in breathable\u2026 View",
+        "Combat Wear Boxing Shorts Made-to-order Boxing Shorts for Boxing, using lightweight stretch fabric\u2026 View",
+        "Sports Teamwear Reversible Jerseys Made-to-order Reversible Jerseys for Basketball teams in breathable\u2026 View",
+        "Combat Wear Muay Thai Shorts Made-to-order Muay Thai Shorts for Muay Thai, using lightweight stretch\u2026 View",
+        "Sports Teamwear Complete Football Team Kits Made-to-order Complete Football Team Kits for Football teams in breathable\u2026 View",
+        "Fitnesswear Gym t-shirts High-performance Gym t-shirts designed for gym and fitness training. Premium\u2026 View",
+        "Fitnesswear Sports bras High-performance Sports bras designed for gym and fitness training. Premium\u2026 View",
+        "\ud83d\udccb How ordering works",
+        "New brands Startup Launch Programme 20\u201325 pieces per design, free 24-hour mockup, sample in 5\u20137 days credited on bulk, private label applied in-house, free remake within 3 days. The standard terms every new sportswear brand gets \u2014 no application. See",
+        "China +1 sourcing Moving production out of China? As of mid-2026: 0% duty into the UK (DCTS) and EU (GSP+), 19% into the USA after the 2025 trade deal. Minimums from 20\u201325 pieces per design. What transfers cleanly to Sialkot, what does not, and the s",
+        "WhatsApp +92 300 7019281",
+        "Chat on WhatsApp Now",
+        "How Ordering Works",
+        "Sample Policy",
+        "Request a Quote",
+        "\ud83d\udcf1 WhatsApp +92 300 7019281",
+        "Search",
+        "",
+        "\u2715",
+        "Sports Teamwear",
+        "Combat Wear",
+        "Fitnesswear",
+        "Dance Teamwear",
+        "Motowear",
+        "Bags & Accessories",
+        "10"
+      ]
+    },
+    "home_internal_link_sample": [
+      [
+        "Skip to content",
+        "https://zipasports.com/"
+      ],
+      [
+        "Home",
+        "https://zipasports.com/"
+      ],
+      [
+        "Sports Teamwear \u25be",
+        "https://zipasports.com/sports-teamwear.html"
+      ],
+      [
+        "\u26bd Football",
+        "https://zipasports.com/sports-teamwear/football/"
+      ],
+      [
+        "\ud83c\udfdf\ufe0f Futsal",
+        "https://zipasports.com/sports-teamwear/futsal/"
+      ],
+      [
+        "\ud83c\udfcf Cricket",
+        "https://zipasports.com/sports-teamwear/cricket/"
+      ],
+      [
+        "\ud83c\udfc0 Basketball",
+        "https://zipasports.com/sports-teamwear/basketball/"
+      ],
+      [
+        "\u26be Baseball",
+        "https://zipasports.com/sports-teamwear/baseball/"
+      ],
+      [
+        "\ud83c\udfd0 Volleyball",
+        "https://zipasports.com/sports-teamwear/volleyball/"
+      ],
+      [
+        "\ud83c\udfc9 Rugby",
+        "https://zipasports.com/sports-teamwear/rugby/"
+      ],
+      [
+        "\ud83c\udfc8 American Football",
+        "https://zipasports.com/sports-teamwear/american-football/"
+      ],
+      [
+        "\ud83c\udfbe Tennis",
+        "https://zipasports.com/sports-teamwear/tennis/"
+      ],
+      [
+        "\ud83c\udff8 Badminton",
+        "https://zipasports.com/sports-teamwear/badminton/"
+      ],
+      [
+        "\ud83c\udfd1 Field Hockey",
+        "https://zipasports.com/sports-teamwear/field-hockey/"
+      ],
+      [
+        "\ud83c\udfd2 Ice Hockey",
+        "https://zipasports.com/sports-teamwear/ice-hockey/"
+      ],
+      [
+        "\ud83e\udd3e Handball",
+        "https://zipasports.com/sports-teamwear/handball/"
+      ],
+      [
+        "\ud83c\udfd0 Netball",
+        "https://zipasports.com/sports-teamwear/netball/"
+      ],
+      [
+        "\ud83c\udfc3 Athletics",
+        "https://zipasports.com/sports-teamwear/athletics/"
+      ],
+      [
+        "\ud83d\udeb4 Cycling",
+        "https://zipasports.com/sports-teamwear/cycling/"
+      ],
+      [
+        "\ud83c\udfca Swimming / Water Sports",
+        "https://zipasports.com/sports-teamwear/swimming-water-sports/"
+      ],
+      [
+        "\ud83c\udfae Esports",
+        "https://zipasports.com/sports-teamwear/esports/"
+      ],
+      [
+        "\ud83e\udd4e Softball",
+        "https://zipasports.com/sports-teamwear/softball/"
+      ],
+      [
+        "\ud83e\udd4d Lacrosse",
+        "https://zipasports.com/sports-teamwear/lacrosse/"
+      ],
+      [
+        "\u26f3 Golf",
+        "https://zipasports.com/sports-teamwear/golf/"
+      ],
+      [
+        "Combat Wear \u25be",
+        "https://zipasports.com/combat-wear.html"
+      ],
+      [
+        "\ud83e\udd4a Boxing",
+        "https://zipasports.com/combat-wear/boxing/"
+      ],
+      [
+        "\ud83e\udd4b MMA",
+        "https://zipasports.com/combat-wear/mma/"
+      ],
+      [
+        "\ud83e\uddb5 Kickboxing",
+        "https://zipasports.com/combat-wear/kickboxing/"
+      ],
+      [
+        "\ud83c\udfc6 Muay Thai",
+        "https://zipasports.com/combat-wear/muay-thai/"
+      ],
+      [
+        "\ud83e\udd3c Wrestling",
+        "https://zipasports.com/combat-wear/wrestling/"
+      ],
+      [
+        "\ud83e\udd4b BJJ",
+        "https://zipasports.com/combat-wear/bjj/"
+      ],
+      [
+        "\ud83e\udd4b Karate",
+        "https://zipasports.com/combat-wear/karate/"
+      ],
+      [
+        "\ud83e\uddb6 Taekwondo",
+        "https://zipasports.com/combat-wear/taekwondo/"
+      ],
+      [
+        "\ud83e\udd4b Judo",
+        "https://zipasports.com/combat-wear/judo/"
+      ],
+      [
+        "\ud83d\udc09 Kung Fu",
+        "https://zipasports.com/combat-wear/kung-fu/"
+      ],
+      [
+        "\u2694\ufe0f Krav Maga",
+        "https://zipasports.com/combat-wear/krav-maga/"
+      ],
+      [
+        "\ud83e\udd4b Sambo",
+        "https://zipasports.com/combat-wear/sambo/"
+      ],
+      [
+        "Dance Teamwear \u25be",
+        "https://zipasports.com/dance-teamwear.html"
+      ],
+      [
+        "\ud83d\udce3 Cheerleading",
+        "https://zipasports.com/dance-teamwear/cheerleading/"
+      ],
+      [
+        "\u2728 Dance Costumes",
+        "https://zipasports.com/dance-teamwear/costumes/"
+      ],
+      [
+        "\ud83c\udf80 Dance Accessories",
+        "https://zipasports.com/dance-teamwear/dance-accessories/"
+      ],
+      [
+        "\ud83d\udc5c Dance Bags & Garment Carriers",
+        "https://zipasports.com/dance-teamwear/dance-bags/"
+      ],
+      [
+        "\ud83e\ude70 Leotards & Bodysuits",
+        "https://zipasports.com/dance-teamwear/leotards-bodysuits/"
+      ],
+      [
+        "\ud83d\udc83 Dance Skirts, Leggings & Tights",
+        "https://zipasports.com/dance-teamwear/skirts-leggings-tights/"
+      ],
+      [
+        "\ud83e\udde5 Dance Tops, Jackets & Warm-ups",
+        "https://zipasports.com/dance-teamwear/tops-jackets-warmups/"
+      ],
+      [
+        "Fitnesswear \u25be",
+        "https://zipasports.com/fitnesswear.html"
+      ],
+      [
+        "\ud83e\uddd8 Compression & Yoga Wear",
+        "https://zipasports.com/fitnesswear/compression-yoga/"
+      ],
+      [
+        "\ud83e\udde4 Gym Accessories",
+        "https://zipasports.com/fitnesswear/gym-accessories/"
+      ],
+      [
+        "\ud83c\udf92 Gym Bags",
+        "https://zipasports.com/fitnesswear/gym-bags/"
+      ],
+      [
+        "\ud83d\udc55 Gym Tops & T-Shirts",
+        "https://zipasports.com/fitnesswear/gym-tops/"
+      ],
+      [
+        "\ud83e\udde5 Gym Hoodies & Jackets",
+        "https://zipasports.com/fitnesswear/hoodies-jackets/"
+      ],
+      [
+        "\ud83e\ude73 Leggings, Joggers & Shorts",
+        "https://zipasports.com/fitnesswear/leggings-shorts/"
+      ],
+      [
+        "\ud83c\udfbd Sports Bras & Seamless",
+        "https://zipasports.com/fitnesswear/sports-bras-seamless/"
+      ],
+      [
+        "Motowear \u25be",
+        "https://zipasports.com/motowear.html"
+      ],
+      [
+        "\ud83c\udfcd\ufe0f Motocross",
+        "https://zipasports.com/motowear/motocross/"
+      ],
+      [
+        "\ud83c\udfce\ufe0f Road Racing",
+        "https://zipasports.com/motowear/road-racing/"
+      ],
+      [
+        "\ud83c\udf32 Enduro",
+        "https://zipasports.com/motowear/enduro/"
+      ],
+      [
+        "\ud83d\udd27 Pit & Crew",
+        "https://zipasports.com/motowear/pit-crew/"
+      ],
+      [
+        "\ud83e\udde5 Casual Riding",
+        "https://zipasports.com/motowear/riding-casual/"
+      ],
+      [
+        "Workwear \u25be",
+        "https://zipasports.com/workwear.html"
+      ],
+      [
+        "\ud83d\udee0\ufe0f Coveralls & Boiler Suits",
+        "https://zipasports.com/workwear/coveralls/"
+      ],
+      [
+        "\ud83e\uddba Hi-Vis & Safety Wear",
+        "https://zipasports.com/workwear/hi-vis-safety/"
+      ],
+      [
+        "\ud83c\udf73 Aprons & Hospitality",
+        "https://zipasports.com/workwear/hospitality-aprons/"
+      ],
+      [
+        "\ud83e\udde5 Work Jackets & Softshells",
+        "https://zipasports.com/workwear/work-jackets/"
+      ],
+      [
+        "\ud83d\udc55 Work Polos, Tees & Sweats",
+        "https://zipasports.com/workwear/work-polos-tees/"
+      ],
+      [
+        "\ud83d\udc56 Work Trousers & Shorts",
+        "https://zipasports.com/workwear/work-trousers-shorts/"
+      ],
+      [
+        "Bags & Accessories \u25be",
+        "https://zipasports.com/bags-accessories.html"
+      ],
+      [
+        "\ud83e\udde2 Caps & Headwear",
+        "https://zipasports.com/bags-accessories/caps-headwear/"
+      ],
+      [
+        "\ud83e\udde6 Socks, Gloves & Wristbands",
+        "https://zipasports.com/bags-accessories/socks-gloves/"
+      ],
+      [
+        "\ud83c\udf92 Sports Bags & Backpacks",
+        "https://zipasports.com/bags-accessories/sports-bags/"
+      ],
+      [
+        "\ud83c\udfc5 Team Accessories",
+        "https://zipasports.com/bags-accessories/team-accessories/"
+      ],
+      [
+        "\ud83d\udcbc Travel & Utility Bags",
+        "https://zipasports.com/bags-accessories/travel-utility-bags/"
+      ],
+      [
+        "Resources \u25be",
+        "https://zipasports.com/resources/"
+      ],
+      [
+        "\ud83d\ude80 Start Your Brand",
+        "https://zipasports.com/start-your-brand/"
+      ],
+      [
+        "\ud83e\uddea Startup Launch Programme",
+        "https://zipasports.com/startup-program/"
+      ],
+      [
+        "\ud83d\udccd Made in Sialkot",
+        "https://zipasports.com/made-in-sialkot/"
+      ],
+      [
+        "\ud83e\udde2 For Startup Brands",
+        "https://zipasports.com/for-startups/"
+      ],
+      [
+        "\ud83c\udfdf\ufe0f For Clubs & Teams",
+        "https://zipasports.com/for-clubs/"
+      ],
+      [
+        "\ud83c\udf93 For Academies & Schools",
+        "https://zipasports.com/for-academies/"
+      ],
+      [
+        "\ud83c\udfed Manufacturing Process",
+        "https://zipasports.com/manufacturing-process/"
+      ],
+      [
+        "\u2699\ufe0f Manufacturing Capabilities",
+        "https://zipasports.com/manufacturing-capabilities/"
+      ],
+      [
+        "\ud83d\udee1\ufe0f Quality Guarantee",
+        "https://zipasports.com/quality-guarantee/"
+      ],
+      [
+        "\ud83d\udcd6 Fabric Guides & GSM",
+        "https://zipasports.com/fabrics/"
+      ],
+      [
+        "\ud83d\udda8\ufe0f Printing & Decoration",
+        "https://zipasports.com/printing/"
+      ],
+      [
+        "\ud83d\udccf Size Guide",
+        "https://zipasports.com/guides/sportswear-size-chart-guide/"
+      ],
+      [
+        "\ud83c\udff7\ufe0f Private Label",
+        "https://zipasports.com/private-label/"
+      ],
+      [
+        "\ud83d\udcda Sourcing Guides",
+        "https://zipasports.com/guides/"
+      ],
+      [
+        "\ud83d\udd24 Glossary",
+        "https://zipasports.com/glossary/"
+      ],
+      [
+        "\ud83d\uddbc\ufe0f Our Work",
+        "https://zipasports.com/our-work/"
+      ],
+      [
+        "\ud83c\udfc5 Certifications",
+        "https://zipasports.com/certifications/"
+      ],
+      [
+        "\u2753 FAQ",
+        "https://zipasports.com/faq/"
+      ],
+      [
+        "\ud83d\uddc2\ufe0f All Resources",
+        "https://zipasports.com/resources/"
+      ],
+      [
+        "About Us",
+        "https://zipasports.com/about.html"
+      ],
+      [
+        "Contact Us",
+        "https://zipasports.com/contact.html"
+      ],
+      [
+        "Get a Quote",
+        "https://zipasports.com/contact.html"
+      ],
+      [
+        "Sports Teamwear",
+        "https://zipasports.com/sports-teamwear.html"
+      ],
+      [
+        "Combat Wear",
+        "https://zipasports.com/combat-wear.html"
+      ],
+      [
+        "Dance Teamwear",
+        "https://zipasports.com/dance-teamwear.html"
+      ],
+      [
+        "Fitnesswear",
+        "https://zipasports.com/fitnesswear.html"
+      ],
+      [
+        "Motowear",
+        "https://zipasports.com/motowear.html"
+      ],
+      [
+        "Workwear",
+        "https://zipasports.com/workwear.html"
+      ],
+      [
+        "Bags & Accessories",
+        "https://zipasports.com/bags-accessories.html"
+      ],
+      [
+        "Resources",
+        "https://zipasports.com/resources/"
+      ],
+      [
+        "Explore 7 categories",
+        "https://zipasports.com/"
+      ],
+      [
+        "Explore Collection",
+        "https://zipasports.com/sports-teamwear.html"
+      ],
+      [
+        "Shop Combat",
+        "https://zipasports.com/combat-wear.html"
+      ],
+      [
+        "View Range",
+        "https://zipasports.com/fitnesswear.html"
+      ],
+      [
+        "See Designs",
+        "https://zipasports.com/dance-teamwear.html"
+      ],
+      [
+        "Explore Motowear",
+        "https://zipasports.com/motowear.html"
+      ],
+      [
+        "View All",
+        "https://zipasports.com/bags-accessories.html"
+      ],
+      [
+        "01 Category 01 Sports Teamwear Custom jerseys, kits & full uniforms for football, cricket, basketball, baseball, hockey, volleyball, rugby, tennis, badminton & 15+ more sports. Explore",
+        "https://zipasports.com/sports-teamwear.html"
+      ],
+      [
+        "02 Category 02 Combat Wear Pro-grade uniforms, apparel & protective gear for boxing, MMA, wrestling, judo, karate, taekwondo, kickboxing, Muay Thai, BJJ & kung fu Explore",
+        "https://zipasports.com/combat-wear.html"
+      ],
+      [
+        "03 Category 03 Dance Teamwear Custom costumes, leotards, crop tops, jackets, leggings, skirts & unitards \u2014 stage-ready performance wear for dance teams & studios Explore",
+        "https://zipasports.com/dance-teamwear.html"
+      ],
+      [
+        "04 Category 04 Fitnesswear Leggings, sports bras, hoodies & activewear for gyms, studios & retail brands. Explore",
+        "https://zipasports.com/fitnesswear.html"
+      ],
+      [
+        "05 Category 05 Motowear MX jerseys, race suits & riding gear with full sponsor branding packages. Explore",
+        "https://zipasports.com/motowear.html"
+      ],
+      [
+        "06 Category 06 Bags & Accessories Custom Gloves, Guards, sports bags, backpacks & accessories for teams & brands. Explore",
+        "https://zipasports.com/bags-accessories.html"
+      ],
+      [
+        "07 Category 07 Workwear Hi-vis safety wear, coveralls, work trousers, jackets, polos & hospitality uniforms with your company branding. Explore",
+        "https://zipasports.com/workwear.html"
+      ],
+      [
+        "everything about us & our certificates",
+        "https://zipasports.com/about.html"
+      ],
+      [
+        "Read the guarantee",
+        "https://zipasports.com/quality-guarantee/"
+      ],
+      [
+        "See the full capability list",
+        "https://zipasports.com/manufacturing-capabilities/"
+      ],
+      [
+        "\ud83d\ude80 Startup & emerging brands Your first activewear, teamwear, fightwear or dancewear range from 20\u201325 pieces per design \u2014 free 24h mockup, unlimited free revisions, woven labels and retail packaging in-house. No MOQ limit once you are an established b",
+        "https://zipasports.com/for-startups/"
+      ],
+      [
+        "\ud83c\udfdf\ufe0f Clubs & teams Home, away and training kit for football, cricket, rugby, basketball, hockey, netball and 15+ more sports \u2014 names, numbers, sponsors and mixed sizes in one order, reorders that match the first batch. Kit manufacturer for clubs \u2192",
+        "https://zipasports.com/for-clubs/"
+      ],
+      [
+        "\ud83c\udf93 Academies, schools & universities Age-group kit graded from one design, youth to adult, with season-after-season consistency, school PE ranges, academy training wear and a free remake within 3 days on any defect. Kit supplier for academies & school",
+        "https://zipasports.com/for-academies/"
+      ],
+      [
+        "\ud83e\udd4b Gyms, dojos & studios Branded gym wear, BJJ gis and rash guards, dance and cheer costumes to sell or issue to members \u2014 small first runs, private label, in-house embroidery and sublimation. Manufacturer for gyms, dojos & studios \u2192",
+        "https://zipasports.com/for-gyms-studios/"
+      ],
+      [
+        "\ud83d\udce6 Distributors & resellers Wholesale production under your label for kit suppliers, teamwear resellers, promotional-merchandise companies and retailers \u2014 repeat-order consistency and export documents handled for you. Wholesale programme \u2192",
+        "https://zipasports.com/for-distributors/"
+      ],
+      [
+        "\ud83c\udfe2 Corporate & workwear buyers Hi-vis, coveralls, work polos, jackets and hospitality uniforms with your company branding, plus company sports-day and event kit \u2014 all made under one roof in Sialkot. Workwear manufacturing \u2192",
+        "https://zipasports.com/workwear.html"
+      ],
+      [
+        "Sports Teamwear Football Match Jerseys Made-to-order Football Match Jerseys for Football teams in breathable\u2026 View",
+        "https://zipasports.com/sports-teamwear/football/football-match-jerseys/"
+      ],
+      [
+        "Combat Wear Boxing Shorts Made-to-order Boxing Shorts for Boxing, using lightweight stretch fabric\u2026 View",
+        "https://zipasports.com/combat-wear/boxing/boxing-shorts/"
+      ],
+      [
+        "Fitnesswear Leggings Premium Leggings in squat-proof 4-way stretch fabric. Full sublimation for\u2026 View",
+        "https://zipasports.com/fitnesswear/leggings-shorts/leggings/"
+      ],
+      [
+        "Sports Teamwear Reversible Jerseys Made-to-order Reversible Jerseys for Basketball teams in breathable\u2026 View",
+        "https://zipasports.com/sports-teamwear/basketball/reversible-jerseys/"
+      ],
+      [
+        "Motowear Motocross Jersey Premium custom Motocross Jersey manufactured by ZipaSports. Features include\u2026 View",
+        "https://zipasports.com/motowear/motocross/motocross-jersey/"
+      ],
+      [
+        "Combat Wear Muay Thai Shorts Made-to-order Muay Thai Shorts for Muay Thai, using lightweight stretch\u2026 View",
+        "https://zipasports.com/combat-wear/muay-thai/muay-thai-shorts/"
+      ],
+      [
+        "Sports Teamwear Complete Football Team Kits Made-to-order Complete Football Team Kits for Football teams in breathable\u2026 View",
+        "https://zipasports.com/sports-teamwear/football/complete-football-team-kits/"
+      ],
+      [
+        "Dance Teamwear Leotards Custom Leotards for dance performance and competition. Premium 4-way stretch\u2026 View",
+        "https://zipasports.com/dance-teamwear/leotards-bodysuits/leotards/"
+      ],
+      [
+        "Combat Wear No-Gi Rash Guards Close-fitting No-Gi Rash Guards for BJJ, using moisture-wicking stretch\u2026 View",
+        "https://zipasports.com/combat-wear/bjj/no-gi-rash-guards/"
+      ],
+      [
+        "Bags & Accessories Kit bags Custom Kit bags in heavy-duty polyester with reinforced base. Multiple\u2026 View",
+        "https://zipasports.com/bags-accessories/sports-bags/kit-bags/"
+      ],
+      [
+        "Fitnesswear Gym t-shirts High-performance Gym t-shirts designed for gym and fitness training. Premium\u2026 View",
+        "https://zipasports.com/fitnesswear/gym-tops/gym-t-shirts/"
+      ],
+      [
+        "Fitnesswear Sports bras High-performance Sports bras designed for gym and fitness training. Premium\u2026 View",
+        "https://zipasports.com/fitnesswear/sports-bras-seamless/sports-bras/"
+      ],
+      [
+        "custom sports teamwear manufacturer",
+        "https://zipasports.com/sports-teamwear.html"
+      ],
+      [
+        "sports teamwear supplier",
+        "https://zipasports.com/sports-teamwear.html"
+      ]
+    ],
+    "pages": [
+      {
+        "requested": "https://zipasports.com/manufacturing-process/",
+        "url": "https://zipasports.com/manufacturing-process/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 95220,
+        "x_robots_tag": null,
+        "title": "How Custom Sportswear Is Manufactured | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "How ZipaSports manufactures custom sportswear in Sialkot, Pakistan, in 10 stages: 24h mockup, print, cut, stitch, QC, pack. Bulk in 15\u201325 business days.",
+          "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+        },
+        "canonical": "https://zipasports.com/manufacturing-process/",
+        "h1": [
+          "How Custom Sportswear Is Manufactured: The 10-Stage Process at ZipaSports"
+        ],
+        "h2": [
+          "The 10 stages at a glance: timings and what the buyer sees",
+          "Stage 1 \u2014 Brief and free 24-hour digital mockup",
+          "Stage 2 \u2014 Quotation and approval",
+          "Stage 3 \u2014 Pattern making and size grading (computerised)",
+          "Stage 4 \u2014 Fabric sourcing and inspection",
+          "Stage 5 \u2014 Printing: sublimation paper to heat press, or dyed fabric for solids",
+          "Stage 6 \u2014 Computer-controlled cutting",
+          "Stage 7 \u2014 Stitching lines: which seam goes where",
+          "Stage 8 \u2014 Decoration: embroidery, DTF, screen print, rhinestone and tackle twill",
+          "Stage 9 \u2014 In-line QC and final inspection",
+          "Stage 10 \u2014 Finishing, labelling, packing, export documents and shipping",
+          "After delivery: the Quality Guarantee"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Article",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "HowTo",
+          "HowToStep",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "SpeakableSpecification",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 125,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "How Ordering Works \u2014 From Brief to Delivery",
+          "WhatsApp for a Quote",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sports-teamwear/football/",
+        "url": "https://zipasports.com/sports-teamwear/football/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 115466,
+        "x_robots_tag": null,
+        "title": "Custom Football Kit Manufacturer for Clubs & Brands | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Custom football kit manufacturer & supplier in Sialkot, Pakistan: soccer jerseys, shorts, socks, GK kits for clubs & brands. MOQ 20-25, free 24h mockup.",
+          "robots": "index, follow, max-image-preview:large"
+        },
+        "canonical": "https://zipasports.com/sports-teamwear/football/",
+        "h1": [
+          "Custom Football Kit Manufacturer"
+        ],
+        "h2": [
+          "\u26bd Football Products",
+          "Ordering Details",
+          "Frequently Asked Questions",
+          "Custom football kit, made in our own factory in Sialkot",
+          "Who orders custom football kit and apparel? Startups, clubs, academies & more",
+          "More in Sports Teamwear",
+          "Related resources",
+          "Why source sports teamwear from Sialkot, Pakistan",
+          "Made in Sialkot , shipped to your door"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "CollectionPage",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ItemList",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 33,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 33
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 164,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "Football Match Jerseys Sublimated football match jerseys in 140\u2013180 GSM polyester with names, numbers and sponsor logos. View & Order",
+          "Complete Football Team Kits Complete football kits \u2014 jersey, shorts and socks options \u2014 sublimated in one club colourway. View & Order",
+          "Goalkeeper Kits Goalkeeper kits in contrasting colourways with long-sleeve options, matched to the outfield design. View & Order",
+          "Training Jerseys Training jerseys in breathable polyester mesh, sublimated in squad colours for daily sessions. View & Order",
+          "Football Shorts Football shorts in 140\u2013180 GSM polyester interlock, printed with club crests and numbers. View & Order",
+          "Presentation Tracksuits Presentation tracksuits in fleece or polyester options, embroidered with club crests for matchday travel. View & Order",
+          "Team Kit Bags Team kit bags in 600D polyester with reinforced base and stitching, printed with club branding. View & Order",
+          "Football Socks Knee-high team socks machine-knitted in cushioned polyester-nylon with spandex arch bands and club colours knitted into the leg. View & Order",
+          "Goalkeeper Gloves Match and training goalkeeper gloves with 4 mm German latex palms, sublimated backhands and elastic bandage wrist closures. View & Order",
+          "Training Bibs Slip-on training bibs cut from 140 GSM polyester airtex mesh with bound edges and screen-printed squad numbering. View & Order",
+          "Rain Training Jackets Wet-weather training jackets in PU-coated polyester with taped hoods, mesh-lined bodies and ventilated back yokes. View & Order",
+          "Long Sleeve Football Jerseys Full-sleeve match tops in 150 GSM polyester interlock, raglan cut, with pin-dot mesh underarm ventilation panels. View & Order",
+          "Women's Football Kits Women's-cut jersey and shorts sets, 145 GSM interlock, with shaped side seams and a narrower shoulder. View & Order",
+          "Junior Football Kits Sized for U6 to U16 in 140 GSM lightweight interlock, with softer flat-lock seams throughout. View & Order",
+          "Goalkeeper Padded Trousers Loose-fit keeper trousers with 5 mm EVA foam hip and knee padding sewn into poly-spandex panels. View & Order",
+          "Football Referee Kits Officials' shirt, shorts and socks in 150 GSM pin-dot polyester, with a zipped pocket for cards. View & Order",
+          "Coach & Staff Polo Shirts Touchline polos in 220 GSM piqu\u00e9 with three-button placket, side vents and embroidered club crest. View & Order",
+          "Club Supporter Tees Terrace tees in 190 GSM ring-spun cotton, side-seamed, printed with screen, DTF or puff ink. View & Order",
+          "Anti-Slip Grip Socks Ankle or crew grip socks with silicone dot pads inside and out, combed cotton-nylon-elastane knit. View & Order",
+          "Football Player Backpacks 35-litre players' packs in 1680D polyester with vented boot tunnel, laptop sleeve and padded harness. View & Order",
+          "Football Quarter-Zip Training Tops Midlayer training tops in 220 GSM brushed-back poly-spandex, quarter-zip placket with chin guard and raglan sleeves. View & Order",
+          "Football Thermal Base Layer Tops Long-sleeve thermal base layers in 260 GSM brushed poly-spandex, flatlock seamed with a raised close-fit collar. View & Order",
+          "Football Base Layer Shorts Compression shorts cut from 240 GSM nylon-spandex with a flat gusset panel and silicone gripper leg hem. View & Order",
+          "Pre-Match Warm-Up Tops Loose-cut warm-up tops in 140 GSM pin-dot polyester mesh, drop-tail hem, sized to layer over match jerseys. View & Order",
+          "Football Anthem Jackets Full-zip anthem jackets in 210T PU-coated polyester with tricot lining, stand collar and zipped side pockets. View & Order",
+          "Padded Bench Coats Longline touchline coats with 210T PU-coated shell, 180 GSM polyester wadding and fleece-lined body and hood. View & Order",
+          "Club Padded Gilets Sleeveless padded bodywarmers with 190T ripstop nylon shell, quilted wadding and a two-way YKK front zip. View & Order",
+          "Football Training Trousers Tapered training trousers in 240 GSM poly-spandex tricot, ankle zips, elasticated drawcord waist and zipped pockets. View & Order",
+          "Goalkeeper Padded Jerseys Long-sleeve keeper jerseys in 160 GSM polyester interlock with foam-padded elbow panels and elasticated cuffs. View & Order",
+          "Club Zip-Through Hoodies Full-zip club hoodies in 320 GSM brushed-back fleece, twin-needle stitched, with kangaroo pockets and jersey-lined hood. View & Order",
+          "Club Crew Sweatshirts Set-in sleeve crew sweatshirts in 300 GSM cotton-rich fleece with ribbed cuffs, hem and taped neck seam. View & Order",
+          "Women's Fit Training Tops Women's-block training tops in 150 GSM polyester interlock, shaped side seams, scooped hem and mesh back yoke. View & Order"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/contact.html",
+        "url": "https://zipasports.com/contact.html",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 69181,
+        "x_robots_tag": null,
+        "title": "Contact ZipaSports \u2014 Quote & Free 24h Mockup | Sialkot, Pakistan",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Contact ZipaSports, custom sportswear manufacturer in Sialkot, Pakistan. WhatsApp +92 300 7019281 (2h reply), free digital mockup in 24 hours. MOQ 20\u201325 pieces per design.",
+          "robots": "index, follow, max-image-preview:large"
+        },
+        "canonical": "https://zipasports.com/contact.html",
+        "h1": [
+          "Contact ZipaSports"
+        ],
+        "h2": [
+          "Made in Sialkot , shipped to your door"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPage",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [
+          {
+            "action": "https://zipasports.com/api/contact.php",
+            "method": "post",
+            "labels": [
+              "Your Full Name *",
+              "Email Address *",
+              "Phone / WhatsApp",
+              "Country",
+              "Product Category",
+              "I am ordering as",
+              "Estimated Quantity",
+              "Your Message *"
+            ],
+            "fields": [
+              "website",
+              "name",
+              "email",
+              "phone",
+              "country",
+              "category",
+              "buyer_type",
+              "quantity",
+              "message"
+            ],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Fastest Response WhatsApp Us Now +92 300 7019281 \u00b7 Reply within 2 hours",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Instagram @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Facebook ZipaSports",
+            "https://facebook.com/zipasports"
+          ],
+          [
+            "LinkedIn ZipaSports International",
+            "https://linkedin.com/company/zipasports"
+          ],
+          [
+            "+92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 119,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "Fastest Response WhatsApp Us Now +92 300 7019281 \u00b7 Reply within 2 hours",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715",
+          "Send Message \u2192"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/custom-sportswear/",
+        "url": "https://zipasports.com/custom-sportswear/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 87408,
+        "x_robots_tag": null,
+        "title": "Custom Sportswear Manufacturer & Supplier | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Custom sportswear manufacturer and supplier in Sialkot, Pakistan. Teamwear, combat, fitness, dance, moto and workwear from 20\u201325 pieces per design.",
+          "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+        },
+        "canonical": "https://zipasports.com/custom-sportswear/",
+        "h1": [
+          "Custom Sportswear Manufacturer, Supplier & Factory \u2014 Sialkot, Pakistan"
+        ],
+        "h2": [
+          "Every custom sportswear range",
+          "What a custom sportswear manufacturer actually makes for you",
+          "Seven categories, one factory floor",
+          "What \u201ccustom\u201d covers: colours, names, numbers, sponsors and labels",
+          "Decoration methods and which garment each one suits",
+          "Fabrics and GSM you can specify",
+          "How a custom sportswear order runs, from brief to delivery",
+          "Who we manufacture custom sportswear for",
+          "Wholesale, OEM and private label: three ways to buy from the factory",
+          "Markets we supply, and the Quality Guarantee",
+          "Frequently Asked Questions",
+          "Related"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "SpeakableSpecification",
+          "WebPage",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 146,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "Custom Sports Teamwear Manufacturer, supplier & factory \u2014 every sports teamwear range, from 20\u201325 pieces per design.",
+          "Custom Combat Wear Manufacturer, supplier & factory \u2014 every combat wear range, from 20\u201325 pieces per design.",
+          "Custom Fitnesswear Manufacturer, supplier & factory \u2014 every fitnesswear range, from 20\u201325 pieces per design.",
+          "Custom Dance Teamwear Manufacturer, supplier & factory \u2014 every dance teamwear range, from 20\u201325 pieces per design.",
+          "Custom Motowear Manufacturer, supplier & factory \u2014 every motowear range, from 20\u201325 pieces per design.",
+          "Custom Workwear Manufacturer, supplier & factory \u2014 every workwear range, from 20\u201325 pieces per design.",
+          "Custom Bags & Accessories Manufacturer, supplier & factory \u2014 every bags & accessories range, from 20\u201325 pieces per design.",
+          "Wholesale Bags & Accessories Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom bags and accessories manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing kit\u2026",
+          "Wholesale Combat Wear Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom combat wear manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing BJJ gis, rash\u2026",
+          "Wholesale Dance Teamwear Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom dance teamwear manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing leotards,\u2026",
+          "Wholesale Fitnesswear Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom fitnesswear manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing leggings, sports\u2026",
+          "Wholesale Motowear Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom motowear manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing motocross jerseys,\u2026",
+          "Wholesale Sports Teamwear Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom sports teamwear manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing football\u2026",
+          "Wholesale Workwear Manufacturer & Supplier \u2014 Bulk Custom Orders ZipaSports is a custom workwear manufacturer and supplier in Sialkot, Pakistan \u2014 our own factory since 2005 \u2014 producing hi-vis vests and\u2026",
+          "sample policy",
+          "WhatsApp for a Quote",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/private-label/",
+        "url": "https://zipasports.com/private-label/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 62988,
+        "x_robots_tag": null,
+        "title": "Private Label Sportswear Manufacturer & Custom Patterns | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Private-label sportswear manufacturing in Sialkot, Pakistan: your woven labels, tags and packaging applied in-house, custom patterns from a tech pack. MOQ 20\u201325.",
+          "robots": "index, follow, max-image-preview:large"
+        },
+        "canonical": "https://zipasports.com/private-label/",
+        "h1": [
+          "Private Label & Fully Custom Patterns"
+        ],
+        "h2": [
+          "Frequently Asked Questions",
+          "Made in Sialkot , shipped to your door"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ImageObject",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "SpeakableSpecification",
+          "WebPage",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 120,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "WhatsApp for a Quote",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/custom-sportswear-usa/",
+        "url": "https://zipasports.com/custom-sportswear-usa/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 81357,
+        "x_robots_tag": null,
+        "title": "Custom Sportswear & Soccer Uniforms for USA | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Custom soccer uniforms, basketball, cheer and gym wear for US teams and brands, made in Sialkot, Pakistan. MOQ 20\u201325 pieces; US tariff included in the price.",
+          "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+        },
+        "canonical": "https://zipasports.com/custom-sportswear-usa/",
+        "h1": [
+          "Custom Sportswear and Soccer Uniform Manufacturer for the United States"
+        ],
+        "h2": [
+          "Why US teams and activewear startups order from Sialkot",
+          "What US buyers order most",
+          "Tariff, delivery and paperwork for the United States",
+          "Timeline from enquiry to delivery",
+          "ZipaSports compared with a local screen printer and a US team dealer",
+          "US sizing: men's, women's and youth cuts",
+          "Contacting the factory from US time zones",
+          "Frequently Asked Questions",
+          "Related",
+          "Made in Sialkot , shipped to your door"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "SpeakableSpecification",
+          "WebPage",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "The Business Standard",
+            "https://www.tbsnews.net/sports/how-pakistans-sialkot-powers-70-worlds-football-production-1456891"
+          ],
+          [
+            "Dawn",
+            "https://www.dawn.com/news/1927992"
+          ],
+          [
+            "Fabrioza",
+            "https://fabrioza.com/blog/pakistan-vs-china-clothing/"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 148,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "WhatsApp for a Quote",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/for-clubs/",
+        "url": "https://zipasports.com/for-clubs/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 89211,
+        "x_robots_tag": null,
+        "title": "Custom Kit Manufacturer for Clubs & Teams | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Custom team kit manufacturer in Sialkot, Pakistan: match, training and goalkeeper kit with names, numbers and sponsors from 20\u201325 pieces per design.",
+          "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+        },
+        "canonical": "https://zipasports.com/for-clubs/",
+        "h1": [
+          "Custom Kit Manufacturer for Clubs & Teams"
+        ],
+        "h2": [
+          "All pages in this section",
+          "What a whole-club package includes",
+          "Names, numbers and sponsor logos: how they go on and where",
+          "Mixed sizes, youth-to-adult grading, and home, away and third from one artwork",
+          "Season deadlines and express production",
+          "Reorders that match last season's kit",
+          "Sizing day advice for club secretaries",
+          "What the club secretary sends us, and the Quality Guarantee",
+          "Shipping club kit to the UK, USA, Canada, Australia and Europe",
+          "Club kit guides by sport",
+          "Frequently Asked Questions",
+          "Related"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "SpeakableSpecification",
+          "WebPage",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 149,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "how to collect team sizes for a kit order",
+          "WhatsApp for a Quote",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715"
+        ]
+      },
+      {
+        "requested": "https://zipasports.com/sports-teamwear/football/football-match-jerseys/",
+        "url": "https://zipasports.com/sports-teamwear/football/football-match-jerseys/",
+        "status": 200,
+        "type": "text/html",
+        "bytes_decoded": 85704,
+        "x_robots_tag": null,
+        "title": "Custom Football Match Jerseys Manufacturer | ZipaSports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Custom Football Match Jerseys: clubs order home and away shirts with names, numbers. Sialkot, Pakistan \u00b7 MOQ 20\u201325 \u00b7 free 24h mockup \u00b7 free remake guarantee.",
+          "robots": "index, follow, max-image-preview:large"
+        },
+        "canonical": "https://zipasports.com/sports-teamwear/football/football-match-jerseys/",
+        "h1": [
+          "Custom Football Match Jerseys"
+        ],
+        "h2": [
+          "Football Match Jerseys Specifications & Fabric Options",
+          "Football Match Jerseys Customisation Options",
+          "Football Match Jerseys \u2014 Frequently Asked Questions",
+          "Custom Football Match Jerseys \u2014 manufacturer, supplier & factory in Sialkot",
+          "Who orders custom football match jerseys? Startups, clubs, academies & more",
+          "Related resources",
+          "More Football products",
+          "Made in Sialkot , shipped to your door"
+        ],
+        "structured_data_types": [
+          "Answer",
+          "Audience",
+          "Brand",
+          "BreadcrumbList",
+          "Certification",
+          "City",
+          "ContactPoint",
+          "Country",
+          "FAQPage",
+          "GeoCoordinates",
+          "ImageObject",
+          "ListItem",
+          "LocalBusiness",
+          "MerchantReturnPolicy",
+          "Offer",
+          "OpeningHoursSpecification",
+          "Organization",
+          "Person",
+          "Place",
+          "PostalAddress",
+          "Product",
+          "PropertyValue",
+          "QuantitativeValue",
+          "Question",
+          "Service",
+          "SpeakableSpecification",
+          "WebPage",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 7,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 6
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "Click to see our work",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "WhatsApp",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Email Us",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "Sialkot, Pakistan",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "+92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Instagram",
+            "https://instagram.com/zipasports.official"
+          ],
+          [
+            "Email",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%20%E2%80%94%20I%20would%20like%20a%20quote%20for%20Football%20Match%20Jerseys%20%28https%3A//zipasports.com/sports-teamwear/football/football-match-jerseys/%29"
+          ],
+          [
+            "WhatsApp for a Quote",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "Open in Google Maps",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "Book a live factory tour",
+            "https://wa.me/923007019281?text=Hi%20ZipaSports%2C%20I%27d%20like%20a%20live%20video%20tour%20of%20your%20factory%20floor."
+          ],
+          [
+            "Directions \u2197",
+            "https://maps.google.com/?cid=6831894808742827305"
+          ],
+          [
+            "\ud83d\udcf1 WhatsApp +92 300 7019281",
+            "https://wa.me/923007019281"
+          ],
+          [
+            "\ud83d\udcde +92 300 7019281",
+            "tel:+923007019281"
+          ],
+          [
+            "\u2709 zipasports@gmail.com",
+            "mailto:zipasports@gmail.com"
+          ],
+          [
+            "\ud83d\udcf7 @zipasports.official",
+            "https://instagram.com/zipasports.official"
+          ]
+        ],
+        "internal_unique_urls": 138,
+        "action_labels": [
+          "WhatsApp",
+          "Contact Us",
+          "Get a Quote",
+          "WhatsApp for a Quote",
+          "\ud83d\ude80 Startup & established brands Launch a football range under your own label from 20\u201325 pieces per design \u2014 no MOQ limit once you are an established brand. Free 24h mockup, woven labels and retail packaging in-house. Manufacturer for startup brands \u2192",
+          "\ud83c\udfdf\ufe0f Clubs & teams Match, training and travel football match jerseys with names, numbers, sponsors and mixed sizes in one order \u2014 home and away colourways from the same artwork. Kit manufacturer for clubs \u2192",
+          "\ud83c\udf93 Academies, schools & universities Age-group kit that reorders identically season after season, with youth sizes graded from the same design and a free remake within 3 days on any defect. Kit supplier for academies \u2192",
+          "\ud83d\udce6 Distributors & resellers Wholesale production runs with your labels and packaging, repeat-order consistency and export documents handled for you. Wholesale programme \u2192",
+          "Complete Football Team Kits Made-to-order Complete Football Team Kits for Football teams in breathable performance fabric for training\u2026 View & Order",
+          "Goalkeeper Kits Made-to-order Goalkeeper Kits for Football teams in breathable performance fabric for training and\u2026 View & Order",
+          "Training Jerseys Made-to-order Training Jerseys for Football teams in breathable performance fabric for training and\u2026 View & Order",
+          "Football Shorts Made-to-order Football Shorts for Football teams in breathable performance fabric for training and\u2026 View & Order",
+          "Presentation Tracksuits Made-to-order Presentation Tracksuits for Football teams in breathable performance fabric for training and\u2026 View & Order",
+          "Team Kit Bags Durable made-to-order Team Kit Bags for Football teams, with reinforced construction, practical storage and\u2026 View & Order",
+          "Sample Policy",
+          "Request a Quote",
+          "\ud83d\udcf1 WhatsApp +92 300 7019281",
+          "Search",
+          "",
+          "\u2715"
+        ]
+      }
+    ]
+  },
+  {
+    "seed": "https://www.jugglesports.com/",
+    "robots_status": 200,
+    "robots_directives": "User-agent: *\nAllow: /\n\nSitemap: https://jugglesports.com/sitemap-index.xml\n",
+    "sitemaps": [
+      {
+        "requested": "https://jugglesports.com/sitemap-index.xml",
+        "final": "https://www.jugglesports.com/sitemap-index.xml",
+        "status": 200,
+        "kind": "sitemapindex",
+        "locations": 1,
+        "sample": [
+          "https://jugglesports.com/sitemap-0.xml"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/sitemap.xml",
+        "final": "https://www.jugglesports.com/sitemap.xml",
+        "status": 404,
+        "kind": null,
+        "locations": 0,
+        "sample": []
+      },
+      {
+        "requested": "https://www.jugglesports.com/sitemap_index.xml",
+        "final": "https://www.jugglesports.com/sitemap_index.xml",
+        "status": 404,
+        "kind": null,
+        "locations": 0,
+        "sample": []
+      },
+      {
+        "requested": "https://jugglesports.com/sitemap-0.xml",
+        "final": "https://www.jugglesports.com/sitemap-0.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 30,
+        "sample": [
+          "https://jugglesports.com/",
+          "https://jugglesports.com/casual-wear-accessories/",
+          "https://jugglesports.com/catalogue/",
+          "https://jugglesports.com/contact/",
+          "https://jugglesports.com/factory-quality/",
+          "https://jugglesports.com/fi/",
+          "https://jugglesports.com/fi/joukkueasut/",
+          "https://jugglesports.com/fi/joukkueasut/jaakiekko/",
+          "https://jugglesports.com/fi/joukkueasut/jalkapallo/",
+          "https://jugglesports.com/fi/joukkueasut/juoksu/"
+        ]
+      }
+    ],
+    "home": {
+      "requested": "https://www.jugglesports.com/",
+      "url": "https://www.jugglesports.com/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "bytes_decoded": 42547,
+      "x_robots_tag": null,
+      "title": "Custom sublimated teamwear from Sialkot | Juggle Sports",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1",
+        "description": "Juggle Sports makes custom sublimated teamwear, fitness wear and casual wear in Sialkot, Pakistan. Free design mockup for clubs, resellers and fitness brands."
+      },
+      "canonical": "https://jugglesports.com/",
+      "h1": [
+        "Kits for the whole squad."
+      ],
+      "h2": [
+        "Teamwear by sport",
+        "Three ranges, one factory",
+        "From logo to delivery in four steps",
+        "Made where the sports goods industry lives",
+        "From the catalogue",
+        "Planning next season\u2019s kits?",
+        "Explore",
+        "Offices"
+      ],
+      "structured_data_types": [
+        "ContactPoint",
+        "Organization",
+        "PostalAddress"
+      ],
+      "invalid_jsonld": 0,
+      "hreflang": [
+        {
+          "locale": "en",
+          "url": "https://jugglesports.com/"
+        },
+        {
+          "locale": "fi",
+          "url": "https://jugglesports.com/fi/"
+        },
+        {
+          "locale": "x-default",
+          "url": "https://jugglesports.com/"
+        }
+      ],
+      "images": {
+        "count": 24,
+        "missing_alt_attribute": 0,
+        "empty_or_missing_alt": 0,
+        "loading_lazy": 23
+      },
+      "forms": [],
+      "outbound": [
+        [
+          "+92 347 4931430",
+          "tel:+923474931430"
+        ],
+        [
+          "info@jugglesports.com",
+          "mailto:info@jugglesports.com"
+        ],
+        [
+          "+1 786 7887660",
+          "tel:+17867887660"
+        ],
+        [
+          "+358 41 4887818",
+          "tel:+358414887818"
+        ]
+      ],
+      "internal_unique_urls": 24,
+      "action_labels": [
+        "Catalogue",
+        "Contact",
+        "Request a quote",
+        "Browse the catalogue",
+        "See all in catalogue",
+        "Menu"
+      ]
+    },
+    "home_internal_link_sample": [
+      [
+        "Skip to content",
+        "https://www.jugglesports.com/"
+      ],
+      [
+        "JUGGLE SPORTS",
+        "https://www.jugglesports.com/"
+      ],
+      [
+        "Teamwear",
+        "https://www.jugglesports.com/teamwear/"
+      ],
+      [
+        "Fitness",
+        "https://www.jugglesports.com/fitness-wear/"
+      ],
+      [
+        "Casual",
+        "https://www.jugglesports.com/casual-wear-accessories/"
+      ],
+      [
+        "How it works",
+        "https://www.jugglesports.com/how-custom-orders-work/"
+      ],
+      [
+        "Factory",
+        "https://www.jugglesports.com/factory-quality/"
+      ],
+      [
+        "Catalogue",
+        "https://www.jugglesports.com/catalogue/"
+      ],
+      [
+        "Contact",
+        "https://www.jugglesports.com/contact/"
+      ],
+      [
+        "Suomeksi",
+        "https://www.jugglesports.com/fi/"
+      ],
+      [
+        "Request a quote",
+        "https://www.jugglesports.com/request-a-quote/"
+      ],
+      [
+        "Browse the catalogue",
+        "https://www.jugglesports.com/catalogue/"
+      ],
+      [
+        "Floorball Shirts and shorts in your club colours. YOUR CLUB 24",
+        "https://www.jugglesports.com/teamwear/floorball/"
+      ],
+      [
+        "Football Match and training kits.",
+        "https://www.jugglesports.com/teamwear/football/"
+      ],
+      [
+        "Ice hockey Jerseys printed edge to edge. YOUR CLUB 24",
+        "https://www.jugglesports.com/teamwear/ice-hockey/"
+      ],
+      [
+        "Basketball Singlet and shorts sets.",
+        "https://www.jugglesports.com/teamwear/basketball/"
+      ],
+      [
+        "Running Singlets and shorts for clubs and events.",
+        "https://www.jugglesports.com/teamwear/running/"
+      ],
+      [
+        "Teamwear 49 styles",
+        "https://www.jugglesports.com/teamwear/"
+      ],
+      [
+        "Fitness wear 78 styles",
+        "https://www.jugglesports.com/fitness-wear/"
+      ],
+      [
+        "Casual wear 57 styles",
+        "https://www.jugglesports.com/casual-wear-accessories/"
+      ],
+      [
+        "See the full process",
+        "https://www.jugglesports.com/how-custom-orders-work/"
+      ],
+      [
+        "See all in catalogue",
+        "https://www.jugglesports.com/catalogue/"
+      ],
+      [
+        "Football kits Art # 2201",
+        "https://www.jugglesports.com/request-a-quote/?item=2201"
+      ],
+      [
+        "Football kits Art # 2202",
+        "https://www.jugglesports.com/request-a-quote/?item=2202"
+      ],
+      [
+        "Basketball uniforms Art # 1605",
+        "https://www.jugglesports.com/request-a-quote/?item=1605"
+      ],
+      [
+        "Netball dresses Art # 1702",
+        "https://www.jugglesports.com/request-a-quote/?item=1702"
+      ],
+      [
+        "Running singlets Art # 2101",
+        "https://www.jugglesports.com/request-a-quote/?item=2101"
+      ],
+      [
+        "Leggings Art # 2602",
+        "https://www.jugglesports.com/request-a-quote/?item=2602"
+      ],
+      [
+        "Rash guards Art # 3203",
+        "https://www.jugglesports.com/request-a-quote/?item=3203"
+      ],
+      [
+        "Varsity jackets Art # 1105",
+        "https://www.jugglesports.com/request-a-quote/?item=1105"
+      ],
+      [
+        "Privacy",
+        "https://www.jugglesports.com/privacy/"
+      ]
+    ],
+    "pages": [
+      {
+        "requested": "https://www.jugglesports.com/teamwear/football/",
+        "url": "https://www.jugglesports.com/teamwear/football/",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 24100,
+        "x_robots_tag": null,
+        "title": "Custom football kits for clubs | Juggle Sports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Custom sublimated football shirts and shorts for clubs, schools and resellers, made in Sialkot. Request a free design mockup."
+        },
+        "canonical": "https://jugglesports.com/teamwear/football/",
+        "h1": [
+          "Custom football kits"
+        ],
+        "h2": [
+          "Styles in our catalogue",
+          "What to send us",
+          "Order details",
+          "Get a free design mockup",
+          "Explore",
+          "Offices"
+        ],
+        "structured_data_types": [
+          "Brand",
+          "BreadcrumbList",
+          "ContactPoint",
+          "ItemList",
+          "ListItem",
+          "Organization",
+          "PostalAddress",
+          "Product"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/teamwear/football/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/joukkueasut/jalkapallo/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/teamwear/football/"
+          }
+        ],
+        "images": {
+          "count": 9,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 8
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ]
+        ],
+        "internal_unique_urls": 21,
+        "action_labels": [
+          "Catalogue",
+          "Contact",
+          "Request a quote",
+          "Browse the catalogue",
+          "Menu"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/contact/",
+        "url": "https://www.jugglesports.com/contact/",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 13729,
+        "x_robots_tag": null,
+        "title": "Contact Juggle Sports | Sialkot, Miami, Finland",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Contact Juggle Sports in Sialkot (Pakistan), Miami (USA) or Finland. Email, phone and WhatsApp."
+        },
+        "canonical": "https://jugglesports.com/contact/",
+        "h1": [
+          "Contact"
+        ],
+        "h2": [
+          "Sialkot, Pakistan",
+          "Miami, USA",
+          "Finland and the Nordics",
+          "Rather send a brief?",
+          "Explore",
+          "Offices"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/contact/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/yhteystiedot/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/contact/"
+          }
+        ],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "Message on WhatsApp",
+            "https://wa.me/923474931430"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "Message on WhatsApp",
+            "https://wa.me/17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ],
+          [
+            "Message on WhatsApp",
+            "https://wa.me/358414887818"
+          ],
+          [
+            "Instagram",
+            "https://www.instagram.com/jugglesports"
+          ],
+          [
+            "Alibaba profile",
+            "https://pk1363062232lonz.trustpass.alibaba.com/"
+          ]
+        ],
+        "internal_unique_urls": 11,
+        "action_labels": [
+          "Catalogue",
+          "Contact",
+          "Request a quote",
+          "Message on WhatsApp",
+          "Browse the catalogue",
+          "Menu"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/catalogue/",
+        "url": "https://www.jugglesports.com/catalogue/",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 267261,
+        "x_robots_tag": null,
+        "title": "Product catalogue | Juggle Sports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Browse 184 styles of teamwear, fitness wear and casual wear. Filter by category and request a quote with your colours and logo."
+        },
+        "canonical": "https://jugglesports.com/catalogue/",
+        "h1": [
+          "Product catalogue"
+        ],
+        "h2": [
+          "Explore",
+          "Offices"
+        ],
+        "structured_data_types": [
+          "Brand",
+          "BreadcrumbList",
+          "ContactPoint",
+          "ItemList",
+          "ListItem",
+          "Organization",
+          "PostalAddress",
+          "Product"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/catalogue/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/tuoteluettelo/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/catalogue/"
+          }
+        ],
+        "images": {
+          "count": 184,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 184
+        },
+        "forms": [
+          {
+            "action": "https://www.jugglesports.com/catalogue/",
+            "method": "get",
+            "labels": [
+              "Style",
+              "Search by art number"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ]
+        ],
+        "internal_unique_urls": 195,
+        "action_labels": [
+          "Catalogue",
+          "Contact",
+          "Request a quote",
+          "Quote this style (Art # 2201)",
+          "Quote this style (Art # 2202)",
+          "Quote this style (Art # 2203)",
+          "Quote this style (Art # 2204)",
+          "Quote this style (Art # 2205)",
+          "Quote this style (Art # 2206)",
+          "Quote this style (Art # 2207)",
+          "Quote this style (Art # 2208)",
+          "Quote this style (Art # 1601)",
+          "Quote this style (Art # 1602)",
+          "Quote this style (Art # 1604)",
+          "Quote this style (Art # 1605)",
+          "Quote this style (Art # 1606)",
+          "Quote this style (Art # 1607)",
+          "Quote this style (Art # 1608)",
+          "Quote this style (Art # 1609)",
+          "Quote this style (Art # 2101)",
+          "Quote this style (Art # 2102)",
+          "Quote this style (Art # 2103)",
+          "Quote this style (Art # 2104)",
+          "Quote this style (Art # 2105)",
+          "Quote this style (Art # 2106)",
+          "Quote this style (Art # 2001)",
+          "Quote this style (Art # 2002)",
+          "Quote this style (Art # 2003)",
+          "Quote this style (Art # 2004)",
+          "Quote this style (Art # 2005)",
+          "Quote this style (Art # 2006)",
+          "Quote this style (Art # 2007)",
+          "Quote this style (Art # 2008)",
+          "Quote this style (Art # 2009)",
+          "Quote this style (Art # 2401)"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/teamwear/ice-hockey/",
+        "url": "https://www.jugglesports.com/teamwear/ice-hockey/",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 20817,
+        "x_robots_tag": null,
+        "title": "Custom ice hockey jerseys | Juggle Sports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Custom sublimated ice hockey jerseys for clubs and teams, made in Sialkot. Request a free design mockup."
+        },
+        "canonical": "https://jugglesports.com/teamwear/ice-hockey/",
+        "h1": [
+          "Custom ice hockey jerseys"
+        ],
+        "h2": [
+          "Example designs",
+          "What to send us",
+          "Order details",
+          "Get a free design mockup",
+          "Explore",
+          "Offices"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/teamwear/ice-hockey/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/joukkueasut/jaakiekko/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/teamwear/ice-hockey/"
+          }
+        ],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ]
+        ],
+        "internal_unique_urls": 13,
+        "action_labels": [
+          "Catalogue",
+          "Contact",
+          "Request a quote",
+          "Browse the catalogue",
+          "Menu"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/teamwear/floorball/",
+        "url": "https://www.jugglesports.com/teamwear/floorball/",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 21650,
+        "x_robots_tag": null,
+        "title": "Custom floorball kits (salibandy) | Juggle Sports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Custom sublimated floorball shirts and shorts for clubs and teams, made in Sialkot. Request a free design mockup."
+        },
+        "canonical": "https://jugglesports.com/teamwear/floorball/",
+        "h1": [
+          "Custom floorball kits"
+        ],
+        "h2": [
+          "Example designs",
+          "What to send us",
+          "Order details",
+          "Get a free design mockup",
+          "Explore",
+          "Offices"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/teamwear/floorball/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/joukkueasut/salibandy/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/teamwear/floorball/"
+          }
+        ],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ]
+        ],
+        "internal_unique_urls": 13,
+        "action_labels": [
+          "Catalogue",
+          "Contact",
+          "Request a quote",
+          "Browse the catalogue",
+          "Menu"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/request-a-quote/?item=1605",
+        "url": "https://www.jugglesports.com/request-a-quote/?item=1605",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 20248,
+        "x_robots_tag": null,
+        "title": "Request a quote | Juggle Sports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Tell us your club or company, sport, quantity and deadline, and upload your logo. We reply with a quote and a free design mockup."
+        },
+        "canonical": "https://jugglesports.com/request-a-quote/",
+        "h1": [
+          "Request a quote"
+        ],
+        "h2": [
+          "What happens next",
+          "Explore",
+          "Offices"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/request-a-quote/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/pyyda-tarjous/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/request-a-quote/"
+          }
+        ],
+        "images": {
+          "count": 0,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 0
+        },
+        "forms": [
+          {
+            "action": "https://www.jugglesports.com/thanks/",
+            "method": "POST",
+            "labels": [
+              "Leave this field empty",
+              "Club or company",
+              "Your name",
+              "Email",
+              "Phone or WhatsApp (optional)",
+              "Sport or product type",
+              "Approximate quantity (pieces)",
+              "Date you need the order",
+              "Style from the catalogue (optional)",
+              "Logo or design files (optional)",
+              "Anything else we should know",
+              "I agree that Juggle Sports may use these details to reply to my request. See the privacy notice ."
+            ],
+            "fields": [
+              "bot-field",
+              "org",
+              "name",
+              "email",
+              "phone",
+              "sport",
+              "quantity",
+              "deadline",
+              "item",
+              "logo",
+              "message",
+              "consent"
+            ],
+            "file_upload": true
+          }
+        ],
+        "outbound": [
+          [
+            "WhatsApp Sialkot, Pakistan",
+            "https://wa.me/923474931430"
+          ],
+          [
+            "WhatsApp Miami, USA",
+            "https://wa.me/17867887660"
+          ],
+          [
+            "WhatsApp Finland and the Nordics",
+            "https://wa.me/358414887818"
+          ],
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ]
+        ],
+        "internal_unique_urls": 12,
+        "action_labels": [
+          "Catalogue",
+          "Contact",
+          "Request a quote",
+          "WhatsApp Sialkot, Pakistan",
+          "WhatsApp Miami, USA",
+          "WhatsApp Finland and the Nordics",
+          "Menu",
+          "Send quote request"
+        ]
+      },
+      {
+        "requested": "https://www.jugglesports.com/fi/",
+        "url": "https://www.jugglesports.com/fi/",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 43342,
+        "x_robots_tag": null,
+        "title": "Seura-asut ja pelipaidat Sialkotista | Juggle Sports",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "description": "Sublimaatiopainetut seura-asut, kuntoiluvaatteet ja vapaa-ajan vaatteet Sialkotista. Ilmainen ulkoasuluonnos seuroille, j\u00e4lleenmyyjille ja br\u00e4ndeille."
+        },
+        "canonical": "https://jugglesports.com/fi/",
+        "h1": [
+          "Asut koko joukkueelle."
+        ],
+        "h2": [
+          "Joukkueasut lajeittain",
+          "Kolme mallistoa, yksi tehdas",
+          "Logosta toimitukseen nelj\u00e4ss\u00e4 vaiheessa",
+          "Valmistettu urheiluv\u00e4lineteollisuuden kotikaupungissa",
+          "Tuoteluettelosta",
+          "Suunnitteletko ensi kauden asuja?",
+          "Sivusto",
+          "Toimistot"
+        ],
+        "structured_data_types": [
+          "ContactPoint",
+          "Organization",
+          "PostalAddress"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [
+          {
+            "locale": "en",
+            "url": "https://jugglesports.com/"
+          },
+          {
+            "locale": "fi",
+            "url": "https://jugglesports.com/fi/"
+          },
+          {
+            "locale": "x-default",
+            "url": "https://jugglesports.com/"
+          }
+        ],
+        "images": {
+          "count": 24,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 23
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "+92 347 4931430",
+            "tel:+923474931430"
+          ],
+          [
+            "info@jugglesports.com",
+            "mailto:info@jugglesports.com"
+          ],
+          [
+            "+1 786 7887660",
+            "tel:+17867887660"
+          ],
+          [
+            "+358 41 4887818",
+            "tel:+358414887818"
+          ]
+        ],
+        "internal_unique_urls": 24,
+        "action_labels": [
+          "Valikko"
+        ]
+      }
+    ]
+  },
+  {
+    "seed": "https://www.shazbro.com/",
+    "robots_status": 200,
+    "robots_directives": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.shazbro.com/wp-sitemap.xml\n",
+    "sitemaps": [
+      {
+        "requested": "https://www.shazbro.com/wp-sitemap.xml",
+        "final": "https://www.shazbro.com/wp-sitemap.xml",
+        "status": 200,
+        "kind": "sitemapindex",
+        "locations": 5,
+        "sample": [
+          "https://www.shazbro.com/wp-sitemap-posts-post-1.xml",
+          "https://www.shazbro.com/wp-sitemap-posts-page-1.xml",
+          "https://www.shazbro.com/wp-sitemap-posts-product-1.xml",
+          "https://www.shazbro.com/wp-sitemap-taxonomies-category-1.xml",
+          "https://www.shazbro.com/wp-sitemap-taxonomies-product_cat-1.xml"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/sitemap.xml",
+        "final": "https://www.shazbro.com/wp-sitemap.xml",
+        "status": 200,
+        "kind": "sitemapindex",
+        "locations": 5,
+        "sample": [
+          "https://www.shazbro.com/wp-sitemap-posts-post-1.xml",
+          "https://www.shazbro.com/wp-sitemap-posts-page-1.xml",
+          "https://www.shazbro.com/wp-sitemap-posts-product-1.xml",
+          "https://www.shazbro.com/wp-sitemap-taxonomies-category-1.xml",
+          "https://www.shazbro.com/wp-sitemap-taxonomies-product_cat-1.xml"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/sitemap_index.xml",
+        "final": "https://www.shazbro.com/sitemap_index.xml",
+        "status": 404,
+        "kind": null,
+        "locations": 0,
+        "sample": []
+      },
+      {
+        "requested": "https://www.shazbro.com/wp-sitemap-posts-post-1.xml",
+        "final": "https://www.shazbro.com/wp-sitemap-posts-post-1.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 3,
+        "sample": [
+          "https://www.shazbro.com/how-to-order-custom-soccer-kits/",
+          "https://www.shazbro.com/sublimation-vs-screen-printing-team-uniforms/",
+          "https://www.shazbro.com/team-uniform-sizing-guide/"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/wp-sitemap-posts-page-1.xml",
+        "final": "https://www.shazbro.com/wp-sitemap-posts-page-1.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 6,
+        "sample": [
+          "https://www.shazbro.com/privacy-policy/",
+          "https://www.shazbro.com/shop/",
+          "https://www.shazbro.com/about-us/",
+          "https://www.shazbro.com/contact-us/",
+          "https://www.shazbro.com/",
+          "https://www.shazbro.com/size-guide/"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/wp-sitemap-posts-product-1.xml",
+        "final": "https://www.shazbro.com/wp-sitemap-posts-product-1.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 97,
+        "sample": [
+          "https://www.shazbro.com/product/soccer-uniform-navy-and-teal-sc-09/",
+          "https://www.shazbro.com/product/soccer-uniform-white-and-black-sc-10/",
+          "https://www.shazbro.com/product/soccer-uniform-orange-and-white-sc-11/",
+          "https://www.shazbro.com/product/soccer-uniform-slate-grey-sc-12/",
+          "https://www.shazbro.com/product/soccer-uniform-blue-and-red-camo-sc-13/",
+          "https://www.shazbro.com/product/soccer-uniform-white-and-grey-sc-14/",
+          "https://www.shazbro.com/product/soccer-uniform-grey-and-black-training-kit-sc-16/",
+          "https://www.shazbro.com/product/soccer-uniform-white-and-lilac-sc-15/",
+          "https://www.shazbro.com/product/basketball-uniform-teal-and-navy-bk-01/",
+          "https://www.shazbro.com/product/basketball-uniform-orange-and-black-bk-02/"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/wp-sitemap-taxonomies-category-1.xml",
+        "final": "https://www.shazbro.com/wp-sitemap-taxonomies-category-1.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 1,
+        "sample": [
+          "https://www.shazbro.com/category/teamwear-guides/"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/wp-sitemap-taxonomies-product_cat-1.xml",
+        "final": "https://www.shazbro.com/wp-sitemap-taxonomies-product_cat-1.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 11,
+        "sample": [
+          "https://www.shazbro.com/product-category/basketball-uniforms/",
+          "https://www.shazbro.com/product-category/7v7-uniform/",
+          "https://www.shazbro.com/product-category/soccer-uniform/",
+          "https://www.shazbro.com/product-category/track-field-uniform/",
+          "https://www.shazbro.com/product-category/volleyball-uniform/",
+          "https://www.shazbro.com/product-category/lacrosse-uniform/",
+          "https://www.shazbro.com/product-category/cricket-uniform/",
+          "https://www.shazbro.com/product-category/baseball-uniform/",
+          "https://www.shazbro.com/product-category/wrestling-uniform/",
+          "https://www.shazbro.com/product-category/mixed-martial-arts/"
+        ]
+      }
+    ],
+    "home": {
+      "requested": "https://www.shazbro.com/",
+      "url": "https://www.shazbro.com/",
+      "status": 200,
+      "type": "text/html; charset=UTF-8",
+      "bytes_decoded": 196921,
+      "x_robots_tag": null,
+      "title": "Custom Teamwear Manufacturer in Sialkot, Pakistan | Shazbro",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0, viewport-fit=cover",
+        "robots": "max-image-preview:large",
+        "description": "Shazbro is a custom teamwear manufacturer and exporter in Sialkot, Pakistan. Sublimated soccer, basketball, baseball and cricket uniforms. Sample before bulk."
+      },
+      "canonical": "https://www.shazbro.com/",
+      "h1": [
+        "Custom teamwear. Built to win."
+      ],
+      "h2": [
+        "Get a custom quote",
+        "Apparel for style and performance",
+        "Start from a signature style",
+        "From sketch to kickoff",
+        "Made by specialists",
+        "Questions, answered.",
+        "Create your custom teamwear today"
+      ],
+      "structured_data_types": [
+        "Answer",
+        "ContactPoint",
+        "FAQPage",
+        "Organization",
+        "PostalAddress",
+        "Question",
+        "WebSite"
+      ],
+      "invalid_jsonld": 0,
+      "hreflang": [],
+      "images": {
+        "count": 39,
+        "missing_alt_attribute": 0,
+        "empty_or_missing_alt": 1,
+        "loading_lazy": 35
+      },
+      "forms": [
+        {
+          "action": "https://www.shazbro.com/",
+          "method": "get",
+          "labels": [
+            "Name",
+            "Email",
+            "Phone / WhatsApp",
+            "Sport Soccer Basketball Baseball Cricket Volleyball 7v7 Flag Track & Field Wrestling Lacrosse Martial Arts Coaches Wear Other",
+            "Quantity Under 25 25\u201350 50\u2013100 100\u2013250 250+",
+            "Tell us about your kit"
+          ],
+          "fields": [
+            "name",
+            "email",
+            "phone",
+            "sport",
+            "qty",
+            "msg",
+            "hp"
+          ],
+          "file_upload": false
+        }
+      ],
+      "outbound": [
+        [
+          "WhatsApp",
+          "https://wa.me/923226600002"
+        ],
+        [
+          "Message us on WhatsApp",
+          "https://wa.me/923226600002"
+        ],
+        [
+          "WhatsApp us",
+          "https://wa.me/923226600002"
+        ],
+        [
+          "Chat with our team WhatsApp +92 322 6600002",
+          "https://wa.me/923226600002"
+        ],
+        [
+          "Send your artwork info@shazbro.com",
+          "mailto:info@shazbro.com"
+        ],
+        [
+          "Instagram \u00b7 @shazbrosports",
+          "https://www.instagram.com/shazbrosports/"
+        ],
+        [
+          "+92 322 6600002",
+          "tel:+923226600002"
+        ],
+        [
+          "info@shazbro.com",
+          "mailto:info@shazbro.com"
+        ]
+      ],
+      "internal_unique_urls": 26,
+      "action_labels": [
+        "Design your own kit Send your brief",
+        "Shop All",
+        "Contact",
+        "WhatsApp",
+        "Get a Quote",
+        "Message us on WhatsApp",
+        "7v7 Flag Fast, sleeveless 7-on-7 kits with bold sublimated designs. Explore range",
+        "Start your quote",
+        "Ask for a quote",
+        "WhatsApp us",
+        "Fastest for full orders Request a quote",
+        "Chat with our team WhatsApp +92 322 6600002",
+        "Quick Quote",
+        "Sportswear",
+        "",
+        "Next",
+        "Back",
+        "Send request",
+        "\u2190",
+        "\u2192",
+        "Essential only",
+        "Accept all"
+      ]
+    },
+    "home_internal_link_sample": [
+      [
+        "",
+        "https://www.shazbro.com/"
+      ],
+      [
+        "Soccer",
+        "https://www.shazbro.com/product-category/soccer-uniform/"
+      ],
+      [
+        "Basketball",
+        "https://www.shazbro.com/product-category/basketball-uniforms/"
+      ],
+      [
+        "Baseball",
+        "https://www.shazbro.com/product-category/baseball-uniform/"
+      ],
+      [
+        "Cricket",
+        "https://www.shazbro.com/product-category/cricket-uniform/"
+      ],
+      [
+        "Volleyball",
+        "https://www.shazbro.com/product-category/volleyball-uniform/"
+      ],
+      [
+        "7v7 Flag",
+        "https://www.shazbro.com/product-category/7v7-uniform/"
+      ],
+      [
+        "Track & Field",
+        "https://www.shazbro.com/product-category/track-field-uniform/"
+      ],
+      [
+        "Wrestling",
+        "https://www.shazbro.com/product-category/wrestling-uniform/"
+      ],
+      [
+        "Lacrosse",
+        "https://www.shazbro.com/product-category/lacrosse-uniform/"
+      ],
+      [
+        "Martial Arts",
+        "https://www.shazbro.com/product-category/mixed-martial-arts/"
+      ],
+      [
+        "Coaches Wear",
+        "https://www.shazbro.com/product-category/coaches-wear/"
+      ],
+      [
+        "Design your own kit Send your brief",
+        "https://www.shazbro.com/contact-us/"
+      ],
+      [
+        "Shop All",
+        "https://www.shazbro.com/shop/"
+      ],
+      [
+        "Guides",
+        "https://www.shazbro.com/category/teamwear-guides/"
+      ],
+      [
+        "About",
+        "https://www.shazbro.com/about-us/"
+      ],
+      [
+        "Contact",
+        "https://www.shazbro.com/contact-us/"
+      ],
+      [
+        "Get a Quote",
+        "https://www.shazbro.com/contact-us/"
+      ],
+      [
+        "Soccer Full kits \u2014 jersey, shorts and socks \u2014 in club, school or league colours. Explore range",
+        "https://www.shazbro.com/product-category/soccer-uniform/"
+      ],
+      [
+        "Basketball Jersey and short sets with your numbers, names and crest. Explore range",
+        "https://www.shazbro.com/product-category/basketball-uniforms/"
+      ],
+      [
+        "Baseball Button-front and pinstripe jerseys finished with custom lettering. Explore range",
+        "https://www.shazbro.com/product-category/baseball-uniform/"
+      ],
+      [
+        "Cricket Coloured playing kits with shirts, trousers and caps to match. Explore range",
+        "https://www.shazbro.com/product-category/cricket-uniform/"
+      ],
+      [
+        "Volleyball Lightweight jerseys and shorts for indoor and club teams. Explore range",
+        "https://www.shazbro.com/product-category/volleyball-uniform/"
+      ],
+      [
+        "7v7 Flag Fast, sleeveless 7-on-7 kits with bold sublimated designs. Explore range",
+        "https://www.shazbro.com/product-category/7v7-uniform/"
+      ],
+      [
+        "Track & Field Singlets and shorts for schools, clubs and running teams. Explore range",
+        "https://www.shazbro.com/product-category/track-field-uniform/"
+      ],
+      [
+        "Wrestling Singlets built for movement in your programme colours. Explore range",
+        "https://www.shazbro.com/product-category/wrestling-uniform/"
+      ],
+      [
+        "Lacrosse Jerseys and shorts for boys, girls and club programmes. Explore range",
+        "https://www.shazbro.com/product-category/lacrosse-uniform/"
+      ],
+      [
+        "Martial Arts Custom Brazilian Jiu-Jitsu gis with your academy branding. Explore range",
+        "https://www.shazbro.com/product-category/mixed-martial-arts/"
+      ],
+      [
+        "Coaches Wear Jackets, polos and windbreakers for the sideline. Explore range",
+        "https://www.shazbro.com/product-category/coaches-wear/"
+      ],
+      [
+        "Your sport not listed? We manufacture custom teamwear for almost any sport. Send us your brief and we'll make it happen. Talk to us",
+        "https://www.shazbro.com/contact-us/"
+      ],
+      [
+        "View all styles",
+        "https://www.shazbro.com/shop/"
+      ],
+      [
+        "SC-02 Soccer Uniform Green & White",
+        "https://www.shazbro.com/product/soccer-uniform-green-and-white-sc-02/"
+      ],
+      [
+        "BK-05 Basketball Uniform Yellow & Pink",
+        "https://www.shazbro.com/product/basketball-uniform-yellow-and-pink-bk-05/"
+      ],
+      [
+        "BB-06 Baseball Uniform Black & Teal Pinstripe",
+        "https://www.shazbro.com/product/baseball-uniform-black-and-teal-pinstripe-bb-06/"
+      ],
+      [
+        "CR-01 Cricket Uniform Yellow & Black",
+        "https://www.shazbro.com/product/cricket-uniform-yellow-and-black-cr-01/"
+      ],
+      [
+        "SV-07 7v7 Uniform Purple & Lime",
+        "https://www.shazbro.com/product/7v7-uniform-purple-and-lime-sv-07/"
+      ],
+      [
+        "VB-03 Volleyball Uniform Sky Blue & Pink",
+        "https://www.shazbro.com/product/volleyball-uniform-sky-blue-and-pink-vb-03/"
+      ],
+      [
+        "TF-02 Track & Field Uniform Red & Black",
+        "https://www.shazbro.com/product/track-and-field-uniform-red-and-black-tf-02/"
+      ],
+      [
+        "WR-01 Wrestling Uniform Red & Black",
+        "https://www.shazbro.com/product/wrestling-uniform-red-and-black-wr-01/"
+      ],
+      [
+        "Start your quote",
+        "https://www.shazbro.com/"
+      ],
+      [
+        "Ask for a quote",
+        "https://www.shazbro.com/"
+      ],
+      [
+        "Fastest for full orders Request a quote",
+        "https://www.shazbro.com/"
+      ],
+      [
+        "About Us",
+        "https://www.shazbro.com/about-us/"
+      ],
+      [
+        "Teamwear Guides",
+        "https://www.shazbro.com/category/teamwear-guides/"
+      ],
+      [
+        "Size Guide",
+        "https://www.shazbro.com/size-guide/"
+      ],
+      [
+        "Privacy Policy",
+        "https://www.shazbro.com/privacy-policy/"
+      ],
+      [
+        "Cookie settings",
+        "https://www.shazbro.com/"
+      ],
+      [
+        "Quick Quote",
+        "https://www.shazbro.com/contact-us/"
+      ]
+    ],
+    "pages": [
+      {
+        "requested": "https://www.shazbro.com/product-category/7v7-uniform/",
+        "url": "https://www.shazbro.com/product-category/7v7-uniform/",
+        "status": 200,
+        "type": "text/html; charset=UTF-8",
+        "bytes_decoded": 193160,
+        "x_robots_tag": null,
+        "title": "Custom 7v7 Flag Football Uniforms Manufacturer & Supplier \u2013 Shazbro",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0, viewport-fit=cover",
+          "robots": "max-image-preview:large",
+          "description": "Manufacturer of custom 7v7 flag football uniforms and jerseys in Sialkot, Pakistan. Made in your colours with logos, names and numbers. Sample before bulk. Get a quote."
+        },
+        "canonical": "https://www.shazbro.com/product-category/7v7-uniform/",
+        "h1": [
+          "Custom 7v7 Flag Football Uniforms"
+        ],
+        "h2": [
+          "Categories"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 22,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 17
+        },
+        "forms": [
+          {
+            "action": "https://www.shazbro.com",
+            "method": "get",
+            "labels": [
+              "Search"
+            ],
+            "fields": [
+              "s"
+            ],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "WhatsApp",
+            "https://wa.me/923226600002"
+          ],
+          [
+            "Instagram \u00b7 @shazbrosports",
+            "https://www.instagram.com/shazbrosports/"
+          ],
+          [
+            "+92 322 6600002",
+            "tel:+923226600002"
+          ],
+          [
+            "info@shazbro.com",
+            "mailto:info@shazbro.com"
+          ]
+        ],
+        "internal_unique_urls": 29,
+        "action_labels": [
+          "Design your own kit Send your brief",
+          "Shop All",
+          "Contact",
+          "WhatsApp",
+          "Get a Quote",
+          "contact page",
+          "Request a quote for custom 7v7 uniforms",
+          "Quick Quote",
+          "Sportswear",
+          "",
+          "Essential only",
+          "Accept all"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/product-category/soccer-uniform/",
+        "url": "https://www.shazbro.com/product-category/soccer-uniform/",
+        "status": 200,
+        "type": "text/html; charset=UTF-8",
+        "bytes_decoded": 199836,
+        "x_robots_tag": null,
+        "title": "Custom Soccer Uniforms Manufacturer & Supplier \u2013 Shazbro",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0, viewport-fit=cover",
+          "robots": "max-image-preview:large",
+          "description": "Manufacturer of custom soccer uniforms and football kits in Sialkot, Pakistan. Made in your colours with logos, names and numbers. Sample before bulk. Get a quote."
+        },
+        "canonical": "https://www.shazbro.com/product-category/soccer-uniform/",
+        "h1": [
+          "Custom Soccer Uniforms"
+        ],
+        "h2": [
+          "Categories"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 22,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 17
+        },
+        "forms": [
+          {
+            "action": "https://www.shazbro.com",
+            "method": "get",
+            "labels": [
+              "Search"
+            ],
+            "fields": [
+              "s"
+            ],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "WhatsApp",
+            "https://wa.me/923226600002"
+          ],
+          [
+            "Instagram \u00b7 @shazbrosports",
+            "https://www.instagram.com/shazbrosports/"
+          ],
+          [
+            "+92 322 6600002",
+            "tel:+923226600002"
+          ],
+          [
+            "info@shazbro.com",
+            "mailto:info@shazbro.com"
+          ]
+        ],
+        "internal_unique_urls": 39,
+        "action_labels": [
+          "Design your own kit Send your brief",
+          "Shop All",
+          "Contact",
+          "WhatsApp",
+          "Get a Quote",
+          "contact page",
+          "how to order custom soccer kits",
+          "Request a quote for custom soccer uniforms",
+          "Quick Quote",
+          "Sportswear",
+          "",
+          "Essential only",
+          "Accept all"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/contact-us/",
+        "url": "https://www.shazbro.com/contact-us/",
+        "status": 200,
+        "type": "text/html; charset=UTF-8",
+        "bytes_decoded": 78749,
+        "x_robots_tag": null,
+        "title": "Contact Shazbro \u2013 Request a Custom Teamwear Quote \u2013 Shazbro",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1",
+          "robots": "max-image-preview:large",
+          "description": "Request a custom teamwear quote from Shazbro. Send your sport, quantity and design and we reply with pricing and a pre-production sample plan."
+        },
+        "canonical": "https://www.shazbro.com/contact-us/",
+        "h1": [
+          "Let\u2019s talk teamwear."
+        ],
+        "h2": [
+          "Contact Shazbro \u2013 Request a Custom Teamwear Quote",
+          "Talk to the factory directly"
+        ],
+        "structured_data_types": [
+          "ContactPoint",
+          "Organization",
+          "PostalAddress",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 1,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 1,
+          "loading_lazy": 0
+        },
+        "forms": [
+          {
+            "action": "https://www.shazbro.com/contact-us/",
+            "method": "post",
+            "labels": [
+              "Name",
+              "Phone",
+              "Email",
+              "Subject",
+              "Message"
+            ],
+            "fields": [
+              "form_fields[name]",
+              "form_fields[field_eb154c1]",
+              "form_fields[email]",
+              "form_fields[field_a5a89f6]",
+              "form_fields[message]",
+              "form_fields[hp_trap]"
+            ],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "WhatsApp +92 322 6600002",
+            "https://wa.me/923226600002"
+          ],
+          [
+            "Email info@shazbro.com",
+            "mailto:info@shazbro.com"
+          ],
+          [
+            "Phone +92 322 6600002",
+            "tel:+923226600002"
+          ],
+          [
+            "Instagram @shazbrosports",
+            "https://www.instagram.com/shazbrosports/"
+          ]
+        ],
+        "internal_unique_urls": 2,
+        "action_labels": [
+          "WhatsApp +92 322 6600002",
+          "Send message",
+          "Essential only",
+          "Accept all"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/product/soccer-uniform-green-and-white-sc-02/",
+        "url": "https://www.shazbro.com/product/soccer-uniform-green-and-white-sc-02/",
+        "status": 200,
+        "type": "text/html; charset=UTF-8",
+        "bytes_decoded": 166205,
+        "x_robots_tag": null,
+        "title": "Soccer Uniform \u2013 Green & White (SC-02) \u2013 Shazbro",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0, viewport-fit=cover",
+          "robots": "max-image-preview:large",
+          "description": "Style SC-02 is a custom green and white soccer uniform made for school football teams. Customise every detail, from colours to lettering, to match your\u2026"
+        },
+        "canonical": "https://www.shazbro.com/product/soccer-uniform-green-and-white-sc-02/",
+        "h1": [
+          "Soccer Uniform \u2013 Green & White (SC-02)"
+        ],
+        "h2": [
+          "Product",
+          "Description",
+          "About the design",
+          "A good fit for school football teams",
+          "Logos, names and numbers",
+          "What you can change",
+          "Get a quote and sample",
+          "Related products",
+          "Soccer Uniform \u2013 Navy & White Hoops (SC-06)",
+          "Soccer Uniform \u2013 Maroon (SC-05)",
+          "Soccer Uniform \u2013 Dark Green & White (SC-03)",
+          "Soccer Uniform \u2013 Orange & White (SC-11)"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 19,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 14
+        },
+        "forms": [],
+        "outbound": [
+          [
+            "WhatsApp",
+            "https://wa.me/923226600002"
+          ],
+          [
+            "WhatsApp Us",
+            "https://wa.me/923226600002"
+          ],
+          [
+            "Instagram \u00b7 @shazbrosports",
+            "https://www.instagram.com/shazbrosports/"
+          ],
+          [
+            "+92 322 6600002",
+            "tel:+923226600002"
+          ],
+          [
+            "info@shazbro.com",
+            "mailto:info@shazbro.com"
+          ]
+        ],
+        "internal_unique_urls": 28,
+        "action_labels": [
+          "Design your own kit Send your brief",
+          "Shop All",
+          "Contact",
+          "WhatsApp",
+          "Get a Quote",
+          "Shop",
+          "how ordering works",
+          "Request a Quote",
+          "Ordering guides",
+          "WhatsApp Us",
+          "request a quote",
+          "Quick Quote",
+          "Sportswear",
+          "",
+          "Essential only",
+          "Accept all"
+        ]
+      },
+      {
+        "requested": "https://www.shazbro.com/product-category/basketball-uniforms/",
+        "error": "request failed"
+      },
+      {
+        "requested": "https://www.shazbro.com/product-category/baseball-uniform/",
+        "url": "https://www.shazbro.com/product-category/baseball-uniform/",
+        "status": 200,
+        "type": "text/html; charset=UTF-8",
+        "bytes_decoded": 196963,
+        "x_robots_tag": null,
+        "title": "Custom Baseball Uniforms Manufacturer & Supplier \u2013 Shazbro",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0, viewport-fit=cover",
+          "robots": "max-image-preview:large",
+          "description": "Manufacturer of custom baseball uniforms and jerseys in Sialkot, Pakistan. Made in your colours with logos, names and numbers. Sample before bulk. Get a quote."
+        },
+        "canonical": "https://www.shazbro.com/product-category/baseball-uniform/",
+        "h1": [
+          "Custom Baseball Uniforms"
+        ],
+        "h2": [
+          "Categories"
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ContactPoint",
+          "ListItem",
+          "Organization",
+          "PostalAddress",
+          "WebSite"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 22,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 0,
+          "loading_lazy": 17
+        },
+        "forms": [
+          {
+            "action": "https://www.shazbro.com",
+            "method": "get",
+            "labels": [
+              "Search"
+            ],
+            "fields": [
+              "s"
+            ],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "WhatsApp",
+            "https://wa.me/923226600002"
+          ],
+          [
+            "Instagram \u00b7 @shazbrosports",
+            "https://www.instagram.com/shazbrosports/"
+          ],
+          [
+            "+92 322 6600002",
+            "tel:+923226600002"
+          ],
+          [
+            "info@shazbro.com",
+            "mailto:info@shazbro.com"
+          ]
+        ],
+        "internal_unique_urls": 29,
+        "action_labels": [
+          "Design your own kit Send your brief",
+          "Shop All",
+          "Contact",
+          "WhatsApp",
+          "Get a Quote",
+          "contact page",
+          "Request a quote for custom baseball uniforms",
+          "Quick Quote",
+          "Sportswear",
+          "",
+          "Essential only",
+          "Accept all"
+        ]
+      }
+    ]
+  },
+  {
+    "seed": "https://ahmyzimpex.com/",
+    "robots_status": null,
+    "robots_directives": "",
+    "sitemaps": [
+      {
+        "requested": "https://ahmyzimpex.com/sitemap.xml",
+        "error": "request failed"
+      },
+      {
+        "requested": "https://ahmyzimpex.com/sitemap_index.xml",
+        "error": "request failed"
+      }
+    ],
+    "home": {
+      "requested": "https://ahmyzimpex.com/",
+      "error": "request failed"
+    },
+    "home_internal_link_sample": [],
+    "pages": [
+      {
+        "requested": "https://ahmyzimpex.com/robots.txt",
+        "error": "request failed"
+      }
+    ]
+  },
+  {
+    "seed": "https://deltacraft.biz/",
+    "robots_status": 200,
+    "robots_directives": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://deltacraft.biz/wp-sitemap.xml\n",
+    "sitemaps": [
+      {
+        "requested": "https://deltacraft.biz/wp-sitemap.xml",
+        "final": "https://deltacraft.biz/wp-sitemap.xml",
+        "status": 200,
+        "kind": "sitemapindex",
+        "locations": 1,
+        "sample": [
+          "https://deltacraft.biz/wp-sitemap-posts-page-1.xml"
+        ]
+      },
+      {
+        "requested": "https://deltacraft.biz/sitemap.xml",
+        "final": "https://deltacraft.biz/wp-sitemap.xml",
+        "status": 200,
+        "kind": "sitemapindex",
+        "locations": 1,
+        "sample": [
+          "https://deltacraft.biz/wp-sitemap-posts-page-1.xml"
+        ]
+      },
+      {
+        "requested": "https://deltacraft.biz/sitemap_index.xml",
+        "final": "https://deltacraft.biz/sitemap_index.xml",
+        "status": 404,
+        "kind": null,
+        "locations": 0,
+        "sample": []
+      },
+      {
+        "requested": "https://deltacraft.biz/wp-sitemap-posts-page-1.xml",
+        "final": "https://deltacraft.biz/wp-sitemap-posts-page-1.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 1,
+        "sample": [
+          "https://deltacraft.biz/"
+        ]
+      }
+    ],
+    "home": {
+      "requested": "https://deltacraft.biz/",
+      "url": "https://deltacraft.biz/",
+      "status": 200,
+      "type": "text/html; charset=UTF-8",
+      "bytes_decoded": 27124,
+      "x_robots_tag": null,
+      "title": "Delta Craft | Premium Custom Sportswear Manufacturer & Exporter Sialkot",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "Delta Craft is a premium manufacturer of custom sportswear, team uniforms, activewear, and athletic apparel. Located in Sialkot, Pakistan, exporting worldwide.",
+        "robots": "max-image-preview:large"
+      },
+      "canonical": null,
+      "h1": [],
+      "h2": [],
+      "structured_data_types": [],
+      "invalid_jsonld": 0,
+      "hreflang": [],
+      "images": {
+        "count": 0,
+        "missing_alt_attribute": 0,
+        "empty_or_missing_alt": 0,
+        "loading_lazy": 0
+      },
+      "forms": [],
+      "outbound": [],
+      "internal_unique_urls": 0,
+      "action_labels": []
+    },
+    "home_internal_link_sample": [],
+    "pages": []
+  },
+  {
+    "seed": "https://teamcoresportswear.org/",
+    "robots_status": 200,
+    "robots_directives": "User-agent: *\nAllow: /\n\nSitemap: https://teamcoresportswear.org/sitemap.xml\n",
+    "sitemaps": [
+      {
+        "requested": "https://teamcoresportswear.org/sitemap.xml",
+        "final": "https://teamcoresportswear.org/sitemap.xml",
+        "status": 200,
+        "kind": "urlset",
+        "locations": 66,
+        "sample": [
+          "https://teamcoresportswear.org/",
+          "https://teamcoresportswear.org/products",
+          "https://teamcoresportswear.org/categories",
+          "https://teamcoresportswear.org/contact",
+          "https://teamcoresportswear.org/faq",
+          "https://teamcoresportswear.org/design-studio",
+          "https://teamcoresportswear.org/about",
+          "https://teamcoresportswear.org/wholesale",
+          "https://teamcoresportswear.org/help",
+          "https://teamcoresportswear.org/size-guide"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/sitemap_index.xml",
+        "final": "https://teamcoresportswear.org/sitemap_index.xml",
+        "status": 404,
+        "kind": null,
+        "locations": 0,
+        "sample": []
+      }
+    ],
+    "home": {
+      "requested": "https://teamcoresportswear.org/",
+      "url": "https://teamcoresportswear.org/",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "bytes_decoded": 196895,
+      "x_robots_tag": null,
+      "title": "Custom Team Uniforms & Wholesale Sportswear | Team Core Sports Wear",
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1.0",
+        "description": "Discover custom sports uniforms from Team Core Sports Wear. Explore six sports, design your team kit and discuss wholesale and private-label requirements.",
+        "robots": "index,follow"
+      },
+      "canonical": "https://teamcoresportswear.org/",
+      "h1": [
+        "TEAM CORE SPORTS WEAR. MADE FOR YOUR TEAM."
+      ],
+      "h2": [
+        "Six sports. One team.",
+        "Find your team's next look.",
+        "A kit as individual as your team.",
+        "Your label. Our next collaboration.",
+        "Made for your kind of team.",
+        "Explore your sport.",
+        "Plan your bulk order.",
+        "Put your identity in every detail.",
+        "Built for the whole squad.",
+        "More than a team jersey.",
+        "Technology & Fabric Capabilities",
+        "From your idea to your team."
+      ],
+      "structured_data_types": [
+        "Organization",
+        "PostalAddress"
+      ],
+      "invalid_jsonld": 0,
+      "hreflang": [],
+      "images": {
+        "count": 38,
+        "missing_alt_attribute": 0,
+        "empty_or_missing_alt": 12,
+        "loading_lazy": 35
+      },
+      "forms": [
+        {
+          "action": "https://teamcoresportswear.org/",
+          "method": "get",
+          "labels": [],
+          "fields": [],
+          "file_upload": false
+        },
+        {
+          "action": "https://teamcoresportswear.org/",
+          "method": "get",
+          "labels": [
+            "Your sport Any sport / discuss a custom brief American Football Baseball Basketball Ice Hockey Rugby Soccer",
+            "Approximate quantity",
+            "Buying for Club or team School or academy League or event Brand or reseller"
+          ],
+          "fields": [],
+          "file_upload": false
+        }
+      ],
+      "outbound": [
+        [
+          "Team Core Sports Wear on Instagram",
+          "https://www.instagram.com/teamcoresportswear/"
+        ],
+        [
+          "+92 307 5448383",
+          "tel:+923075448383"
+        ],
+        [
+          "sales@teamcoresportswear.org",
+          "mailto:sales@teamcoresportswear.org"
+        ],
+        [
+          "Chat on WhatsApp",
+          "https://wa.me/923075448383"
+        ]
+      ],
+      "internal_unique_urls": 62,
+      "action_labels": [
+        "Team & wholesale orders",
+        "Quote list 0",
+        "Cart 0",
+        "Design Your Kit",
+        "Contact",
+        "Request a Quote",
+        "Request a quote",
+        "CUSTOM ORDER",
+        "Design your kit",
+        "Leagues & events Coordinate different teams and designs for the season ahead. Plan your teamwear",
+        "Browse quote-ready designs",
+        "Open design studio",
+        "Customization guide",
+        "Customization options",
+        "Heat transfer Ask about transfer decoration for your design and fabric.",
+        "Talk about your order",
+        "Wholesale & team orders",
+        "Your orders",
+        "Chat on WhatsApp",
+        "",
+        "American Football",
+        "Baseball",
+        "Basketball",
+        "Ice Hockey",
+        "Rugby",
+        "Soccer",
+        "Continue your brief"
+      ]
+    },
+    "home_internal_link_sample": [
+      [
+        "Skip to main content",
+        "https://teamcoresportswear.org/"
+      ],
+      [
+        "Help & support",
+        "https://teamcoresportswear.org/help"
+      ],
+      [
+        "Team & wholesale orders",
+        "https://teamcoresportswear.org/wholesale"
+      ],
+      [
+        "Team Core Sports Wear",
+        "https://teamcoresportswear.org/"
+      ],
+      [
+        "Account",
+        "https://teamcoresportswear.org/account"
+      ],
+      [
+        "Quote list 0",
+        "https://teamcoresportswear.org/quote-basket"
+      ],
+      [
+        "Cart 0",
+        "https://teamcoresportswear.org/cart"
+      ],
+      [
+        "Explore all sports",
+        "https://teamcoresportswear.org/categories"
+      ],
+      [
+        "American Football Game jerseys, practice wear and football pants.",
+        "https://teamcoresportswear.org/categories/american-football"
+      ],
+      [
+        "Baseball Team jerseys, baseball pants and complete kits.",
+        "https://teamcoresportswear.org/categories/baseball"
+      ],
+      [
+        "Basketball Game jerseys, shorts and reversible teamwear.",
+        "https://teamcoresportswear.org/categories/basketball"
+      ],
+      [
+        "Ice Hockey Hockey jerseys, team kits and matching socks.",
+        "https://teamcoresportswear.org/categories/ice-hockey"
+      ],
+      [
+        "Rugby Match jerseys, rugby shorts and training wear.",
+        "https://teamcoresportswear.org/categories/rugby"
+      ],
+      [
+        "Soccer Club jerseys, shorts and personalized team kits.",
+        "https://teamcoresportswear.org/categories/soccer"
+      ],
+      [
+        "Custom Uniforms",
+        "https://teamcoresportswear.org/custom-uniforms"
+      ],
+      [
+        "Private Label",
+        "https://teamcoresportswear.org/private-label"
+      ],
+      [
+        "Design Your Kit",
+        "https://teamcoresportswear.org/design-studio"
+      ],
+      [
+        "About Us",
+        "https://teamcoresportswear.org/about"
+      ],
+      [
+        "Contact",
+        "https://teamcoresportswear.org/contact"
+      ],
+      [
+        "Request a Quote",
+        "https://teamcoresportswear.org/wholesale"
+      ],
+      [
+        "Explore Soccer",
+        "https://teamcoresportswear.org/categories/soccer"
+      ],
+      [
+        "Request a quote",
+        "https://teamcoresportswear.org/wholesale"
+      ],
+      [
+        "View all uniforms",
+        "https://teamcoresportswear.org/products"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/rugby-smrb-106"
+      ],
+      [
+        "Sublimated Drawstring Shorts",
+        "https://teamcoresportswear.org/products/rugby-smrb-106"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/rugby-smrb-106"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/rugby-smrb-103"
+      ],
+      [
+        "Two-Tone Match Rugby Jersey",
+        "https://teamcoresportswear.org/products/rugby-smrb-103"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/rugby-smrb-103"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/rugby-smrb-107"
+      ],
+      [
+        "Sleeveless Training Singlet",
+        "https://teamcoresportswear.org/products/rugby-smrb-107"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/rugby-smrb-107"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/baseball-smbs-102"
+      ],
+      [
+        "Custom Pinstripe Game Jersey",
+        "https://teamcoresportswear.org/products/baseball-smbs-102"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/baseball-smbs-102"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/soccer-smsc-102"
+      ],
+      [
+        "Pro Striped Soccer Kit",
+        "https://teamcoresportswear.org/products/soccer-smsc-102"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/soccer-smsc-102"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/american-football-smaf-102"
+      ],
+      [
+        "Pro-Cut Football Game Jersey",
+        "https://teamcoresportswear.org/products/american-football-smaf-102"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/american-football-smaf-102"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/basketball-smbb-104"
+      ],
+      [
+        "Reversible Team Game Jersey",
+        "https://teamcoresportswear.org/products/basketball-smbb-104"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/basketball-smbb-104"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/basketball-smbb-101"
+      ],
+      [
+        "Pro Sleeveless Basketball Jersey",
+        "https://teamcoresportswear.org/products/basketball-smbb-101"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/basketball-smbb-101"
+      ],
+      [
+        "Design your kit",
+        "https://teamcoresportswear.org/design-studio"
+      ],
+      [
+        "Explore private label",
+        "https://teamcoresportswear.org/private-label"
+      ],
+      [
+        "Clubs & teams A shared look for every player, from the first size to the last number. Plan your teamwear",
+        "https://teamcoresportswear.org/contact?topic=Club%20teamwear%20enquiry"
+      ],
+      [
+        "Schools & academies Bring squads, age groups and your school identity into one clear brief. Plan your teamwear",
+        "https://teamcoresportswear.org/contact?topic=School%20teamwear%20enquiry"
+      ],
+      [
+        "Leagues & events Coordinate different teams and designs for the season ahead. Plan your teamwear",
+        "https://teamcoresportswear.org/contact?topic=League%20teamwear%20enquiry"
+      ],
+      [
+        "Brands & resellers Plan a collection around your own labels, artwork and requirements. Plan your teamwear",
+        "https://teamcoresportswear.org/contact?topic=Private%20label%20enquiry"
+      ],
+      [
+        "All sports",
+        "https://teamcoresportswear.org/categories"
+      ],
+      [
+        "View the full range",
+        "https://teamcoresportswear.org/categories/soccer"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/soccer-smsc-103"
+      ],
+      [
+        "Classic Team Soccer Jersey",
+        "https://teamcoresportswear.org/products/soccer-smsc-103"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/soccer-smsc-103"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/soccer-smsc-106"
+      ],
+      [
+        "Training Soccer Bibs/Vests",
+        "https://teamcoresportswear.org/products/soccer-smsc-106"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/soccer-smsc-106"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/soccer-smsc-104"
+      ],
+      [
+        "Youth Sublimated Soccer Uniform",
+        "https://teamcoresportswear.org/products/soccer-smsc-104"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/soccer-smsc-104"
+      ],
+      [
+        "Browse quote-ready designs",
+        "https://teamcoresportswear.org/products?mode=quote"
+      ],
+      [
+        "Open design studio",
+        "https://teamcoresportswear.org/design-studio"
+      ],
+      [
+        "Customization guide",
+        "https://teamcoresportswear.org/custom-uniforms"
+      ],
+      [
+        "Explore collection",
+        "https://teamcoresportswear.org/products?mode=quote"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/soccer-smsc-108"
+      ],
+      [
+        "Championship Soccer Uniform Set",
+        "https://teamcoresportswear.org/products/soccer-smsc-108"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/soccer-smsc-108"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/american-football-smaf-103"
+      ],
+      [
+        "Championship Team Jersey",
+        "https://teamcoresportswear.org/products/american-football-smaf-103"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/american-football-smaf-103"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/rugby-smrb-108"
+      ],
+      [
+        "Championship Team Match Kit",
+        "https://teamcoresportswear.org/products/rugby-smrb-108"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/rugby-smrb-108"
+      ],
+      [
+        "CUSTOM ORDER",
+        "https://teamcoresportswear.org/products/baseball-smbs-108"
+      ],
+      [
+        "Championship Team Uniform Set",
+        "https://teamcoresportswear.org/products/baseball-smbs-108"
+      ],
+      [
+        "View details",
+        "https://teamcoresportswear.org/products/baseball-smbs-108"
+      ],
+      [
+        "Customization options",
+        "https://teamcoresportswear.org/custom-uniforms"
+      ],
+      [
+        "Sublimation printing Discuss full-colour patterns and artwork across your garment.",
+        "https://teamcoresportswear.org/contact?topic=Sublimation%20printing%20enquiry"
+      ],
+      [
+        "Screen printing Explore logo, lettering and player-number applications.",
+        "https://teamcoresportswear.org/contact?topic=Screen%20printing%20enquiry"
+      ],
+      [
+        "Embroidery Discuss stitched logos and the finish your identity needs.",
+        "https://teamcoresportswear.org/contact?topic=Embroidery%20enquiry"
+      ],
+      [
+        "Heat transfer Ask about transfer decoration for your design and fabric.",
+        "https://teamcoresportswear.org/contact?topic=Heat%20transfer%20enquiry"
+      ],
+      [
+        "Tackle twill Discuss sewn lettering and numbering for your team kit.",
+        "https://teamcoresportswear.org/contact?topic=Tackle%20twill%20enquiry"
+      ],
+      [
+        "Custom labels Plan brand, size and care labels for your collection.",
+        "https://teamcoresportswear.org/contact?topic=Custom%20labels%20enquiry"
+      ],
+      [
+        "Colour matching Bring Pantone references and review colour requirements.",
+        "https://teamcoresportswear.org/contact?topic=Colour%20matching%20enquiry"
+      ],
+      [
+        "Cut & sew Agree your garment construction, fit and stitching details.",
+        "https://teamcoresportswear.org/contact?topic=Cut%20%26%20sew%20enquiry"
+      ],
+      [
+        "Polyester & mesh Discuss fabric weight, texture and your sport's requirements.",
+        "https://teamcoresportswear.org/contact?topic=Polyester%20%26%20mesh%20enquiry"
+      ],
+      [
+        "Moisture management Ask about breathability, finishes and fabric specifications.",
+        "https://teamcoresportswear.org/contact?topic=Moisture%20management%20enquiry"
+      ],
+      [
+        "Stretch & compression Confirm stretch, support and fit requirements for your kit.",
+        "https://teamcoresportswear.org/contact?topic=Stretch%20%26%20compression%20enquiry"
+      ],
+      [
+        "Dye & environmental requirements Discuss dye processes and any supporting documentation you need.",
+        "https://teamcoresportswear.org/contact?topic=Dye%20%26%20environmental%20requirements%20enquiry"
+      ],
+      [
+        "See our process",
+        "https://teamcoresportswear.org/manufacturing-process"
+      ],
+      [
+        "Get to know Team Core",
+        "https://teamcoresportswear.org/about"
+      ],
+      [
+        "All questions",
+        "https://teamcoresportswear.org/faq"
+      ],
+      [
+        "Talk about your order",
+        "https://teamcoresportswear.org/wholesale"
+      ],
+      [
+        "American Football",
+        "https://teamcoresportswear.org/categories/american-football"
+      ],
+      [
+        "Baseball",
+        "https://teamcoresportswear.org/categories/baseball"
+      ],
+      [
+        "Basketball",
+        "https://teamcoresportswear.org/categories/basketball"
+      ],
+      [
+        "Ice Hockey",
+        "https://teamcoresportswear.org/categories/ice-hockey"
+      ],
+      [
+        "Rugby",
+        "https://teamcoresportswear.org/categories/rugby"
+      ],
+      [
+        "Soccer",
+        "https://teamcoresportswear.org/categories/soccer"
+      ],
+      [
+        "Custom uniforms",
+        "https://teamcoresportswear.org/custom-uniforms"
+      ],
+      [
+        "Private label",
+        "https://teamcoresportswear.org/private-label"
+      ],
+      [
+        "Wholesale & team orders",
+        "https://teamcoresportswear.org/wholesale"
+      ],
+      [
+        "Our process",
+        "https://teamcoresportswear.org/manufacturing-process"
+      ],
+      [
+        "About Team Core",
+        "https://teamcoresportswear.org/about"
+      ],
+      [
+        "Help centre",
+        "https://teamcoresportswear.org/help"
+      ],
+      [
+        "Size guidance",
+        "https://teamcoresportswear.org/size-guide"
+      ],
+      [
+        "Shipping & delivery",
+        "https://teamcoresportswear.org/shipping-delivery"
+      ],
+      [
+        "Returns & refunds",
+        "https://teamcoresportswear.org/returns-refunds"
+      ],
+      [
+        "Your orders",
+        "https://teamcoresportswear.org/account/orders"
+      ],
+      [
+        "Your quotations",
+        "https://teamcoresportswear.org/account/wholesale"
+      ],
+      [
+        "Send us a message",
+        "https://teamcoresportswear.org/contact"
+      ],
+      [
+        "Privacy",
+        "https://teamcoresportswear.org/privacy-policy"
+      ],
+      [
+        "Terms",
+        "https://teamcoresportswear.org/terms"
+      ],
+      [
+        "Cookies",
+        "https://teamcoresportswear.org/cookie-policy"
+      ],
+      [
+        "Accessibility",
+        "https://teamcoresportswear.org/accessibility"
+      ]
+    ],
+    "pages": [
+      {
+        "requested": "https://teamcoresportswear.org/wholesale",
+        "url": "https://teamcoresportswear.org/wholesale",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 96991,
+        "x_robots_tag": null,
+        "title": "Wholesale Team Uniforms & Bulk Quotes | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Choose uniform designs and quantities, or tell us about a completely custom brief. Review an itemised quotation with the agreed specifications before you commit.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/wholesale",
+        "h1": [
+          "Wholesale Team Uniforms & Bulk Quotes"
+        ],
+        "h2": [
+          "How do I request a quote for a bulk uniform order?",
+          "Choose your uniforms",
+          "Share your requirements",
+          "Review your quotation",
+          "Find your team's sport.",
+          "Have something specific in mind?",
+          "Plan your bulk order.",
+          "Explore designs for your next brief.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 19,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 16
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/wholesale",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          },
+          {
+            "action": "https://teamcoresportswear.org/wholesale",
+            "method": "get",
+            "labels": [
+              "Your sport Any sport / discuss a custom brief American Football Baseball Basketball Ice Hockey Rugby Soccer",
+              "Approximate quantity",
+              "Buying for Club or team School or academy League or event Brand or reseller"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 35,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "Build your quote list",
+          "View your quote list",
+          "Browse uniform designs for your quote",
+          "Browse quote-ready designs",
+          "CUSTOM ORDER",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Continue your brief"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/categories/american-football",
+        "url": "https://teamcoresportswear.org/categories/american-football",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 67977,
+        "x_robots_tag": null,
+        "title": "Custom American Football Uniforms | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Game jerseys, practice wear and football pants. Explore Team Core designs for your squad and request a quote with your quantities, sizes and artwork.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/categories/american-football",
+        "h1": [
+          "Custom American Football Uniforms"
+        ],
+        "h2": [
+          "Shop by category",
+          "Plan your bulk order.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 16,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 14
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/categories/american-football",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          },
+          {
+            "action": "https://teamcoresportswear.org/categories/american-football",
+            "method": "get",
+            "labels": [
+              "Your sport Any sport / discuss a custom brief American Football Baseball Basketball Ice Hockey Rugby Soccer",
+              "Approximate quantity",
+              "Buying for Club or team School or academy League or event Brand or reseller"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 38,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "CUSTOM ORDER",
+          "Browse quote-ready designs",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Filters",
+          "\u2190 Previous",
+          "Next \u2192",
+          "Continue your brief"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/contact",
+        "url": "https://teamcoresportswear.org/contact",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 69407,
+        "x_robots_tag": null,
+        "title": "Contact Team Core Sports Wear | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Ask our Sialkot team about custom sports uniforms, private-label sportswear, or a quotation for your team or club.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/contact",
+        "h1": [
+          "Let's talk about your next kit."
+        ],
+        "h2": [
+          "Have a custom brief?",
+          "Already have an order?",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 8,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 6
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/contact",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          },
+          {
+            "action": "https://teamcoresportswear.org/contact",
+            "method": "get",
+            "labels": [
+              "Your name",
+              "Email address",
+              "What can we help with?",
+              "Your message",
+              "Sport Choose a sport American Football Baseball Basketball Ice Hockey Rugby Soccer Other custom sportswear",
+              "Approximate quantity",
+              "Delivery country",
+              "Preferred deadline"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "+92 307 5448383 Call our team",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org Email your requirements",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp \u2197",
+            "https://wa.me/923075448383"
+          ],
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 28,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "Chat on WhatsApp \u2197",
+          "Wholesale & team orders \u2197",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Send your message"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/products/rugby-smrb-106",
+        "url": "https://teamcoresportswear.org/products/rugby-smrb-106",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 102016,
+        "x_robots_tag": null,
+        "title": "Sublimated Drawstring Shorts | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Sublimated Drawstring Shorts from Team Core Sports Wear. Request a team quotation with your quantities, sizes and artwork.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/products/rugby-smrb-106",
+        "h1": [
+          "Sublimated Drawstring Shorts"
+        ],
+        "h2": [
+          "Make it yours",
+          "Know your gear.",
+          "Real experiences.",
+          "Find another look for your team.",
+          "Put your identity in every detail.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [
+          "BreadcrumbList",
+          "ListItem"
+        ],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 15,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 9,
+          "loading_lazy": 12
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/products/rugby-smrb-106",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 34,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "CUSTOM ORDER",
+          "Open design studio",
+          "Customization guide",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Explore the details",
+          "Custom brief \u2014 sizes confirmed with quotation",
+          "Add to quote basket",
+          "Save selection"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/custom-uniforms",
+        "url": "https://teamcoresportswear.org/custom-uniforms",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 107748,
+        "x_robots_tag": null,
+        "title": "Custom Team Uniforms | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Start with your sport. Explore colours, team logos, player names and numbers, and agree the details around your squad.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/custom-uniforms",
+        "h1": [
+          "Custom Team Uniforms"
+        ],
+        "h2": [
+          "What do I need to design custom team uniforms?",
+          "Colour & design",
+          "Names & numbers",
+          "Decoration & fabric",
+          "Find your team's sport.",
+          "Have something specific in mind?",
+          "Put your identity in every detail.",
+          "Technology & Fabric Capabilities",
+          "Explore designs for your next brief.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 20,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 17
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/custom-uniforms",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 47,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "Explore uniform designs",
+          "Explore the Team Core Design Studio",
+          "Open design studio",
+          "Customization guide",
+          "Heat transfer Ask about transfer decoration for your design and fabric.",
+          "CUSTOM ORDER",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          ""
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/private-label",
+        "url": "https://teamcoresportswear.org/private-label",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 101820,
+        "x_robots_tag": null,
+        "title": "Private Label Sportswear | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Develop sportswear around your own identity. Talk to us about the garments, quantities, labels and packaging your collection needs.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/private-label",
+        "h1": [
+          "Private Label Sportswear"
+        ],
+        "h2": [
+          "What should a private-label sportswear brief include?",
+          "Start with your collection",
+          "Make your mark",
+          "Plan your order",
+          "Have something specific in mind?",
+          "Technology & Fabric Capabilities",
+          "A starting point for your collection.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 13,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 10
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/private-label",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 46,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "Heat transfer Ask about transfer decoration for your design and fabric.",
+          "CUSTOM ORDER",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          ""
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/categories/soccer",
+        "url": "https://teamcoresportswear.org/categories/soccer",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 66492,
+        "x_robots_tag": null,
+        "title": "Custom Soccer Uniforms | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Club jerseys, shorts and personalized team kits. Explore Team Core designs for your squad and request a quote with your quantities, sizes and artwork.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/categories/soccer",
+        "h1": [
+          "Custom Soccer Uniforms"
+        ],
+        "h2": [
+          "Shop by category",
+          "Plan your bulk order.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 16,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 14
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/categories/soccer",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          },
+          {
+            "action": "https://teamcoresportswear.org/categories/soccer",
+            "method": "get",
+            "labels": [
+              "Your sport Any sport / discuss a custom brief American Football Baseball Basketball Ice Hockey Rugby Soccer",
+              "Approximate quantity",
+              "Buying for Club or team School or academy League or event Brand or reseller"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 38,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "CUSTOM ORDER",
+          "Browse quote-ready designs",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Filters",
+          "\u2190 Previous",
+          "Next \u2192",
+          "Continue your brief"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/categories/basketball",
+        "url": "https://teamcoresportswear.org/categories/basketball",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 50690,
+        "x_robots_tag": null,
+        "title": "Custom Basketball Uniforms | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Game jerseys, shorts and reversible teamwear. Explore Team Core designs for your squad and request a quote with your quantities, sizes and artwork.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/categories/basketball",
+        "h1": [
+          "Custom Basketball Uniforms"
+        ],
+        "h2": [
+          "Shop by category",
+          "Plan your bulk order.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 12,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 10
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/categories/basketball",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          },
+          {
+            "action": "https://teamcoresportswear.org/categories/basketball",
+            "method": "get",
+            "labels": [
+              "Your sport Any sport / discuss a custom brief American Football Baseball Basketball Ice Hockey Rugby Soccer",
+              "Approximate quantity",
+              "Buying for Club or team School or academy League or event Brand or reseller"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 34,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "CUSTOM ORDER",
+          "Browse quote-ready designs",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Filters",
+          "\u2190 Previous",
+          "Next \u2192",
+          "Continue your brief"
+        ]
+      },
+      {
+        "requested": "https://teamcoresportswear.org/categories/ice-hockey",
+        "url": "https://teamcoresportswear.org/categories/ice-hockey",
+        "status": 200,
+        "type": "text/html; charset=utf-8",
+        "bytes_decoded": 42510,
+        "x_robots_tag": null,
+        "title": "Custom Ice Hockey Uniforms | Team Core Sports Wear",
+        "meta": {
+          "viewport": "width=device-width, initial-scale=1.0",
+          "description": "Hockey jerseys, team kits and matching socks. Explore Team Core designs for your squad and request a quote with your quantities, sizes and artwork.",
+          "robots": "index,follow"
+        },
+        "canonical": "https://teamcoresportswear.org/categories/ice-hockey",
+        "h1": [
+          "Custom Ice Hockey Uniforms"
+        ],
+        "h2": [
+          "Shop by category",
+          "Plan your bulk order.",
+          "Made for your team. Ready for your next chapter."
+        ],
+        "structured_data_types": [],
+        "invalid_jsonld": 0,
+        "hreflang": [],
+        "images": {
+          "count": 10,
+          "missing_alt_attribute": 0,
+          "empty_or_missing_alt": 8,
+          "loading_lazy": 8
+        },
+        "forms": [
+          {
+            "action": "https://teamcoresportswear.org/categories/ice-hockey",
+            "method": "get",
+            "labels": [],
+            "fields": [],
+            "file_upload": false
+          },
+          {
+            "action": "https://teamcoresportswear.org/categories/ice-hockey",
+            "method": "get",
+            "labels": [
+              "Your sport Any sport / discuss a custom brief American Football Baseball Basketball Ice Hockey Rugby Soccer",
+              "Approximate quantity",
+              "Buying for Club or team School or academy League or event Brand or reseller"
+            ],
+            "fields": [],
+            "file_upload": false
+          }
+        ],
+        "outbound": [
+          [
+            "Team Core Sports Wear on Instagram",
+            "https://www.instagram.com/teamcoresportswear/"
+          ],
+          [
+            "+92 307 5448383",
+            "tel:+923075448383"
+          ],
+          [
+            "sales@teamcoresportswear.org",
+            "mailto:sales@teamcoresportswear.org"
+          ],
+          [
+            "Chat on WhatsApp",
+            "https://wa.me/923075448383"
+          ]
+        ],
+        "internal_unique_urls": 32,
+        "action_labels": [
+          "Team & wholesale orders",
+          "Quote list 0",
+          "Cart 0",
+          "Design Your Kit",
+          "Contact",
+          "Request a Quote",
+          "CUSTOM ORDER",
+          "Browse quote-ready designs",
+          "Talk about your order",
+          "Design your kit",
+          "Wholesale & team orders",
+          "Your orders",
+          "Chat on WhatsApp",
+          "",
+          "Filters",
+          "\u2190 Previous",
+          "Next \u2192",
+          "Continue your brief"
+        ]
+      }
+    ]
+  }
+]

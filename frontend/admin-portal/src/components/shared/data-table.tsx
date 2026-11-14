@@ -28,12 +28,7 @@ import {
   AlertCircle,
   RefreshCw,
 } from 'lucide-react'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Checkbox } from '@/components/ui/checkbox'
 
 interface DataTableProps<TData, TValue> {
@@ -57,12 +52,24 @@ interface DataTableProps<TData, TValue> {
   getExportRow?: (row: TData) => Record<string, unknown>
 }
 
-const MemoizedSortHeader = memo(function SortHeader({ column, children }: { column: { getIsSorted: () => false | 'asc' | 'desc'; toggleSorting: (desc?: boolean) => void }; children: React.ReactNode }) {
+const MemoizedSortHeader = memo(function SortHeader({
+  column,
+  children,
+}: {
+  column: { getIsSorted: () => false | 'asc' | 'desc'; toggleSorting: (desc?: boolean) => void }
+  children: React.ReactNode
+}) {
   const sorted = column.getIsSorted()
   return (
     <Button variant="ghost" size="sm" className="-ml-3 h-8" onClick={() => column.toggleSorting(sorted === 'asc')}>
       {children}
-      {sorted === 'asc' ? <ArrowUp className="ml-1 h-3.5 w-3.5" /> : sorted === 'desc' ? <ArrowDown className="ml-1 h-3.5 w-3.5" /> : <ArrowUpDown className="ml-1 h-3.5 w-3.5 text-muted-foreground/50" />}
+      {sorted === 'asc' ? (
+        <ArrowUp className="ml-1 h-3.5 w-3.5" />
+      ) : sorted === 'desc' ? (
+        <ArrowDown className="ml-1 h-3.5 w-3.5" />
+      ) : (
+        <ArrowUpDown className="ml-1 h-3.5 w-3.5 text-muted-foreground/50" />
+      )}
     </Button>
   )
 })
@@ -114,7 +121,9 @@ export function DataTable<TData, TValue>({
   )
 
   useEffect(() => {
-    return () => { if (debounceRef.current) clearTimeout(debounceRef.current) }
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+    }
   }, [])
 
   const selectColumn: ColumnDef<TData, TValue> = {
@@ -157,17 +166,17 @@ export function DataTable<TData, TValue>({
 
   const selectedRows = table.getFilteredSelectedRowModel().rows.map((r) => r.original)
 
-  const getExportRows = () => data.map((row) => getExportRow ? getExportRow(row) : (row as Record<string, unknown>))
+  const getExportRows = () => data.map((row) => (getExportRow ? getExportRow(row) : (row as Record<string, unknown>)))
 
   const exportToCSV = async () => {
-    const { utils, writeFileXLSX } = await import('xlsx')
+    const { utils, write } = await import('xlsx')
     const { saveAs } = await import('file-saver')
     const rows = getExportRows()
     const ws = utils.json_to_sheet(rows)
     const wb = utils.book_new()
     utils.book_append_sheet(wb, ws, 'Data')
-    const buf = writeFileXLSX(wb, `${exportFilename}.csv`, { type: 'array', bookType: 'csv' })
-    saveAs(new Blob([buf as BlobPart], { type: 'text/csv;charset=utf-8' }), `${exportFilename}.csv`)
+    const buf = write(wb, { type: 'string', bookType: 'csv' })
+    saveAs(new Blob([buf], { type: 'text/csv;charset=utf-8' }), `${exportFilename}.csv`)
   }
 
   const exportToExcel = async () => {
@@ -200,7 +209,11 @@ export function DataTable<TData, TValue>({
           <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground/50" />
           <Input
             placeholder={searchPlaceholder}
-            value={!onSearch && searchColumn ? (table.getColumn(searchColumn)?.getFilterValue() as string) ?? '' : searchInput}
+            value={
+              !onSearch && searchColumn
+                ? ((table.getColumn(searchColumn)?.getFilterValue() as string) ?? '')
+                : searchInput
+            }
             onChange={(e) => {
               if (!onSearch && searchColumn) {
                 table.getColumn(searchColumn)?.setFilterValue(e.target.value)
@@ -215,16 +228,21 @@ export function DataTable<TData, TValue>({
         <div className="flex items-center gap-2 sm:ml-auto">
           {enableRowSelection && selectedRows.length > 0 && (
             <>
-              <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-md">{selectedRows.length} selected</span>
+              <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded-md">
+                {selectedRows.length} selected
+              </span>
               {onBulkDelete && (
                 <Button variant="destructive" size="sm" onClick={() => onBulkDelete(selectedRows)}>
-                  <Trash2 className="mr-1 h-3.5 w-3.5" />Delete
+                  <Trash2 className="mr-1 h-3.5 w-3.5" />
+                  Delete
                 </Button>
               )}
               {onBulkStatusChange && bulkStatusOptions && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" size="sm">Change Status</Button>
+                    <Button variant="outline" size="sm">
+                      Change Status
+                    </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     {bulkStatusOptions.map((status) => (
@@ -241,7 +259,10 @@ export function DataTable<TData, TValue>({
           {getExportRow && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm"><Download className="mr-1.5 h-3.5 w-3.5" />Export</Button>
+                <Button variant="outline" size="sm">
+                  <Download className="mr-1.5 h-3.5 w-3.5" />
+                  Export
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem onClick={exportToCSV}>Export CSV</DropdownMenuItem>
@@ -259,7 +280,10 @@ export function DataTable<TData, TValue>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="bg-muted/25 hover:bg-muted/25 border-border/40">
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/50 h-11">
+                  <TableHead
+                    key={header.id}
+                    className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/50 h-11"
+                  >
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
@@ -290,7 +314,8 @@ export function DataTable<TData, TValue>({
                     </div>
                     {onRetry && (
                       <Button variant="outline" size="sm" onClick={onRetry} className="mt-1 rounded-lg">
-                        <RefreshCw className="mr-1.5 h-3.5 w-3.5" />Try again
+                        <RefreshCw className="mr-1.5 h-3.5 w-3.5" />
+                        Try again
                       </Button>
                     )}
                   </div>
@@ -298,9 +323,15 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ) : table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'} className="border-border/25 table-row-hover">
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && 'selected'}
+                  className="border-border/25 table-row-hover"
+                >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="py-3.5 text-[13px]">{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    <TableCell key={cell.id} className="py-3.5 text-[13px]">
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
                   ))}
                 </TableRow>
               ))
@@ -333,7 +364,7 @@ export function DataTable<TData, TValue>({
           <Button
             variant="ghost"
             size="icon-sm"
-            onClick={() => manualPagination ? onPageChange?.(1) : table.setPageIndex(0)}
+            onClick={() => (manualPagination ? onPageChange?.(1) : table.setPageIndex(0))}
             disabled={manualPagination ? page <= 1 : !table.getCanPreviousPage()}
             className="text-muted-foreground hover:text-foreground"
           >
@@ -342,7 +373,7 @@ export function DataTable<TData, TValue>({
           <Button
             variant="ghost"
             size="icon-sm"
-            onClick={() => manualPagination ? onPageChange?.(page - 1) : table.previousPage()}
+            onClick={() => (manualPagination ? onPageChange?.(page - 1) : table.previousPage())}
             disabled={manualPagination ? page <= 1 : !table.getCanPreviousPage()}
             className="text-muted-foreground hover:text-foreground"
           >
@@ -356,7 +387,7 @@ export function DataTable<TData, TValue>({
           <Button
             variant="ghost"
             size="icon-sm"
-            onClick={() => manualPagination ? onPageChange?.(page + 1) : table.nextPage()}
+            onClick={() => (manualPagination ? onPageChange?.(page + 1) : table.nextPage())}
             disabled={manualPagination ? page >= (pageCount ?? 1) : !table.getCanNextPage()}
             className="text-muted-foreground hover:text-foreground"
           >
@@ -365,7 +396,9 @@ export function DataTable<TData, TValue>({
           <Button
             variant="ghost"
             size="icon-sm"
-            onClick={() => manualPagination ? onPageChange?.(pageCount ?? 1) : table.setPageIndex(table.getPageCount() - 1)}
+            onClick={() =>
+              manualPagination ? onPageChange?.(pageCount ?? 1) : table.setPageIndex(table.getPageCount() - 1)
+            }
             disabled={manualPagination ? page >= (pageCount ?? 1) : !table.getCanNextPage()}
             className="text-muted-foreground hover:text-foreground"
           >

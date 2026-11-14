@@ -1,3 +1,4 @@
+import { OrdersService } from '../orders/orders.service';
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { DataSource } from 'typeorm';
@@ -14,6 +15,7 @@ export class SchedulerService {
     private notificationHelper: NotificationHelperService,
     private mailService: MailService,
     private dataSource: DataSource,
+    private ordersService: OrdersService,
   ) {}
 
   @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
@@ -122,7 +124,7 @@ export class SchedulerService {
     if (!acquired) return;
     try {
       const result = await this.dataSource.query(
-        `UPDATE flash_sales SET is_active = false WHERE is_active = true AND end_date < NOW()`,
+        `UPDATE flash_sales SET is_active = false WHERE is_active = true AND ends_at < NOW()`,
       );
       if (result[1] > 0) {
         this.logger.log(`Deactivated ${result[1]} expired flash sales`);
@@ -134,25 +136,17 @@ export class SchedulerService {
     }
   }
 
-  @Cron(CronExpression.EVERY_DAY_AT_2AM)
+  @Cron(CronExpression.EVERY_HOUR)
   async cancelStalePendingOrders() {
-    const lockId = 100003;
-    const [{ pg_try_advisory_lock: acquired }] = await this.dataSource.query(
-      `SELECT pg_try_advisory_lock($1)`,
-      [lockId],
+    const rows = await this.dataSource.query(
+      "SELECT id,user_id FROM orders WHERE status IN ('pending','pending_payment') AND created_at < NOW() - INTERVAL '48 hours' LIMIT 100",
     );
-    if (!acquired) return;
-    try {
-      const result = await this.dataSource.query(
-        `UPDATE orders SET status = 'cancelled' WHERE status = 'pending' AND created_at < NOW() - INTERVAL '48 hours'`,
-      );
-      if (result[1] > 0) {
-        this.logger.log(`Cancelled ${result[1]} stale pending orders`);
+    for (const row of rows) {
+      try {
+        await this.ordersService.cancelOrder(row.id, row.user_id, 'customer');
+      } catch (error) {
+        this.logger.warn('Stale order retained for review: ' + row.id);
       }
-    } catch (err) {
-      this.logger.error(`Failed to cancel stale orders: ${err.message}`);
-    } finally {
-      await this.dataSource.query(`SELECT pg_advisory_unlock($1)`, [lockId]);
     }
   }
 

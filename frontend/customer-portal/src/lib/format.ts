@@ -4,10 +4,19 @@ export function formatPrice(
   amount: number | string | undefined | null,
   currency = CURRENCY,
 ): string {
-  if (amount == null) return `${currency} 0`;
+  if (amount == null) return "Price unavailable";
   const num = typeof amount === "string" ? parseFloat(amount) : amount;
-  if (isNaN(num)) return `${currency} 0`;
-  return `${currency} ${num.toLocaleString("en-PK", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+  if (!Number.isFinite(num)) return "Price unavailable";
+  const code = currency === "Rs." ? "PKR" : currency;
+  try {
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: code,
+      currencyDisplay: "code",
+    }).format(num);
+  } catch {
+    return `${code} ${num.toFixed(2)}`;
+  }
 }
 
 export function formatPriceRaw(

@@ -86,6 +86,11 @@ export class CreateWholesaleInquiryDto {
   @MaxLength(120)
   deliveryCity?: string;
 
+  @IsOptional()
+  @IsString()
+  @Length(3, 300)
+  deliveryAddress?: string;
+
   @ApiPropertyOptional()
   @IsOptional()
   @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))

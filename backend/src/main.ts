@@ -56,8 +56,8 @@ async function bootstrap() {
   // Swagger documentation — disabled in production
   if (process.env.NODE_ENV !== 'production') {
     const config = new DocumentBuilder()
-      .setTitle('LabVerse API')
-      .setDescription('LabVerse E-Commerce Platform API')
+      .setTitle('Team Core Sports Wear API')
+      .setDescription('Team Core Sports Wear E-Commerce Platform API')
       .setVersion('1.0')
       .addBearerAuth(
         { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
@@ -74,7 +74,7 @@ async function bootstrap() {
   }
 
   const port = process.env.PORT || 3001;
-  await app.listen(port);
+  await app.listen(port, process.env.HOST || '0.0.0.0');
   winstonLogger.log(`Application is running on: http://localhost:${port}`);
   if (!isProduction) {
     winstonLogger.log(

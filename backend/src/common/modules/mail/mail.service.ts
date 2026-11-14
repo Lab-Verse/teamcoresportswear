@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
+import { readFileSync } from 'fs';
 import { withRetry } from '../../utils/retry.util';
 import {
   EmailTemplate,
@@ -44,6 +45,7 @@ import {
   subscriptionRenewalEmail,
   testEmail,
   emailVerificationEmail,
+  activityEmail,
 } from './mail.templates';
 
 @Injectable()
@@ -60,7 +62,7 @@ export class MailService {
       this.config.get<string>('NOTIFICATION_ENABLED', 'true') === 'true';
     this.mailFrom = this.config.get<string>(
       'MAIL_FROM',
-      'Labverse <noreply@labverse.com>',
+      'Team Core Sports Wear <notifications@teamcoresportswear.com>',
     );
     this.adminEmail = this.config.get<string>('ADMIN_EMAIL', '');
     this.frontendUrl = this.config.get<string>(
@@ -69,16 +71,36 @@ export class MailService {
     );
 
     if (this.isEnabled) {
+      const port = Number(this.config.get('SMTP_PORT', 465));
+      const secure =
+        this.config.get<string>('SMTP_SECURE', String(port === 465)) === 'true';
+      const passwordFile = this.config.get<string>('SMTP_PASSWORD_FILE');
+      const password = passwordFile
+        ? readFileSync(passwordFile, 'utf8').trimEnd()
+        : this.config.get<string>('EMAIL_PASS');
+      if (!this.config.get('EMAIL_USER') || !password) {
+        throw new Error(
+          'SMTP credentials are required when notifications are enabled',
+        );
+      }
       this.transporter = nodemailer.createTransport({
-        host: this.config.get<string>('SMTP_HOST', 'smtp.gmail.com'),
-        port: this.config.get<number>('SMTP_PORT', 587),
-        secure: false, // true for 465, false for 587 (STARTTLS)
+        host: this.config.get<string>(
+          'SMTP_HOST',
+          'mail.teamcoresportswear.com',
+        ),
+        port,
+        secure,
+        requireTLS: !secure,
+        connectionTimeout: 15000,
+        greetingTimeout: 15000,
+        socketTimeout: 30000,
+        tls: { minVersion: 'TLSv1.2', rejectUnauthorized: true },
         auth: {
           user: this.config.get<string>('EMAIL_USER'),
-          pass: this.config.get<string>('EMAIL_PASS'),
+          pass: password,
         },
       });
-      this.logger.log('Mail transporter initialized (Gmail SMTP)');
+      this.logger.log('Encrypted SMTP transporter initialized');
     } else {
       this.logger.warn(
         'Email notifications are DISABLED (NOTIFICATION_ENABLED=false)',
@@ -88,7 +110,17 @@ export class MailService {
 
   // ─── Core Send Method ───────────────────────────────────────────────────────
 
-  async sendMail(to: string, template: EmailTemplate): Promise<boolean> {
+  async verifyConnection(): Promise<boolean> {
+    if (!this.isEnabled) return false;
+    await this.transporter.verify();
+    return true;
+  }
+
+  async sendMail(
+    to: string,
+    template: EmailTemplate,
+    replyTo?: string,
+  ): Promise<boolean> {
     if (!this.isEnabled) {
       this.logger.debug(
         `Email skipped (disabled): "${template.subject}" → ${to}`,
@@ -101,6 +133,8 @@ export class MailService {
         () =>
           this.transporter.sendMail({
             from: this.mailFrom,
+            replyTo:
+              replyTo || this.config.get<string>('MAIL_REPLY_TO') || undefined,
             to,
             subject: template.subject,
             html: template.html,
@@ -120,6 +154,35 @@ export class MailService {
       );
       return false;
     }
+  }
+
+  async sendActivity(
+    email: string,
+    title: string,
+    message: string,
+    path = '/account',
+  ) {
+    const url = new URL(path, this.frontendUrl);
+    if (url.origin !== new URL(this.frontendUrl).origin)
+      throw new Error('Invalid email link');
+    return this.sendMail(email, activityEmail(title, message, url.href));
+  }
+
+  async sendBusinessAlert(
+    title: string,
+    message: string,
+    options: { replyTo?: string; path?: string } = {},
+  ) {
+    if (!this.adminEmail) return false;
+    const adminUrl = this.config.get<string>('ADMIN_URL', this.frontendUrl);
+    const url = new URL(options.path || '/', adminUrl);
+    if (url.origin !== new URL(adminUrl).origin)
+      throw new Error('Invalid administration email link');
+    return this.sendMail(
+      this.adminEmail,
+      activityEmail(title, message, url.href, 'Open administration portal'),
+      options.replyTo,
+    );
   }
 
   // ─── Auth Emails ────────────────────────────────────────────────────────────

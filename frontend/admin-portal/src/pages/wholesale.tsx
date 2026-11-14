@@ -308,6 +308,7 @@ function QuotationDialog({
   const [lines, setLines] = useState(() =>
     inquiry.items.map((item) => ({
       variantId: item.variantId,
+      ...(item.designRevisionId ? { designRevisionId: item.designRevisionId } : {}),
       quantity: item.requestedQuantity,
       unitPrice: Number(item.targetUnitPrice ?? item.variant?.price ?? 0),
     })),

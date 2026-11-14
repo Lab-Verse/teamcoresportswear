@@ -28,6 +28,6 @@ export const useAuthStore = create<AuthState>()(
       logout: () =>
         set({ user: null, accessToken: null, refreshToken: null, isAuthenticated: false }),
     }),
-    { name: 'customer-auth' },
+    { name: 'teamcore-customer-auth-v1' },
   ),
 )

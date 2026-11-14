@@ -1,238 +1,169 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Search, ShoppingCart, User, Menu, X, FileText } from "lucide-react";
-import { useAuthStore } from "@/store/auth.store";
-import { useCartStore } from "@/store/cart.store";
-import { useUIStore } from "@/store/ui.store";
-import { ROUTES } from "@/constants/routes";
-import { SEARCH_DEBOUNCE_MS } from "@/constants/config";
-import { searchApi } from "@/services/api";
-import { sanitizeText } from "@/lib/sanitize";
-
+import { useState } from "react";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import {
+  Menu,
+  Search,
+  ShoppingBag,
+  UserRound,
+  FileText,
+  ArrowUpRight,
+  ChevronDown,
+} from "lucide-react";
+import { Brand } from "@/components/common/Brand";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { useBasket } from "@/store/basket.store";
+import { sports, brand } from "@/config/brand";
+const links = [
+  ["/custom-uniforms", "Custom Uniforms"],
+  ["/private-label", "Private Label"],
+  ["/design-studio", "Design Your Kit"],
+  ["/about", "About Us"],
+  ["/contact", "Contact"],
+] as const;
 export function Header() {
-  const { isAuthenticated, user } = useAuthStore();
-  const { itemCount } = useCartStore();
-  const { setMobileMenuOpen, isMobileMenuOpen } = useUIStore();
   const navigate = useNavigate();
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<
-    Array<{ query: string; count: number }>
-  >([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const searchRef = useRef<HTMLDivElement>(null);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  const handleSearch = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      const q = sanitizeText(searchQuery.trim());
-      if (q) {
-        navigate(`${ROUTES.PRODUCTS}?search=${encodeURIComponent(q)}`);
-        setShowSuggestions(false);
-      }
-    },
-    [searchQuery, navigate],
-  );
-
-  const handleSearchInput = useCallback((value: string) => {
-    setSearchQuery(value);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    if (value.trim().length >= 2) {
-      debounceRef.current = setTimeout(async () => {
-        try {
-          const popular = await searchApi.popular(6);
-          setSuggestions(
-            popular.filter((p) =>
-              p.query.toLowerCase().includes(value.toLowerCase()),
-            ),
-          );
-          setShowSuggestions(true);
-        } catch {
-          // Silently fail on suggestion fetch
-        }
-      }, SEARCH_DEBOUNCE_MS);
-    } else {
-      setShowSuggestions(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
-        setShowSuggestions(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
+  const location = useLocation();
+  const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(false);
+  const cart = useBasket((s) => s.cart);
+  const quotes = useBasket((s) => s.quotes);
+  function submit(event: React.FormEvent) {
+    event.preventDefault();
+    navigate(
+      search.trim()
+        ? `/search?search=${encodeURIComponent(search.trim())}`
+        : "/products",
+    );
+  }
   return (
-    <header className="bg-card/95 backdrop-blur-xl border-b border-border/80 sticky top-0 z-40 shadow-header">
-      {/* Desktop Header */}
-      <div className="container-main hidden md:flex items-center h-[72px] gap-8">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
-          <div className="bg-gradient-to-br from-primary via-primary to-secondary text-white font-bold text-lg w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-primary/25 ring-1 ring-primary/20 group-hover:-translate-y-0.5 transition-all duration-300">
-            Z
-          </div>
-          <span className="text-xl font-bold text-text-primary tracking-tight">
-            Zaroox
-          </span>
-        </Link>
-
-        {/* Search Bar */}
-        <div ref={searchRef} className="flex-1 relative max-w-2xl mx-auto">
-          <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-text-muted pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => handleSearchInput(e.target.value)}
-              onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
-              placeholder="Search products, brands, categories..."
-              className="w-full h-11 pl-11 pr-5 rounded-xl bg-surface border border-border text-text-primary text-sm placeholder:text-text-muted focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 focus:bg-card transition-all duration-300"
-              aria-label="Search"
-            />
-          </form>
-
-          {/* Search Suggestions Dropdown */}
-          {showSuggestions && suggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 bg-card border border-border rounded-xl shadow-dropdown z-50 mt-2 overflow-hidden animate-slide-down">
-              {suggestions.map((s) => (
-                <button
-                  key={s.query}
-                  className="flex items-center gap-3 w-full px-4 py-3 text-sm text-text-primary hover:bg-surface text-left cursor-pointer transition-colors"
-                  onClick={() => {
-                    setSearchQuery(s.query);
-                    navigate(
-                      `${ROUTES.SEARCH}?q=${encodeURIComponent(s.query)}`,
-                    );
-                    setShowSuggestions(false);
-                  }}
-                >
-                  <Search className="h-3.5 w-3.5 text-text-muted shrink-0" />
-                  <span>{s.query}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Right Actions */}
-        <div className="flex items-center gap-2 shrink-0">
-          {/* Wholesale inquiry */}
-          <Link
-            to={ROUTES.CART}
-            className="flex items-center gap-2 px-4 py-2.5 text-sm text-primary hover:text-primary-dark hover:bg-primary/5 rounded-xl font-medium transition-all duration-200 shrink-0 hidden lg:flex"
-          >
-            <FileText className="h-4 w-4" />
-            Request Quote
+    <header className="site-header tc-header">
+      <div className="container-main header-main">
+        <Brand />
+        <form className="tc-search" role="search" onSubmit={submit}>
+          <Search size={20} />
+          <input
+            type="search"
+            aria-label="Search uniforms, kits or product code"
+            placeholder="Search uniforms, kits or product code"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button type="submit" aria-label="Search products">
+            <Search size={19} />
+          </button>
+        </form>
+        <div className="header-actions">
+          <Link to="/account" className="tc-header-action tc-account-action">
+            <UserRound size={21} />
+            <span>Account</span>
           </Link>
-
-          {/* Account */}
           <Link
-            to={isAuthenticated ? ROUTES.ACCOUNT : ROUTES.LOGIN}
-            className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-surface rounded-xl transition-all duration-200 shrink-0"
+            to="/quote-basket"
+            className="tc-header-action"
+            aria-label={`Quote basket, ${quotes.length} items`}
           >
-            <div className="h-8 w-8 rounded-full bg-surface flex items-center justify-center">
-              <User className="h-4 w-4" />
-            </div>
-            <span className="hidden lg:block font-medium">
-              {isAuthenticated ? user?.firstName : "Sign In"}
-            </span>
+            <FileText size={21} />
+            <span>Quote list</span>
+            <b>{quotes.length}</b>
           </Link>
-
-          {/* Orders */}
           <Link
-            to={ROUTES.ACCOUNT_ORDERS}
-            className="px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-surface rounded-xl font-medium transition-all duration-200 shrink-0 hidden lg:flex"
+            to="/cart"
+            className="tc-header-action"
+            aria-label={`Shopping cart, ${cart.length} items`}
           >
-            Orders
+            <ShoppingBag size={21} />
+            <span>Cart</span>
+            <b>{cart.length}</b>
           </Link>
-
-          {/* Cart */}
-          <Link
-            to={ROUTES.CART}
-            className="flex items-center gap-2.5 px-4 py-2.5 text-text-secondary hover:text-text-primary hover:bg-surface rounded-xl transition-all duration-200 relative shrink-0"
-            aria-label={`Inquiry basket with ${itemCount} items`}
-          >
-            <div className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2.5 bg-gradient-to-r from-primary to-secondary text-white text-[10px] font-bold rounded-full min-w-[20px] h-[20px] flex items-center justify-center px-1 shadow-lg shadow-primary/30 animate-bounce-subtle">
-                  {itemCount > 99 ? "99+" : itemCount}
-                </span>
-              )}
-            </div>
-            <span className="text-sm font-medium hidden lg:block">Inquiry</span>
-          </Link>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <button className="tc-mobile-menu" aria-label="Open navigation">
+                <Menu size={24} />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="tc-menu-drawer"
+              aria-describedby={undefined}
+            >
+              <SheetTitle>{brand.name}</SheetTitle>
+              <nav aria-label="Mobile navigation">
+                <h3>Shop by sport</h3>
+                {sports.map((s) => (
+                  <Link
+                    key={s.slug}
+                    to={`/categories/${s.slug}`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {s.name}
+                    <ArrowUpRight size={16} />
+                  </Link>
+                ))}
+                <Link to="/products" onClick={() => setOpen(false)}>
+                  All uniforms
+                  <ArrowUpRight size={16} />
+                </Link>
+                <h3>Made for your team</h3>
+                {[
+                  ...links,
+                  ["/wholesale", "Team & bulk orders"],
+                  ["/manufacturing-process", "Our process"],
+                  ["/account", "Your account"],
+                  ["/help", "Help & support"],
+                ].map(([url, label]) => (
+                  <Link key={url} to={url} onClick={() => setOpen(false)}>
+                    {label}
+                    <ArrowUpRight size={16} />
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-
-      {/* Mobile Header */}
-      <div className="md:hidden">
-        <div className="container-main flex items-center justify-between h-16">
-          <button
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-text-secondary hover:text-text-primary rounded-lg hover:bg-surface transition-colors cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
-
-          <Link
-            to="/"
-            className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2"
-          >
-            <div className="bg-gradient-to-br from-primary to-secondary text-white font-bold text-sm w-8 h-8 rounded-xl flex items-center justify-center shadow-md shadow-primary/20">
-              Z
+      <div className="tc-navigation">
+        <div className="container-main">
+          <details className="tc-sports-menu" key={location.pathname}>
+            <summary>
+              <Menu size={17} /> Shop by Sport <ChevronDown size={15} />
+            </summary>
+            <div className="tc-sports-popover">
+              <Link to="/categories">
+                Explore all sports <ArrowUpRight size={17} />
+              </Link>
+              {sports.map((s) => (
+                <Link key={s.slug} to={`/categories/${s.slug}`}>
+                  <img
+                    src={s.image}
+                    alt=""
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                  />
+                  <span>
+                    {s.name}
+                    <small>{s.description}</small>
+                  </span>
+                  <ArrowUpRight size={16} />
+                </Link>
+              ))}
             </div>
-            <span className="text-base font-bold text-text-primary tracking-tight">
-              Zaroox
-            </span>
+          </details>
+          <nav aria-label="Main navigation">
+            {links.map(([url, label]) => (
+              <NavLink key={url} to={url}>
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+          <Link className="tc-nav-quote" to="/wholesale">
+            Request a Quote <ArrowUpRight size={17} />
           </Link>
-
-          <div className="flex items-center gap-0.5">
-            <Link
-              to={isAuthenticated ? ROUTES.ACCOUNT : ROUTES.LOGIN}
-              className="p-2 text-text-secondary hover:text-text-primary rounded-lg hover:bg-surface transition-colors"
-              aria-label="Account"
-            >
-              <User className="h-5 w-5" />
-            </Link>
-            <Link
-              to={ROUTES.CART}
-              className="p-2 relative text-text-secondary hover:text-text-primary rounded-lg hover:bg-surface transition-colors"
-              aria-label={`Inquiry basket with ${itemCount} items`}
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {itemCount > 0 && (
-                <span className="absolute top-0.5 right-0 bg-gradient-to-r from-primary to-secondary text-white text-[9px] font-bold rounded-full min-w-[16px] h-[16px] flex items-center justify-center px-0.5">
-                  {itemCount > 99 ? "99+" : itemCount}
-                </span>
-              )}
-            </Link>
-          </div>
-        </div>
-
-        {/* Mobile Search */}
-        <div className="px-4 pb-3">
-          <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search products..."
-              className="w-full h-10 pl-10 pr-4 rounded-full bg-surface border border-border/50 text-text-primary text-sm placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-card transition-all duration-300"
-              aria-label="Search"
-            />
-          </form>
         </div>
       </div>
     </header>

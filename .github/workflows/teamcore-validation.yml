@@ -1,0 +1,93 @@
+name: Team Core storefront validation
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  storefront:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: teamcore_redesign_test
+          POSTGRES_USER: teamcore_test
+          POSTGRES_PASSWORD: isolated-ci-only
+        ports: ['55443:5432']
+        options: >-
+          --health-cmd "pg_isready -U teamcore_test -d teamcore_redesign_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      NODE_ENV: test
+      DB_HOST: 127.0.0.1
+      DB_PORT: 55443
+      DB_DATABASE: teamcore_redesign_test
+      DB_USERNAME: teamcore_test
+      DB_PASSWORD: isolated-ci-only
+      JWT_SECRET: isolated-ci-only-identity-never-use-in-production
+      HOST: 127.0.0.1
+      PORT: 3011
+      FRONTEND_URL: http://127.0.0.1:3013
+      STOREFRONT_URL: http://127.0.0.1:3013
+      STOREFRONT_CURRENCY: USD
+      STOREFRONT_TAX_BPS: 0
+      STOREFRONT_CHECKOUT_ENABLED: 'false'
+      NOTIFICATION_ENABLED: 'false'
+      DESIGN_STUDIO_ENABLED: 'true'
+      DESIGN_PRIVATE_DIR: ../.local/design-assets
+      UPLOAD_DIR: ../.local/uploads
+      THROTTLE_LIMIT: 10000
+      VITE_API_BASE_URL: /api
+      VITE_PROXY_TARGET: http://127.0.0.1:3011
+      VITE_SITE_URL: http://127.0.0.1:3013
+      VITE_LOCAL_PREVIEW: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --legacy-peer-deps
+        working-directory: backend
+      - run: npm ci --legacy-peer-deps
+        working-directory: frontend/customer-portal
+      - run: npm run build && npm test -- --runInBand
+        working-directory: backend
+      - run: npx typeorm migration:run -d dist/src/config/data-source.js && node scripts/seed-teamcore-local.cjs
+        working-directory: backend
+      - run: npm run lint && npm test && npm run build && npm run build:server
+        working-directory: frontend/customer-portal
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend/customer-portal
+      - name: Exercise local API and browser journeys
+        shell: bash
+        run: |
+          (cd backend && node dist/src/main.js > /tmp/teamcore-api.log 2>&1) &
+          api_pid=$!
+          (cd frontend/customer-portal && npm run dev -- --host 127.0.0.1 --port 3013 --strictPort > /tmp/teamcore-web.log 2>&1) &
+          web_pid=$!
+          trap 'kill "$api_pid" "$web_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3011/health >/dev/null && curl -fsS http://127.0.0.1:3013/ >/dev/null; then break; fi
+            sleep 2
+          done
+          (cd backend && node scripts/test-teamcore-http.cjs)
+          (cd frontend/customer-portal && PRERENDER_API_URL=http://127.0.0.1:3011 node scripts/prerender.mjs && PRERENDER_API_URL=http://127.0.0.1:3011 node scripts/prerender.mjs)
+          (cd frontend/customer-portal && PRERENDER_API_URL=http://127.0.0.1:3011 STOREFRONT_PORT=3114 node scripts/serve.mjs > /tmp/teamcore-renderer.log 2>&1) &
+          renderer_pid=$!
+          trap 'kill "$api_pid" "$web_pid" "$renderer_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 10); do
+            if curl -fsS http://127.0.0.1:3114/health >/dev/null; then break; fi
+            sleep 1
+          done
+          (cd frontend/customer-portal && RENDERER_TEST_URL=http://127.0.0.1:3114 node scripts/test-renderer.mjs)
+          (cd frontend/customer-portal && npm run test:e2e)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: teamcore-verification
+          path: |
+            frontend/customer-portal/test-results/
+            docs/teamcore/*.png
+            docs/teamcore/http-verification.json

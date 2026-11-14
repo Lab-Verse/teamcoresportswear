@@ -1,0 +1,20 @@
+# Opt-in release overlay; does not change the current deployed stack automatically.
+# docker compose -f docker-compose.yml -f docker-compose.storefront.yml up -d --build
+services:
+  storefront:
+    build:
+      context: .
+      dockerfile: frontend/customer-portal/Dockerfile
+      args:
+        VITE_SITE_URL: ${STOREFRONT_URL:?Set the canonical HTTPS storefront origin}
+        VITE_API_BASE_URL: /api
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3104:3104"
+    environment:
+      VITE_SITE_URL: ${STOREFRONT_URL}
+      PRERENDER_API_URL: http://backend:3001
+    depends_on:
+      - backend
+    networks:
+      - zerox-net

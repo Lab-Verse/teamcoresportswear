@@ -15,27 +15,34 @@ export interface NotificationTemplate {
 }
 
 export const NotificationTemplates: Record<string, NotificationTemplate> = {
+  ORDER_CANCELLED: {
+    channel: 'in_app',
+    type: 'order.cancelled',
+    title: 'Order cancelled',
+    body: 'Order #{{orderId}} has been cancelled.',
+    actionUrl: '/account/orders/{{orderId}}',
+  },
   // ─── Auth ──────────────────────────────────────────────────────────
   WELCOME: {
     channel: 'in_app',
     type: 'auth.welcome',
-    title: 'Welcome to LabVerse!',
-    body: 'Hi {{userName}}, your account has been created successfully. Start exploring our marketplace!',
-    actionUrl: '/dashboard',
+    title: 'Welcome to Team Core Sports Wear!',
+    body: 'Hi {{userName}}, your account has been created successfully. Explore our sports range.',
+    actionUrl: '/account',
   },
   PASSWORD_CHANGED: {
     channel: 'in_app',
     type: 'auth.password_changed',
     title: 'Password Changed',
     body: 'Your password was changed successfully. If you did not make this change, contact support immediately.',
-    actionUrl: '/settings/security',
+    actionUrl: '/account/settings',
   },
   LOGIN_NEW_DEVICE: {
     channel: 'in_app',
     type: 'auth.new_device',
     title: 'New Login Detected',
     body: 'A new login was detected from {{ipAddress}}. If this was not you, please change your password.',
-    actionUrl: '/settings/security',
+    actionUrl: '/account/settings',
   },
 
   // ─── Orders ────────────────────────────────────────────────────────
@@ -44,28 +51,28 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'order.placed',
     title: 'Order Placed Successfully',
     body: 'Your order #{{orderId}} has been placed. We will notify you when it ships.',
-    actionUrl: '/orders/{{orderId}}',
+    actionUrl: '/account/orders/{{orderId}}',
   },
   ORDER_STATUS_UPDATED: {
     channel: 'in_app',
     type: 'order.status_updated',
     title: 'Order Status Updated',
     body: 'Your order #{{orderId}} status has been updated to "{{status}}".',
-    actionUrl: '/orders/{{orderId}}',
+    actionUrl: '/account/orders/{{orderId}}',
   },
   ORDER_SHIPPED: {
     channel: 'in_app',
     type: 'order.shipped',
     title: 'Order Shipped',
     body: 'Your order #{{orderId}} has been shipped! Track your delivery for real-time updates.',
-    actionUrl: '/orders/{{orderId}}/tracking',
+    actionUrl: '/account/orders/{{orderId}}',
   },
   ORDER_DELIVERED: {
     channel: 'in_app',
     type: 'order.delivered',
     title: 'Order Delivered',
     body: 'Your order #{{orderId}} has been delivered. We hope you enjoy your purchase!',
-    actionUrl: '/orders/{{orderId}}',
+    actionUrl: '/account/orders/{{orderId}}',
   },
 
   // ─── Payments ──────────────────────────────────────────────────────
@@ -74,14 +81,14 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'payment.received',
     title: 'Payment Received',
     body: 'Payment of {{amount}} {{currency}} for order #{{orderId}} has been received.',
-    actionUrl: '/orders/{{orderId}}',
+    actionUrl: '/account/orders/{{orderId}}',
   },
   PAYMENT_FAILED: {
     channel: 'in_app',
     type: 'payment.failed',
     title: 'Payment Failed',
     body: 'Payment for order #{{orderId}} failed. Please try again or use a different payment method.',
-    actionUrl: '/orders/{{orderId}}/payment',
+    actionUrl: '/account/orders/{{orderId}}',
   },
 
   // ─── Products & Sellers ────────────────────────────────────────────
@@ -122,7 +129,7 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'wholesale.quote_ready',
     title: 'Your Wholesale Quotation Is Ready',
     body: 'Quotation {{reference}} is ready for your wholesale inquiry.',
-    actionUrl: '/wholesale/inquiries/{{inquiryId}}',
+    actionUrl: '/account/wholesale/{{inquiryId}}',
   },
 
   // ─── Returns & Refunds ─────────────────────────────────────────────
@@ -131,21 +138,21 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'return.requested',
     title: 'Return Request Submitted',
     body: 'Your return request for order #{{orderId}} has been submitted. We will review it shortly.',
-    actionUrl: '/orders/{{orderId}}/returns',
+    actionUrl: '/account/returns',
   },
   RETURN_APPROVED: {
     channel: 'in_app',
     type: 'return.approved',
     title: 'Return Request Approved',
     body: 'Your return request for order #{{orderId}} has been approved. Please ship the items back.',
-    actionUrl: '/orders/{{orderId}}/returns',
+    actionUrl: '/account/returns',
   },
   REFUND_PROCESSED: {
     channel: 'in_app',
     type: 'refund.processed',
     title: 'Refund Processed',
     body: 'Your refund of {{amount}} {{currency}} for order #{{orderId}} has been processed.',
-    actionUrl: '/orders/{{orderId}}',
+    actionUrl: '/account/orders/{{orderId}}',
   },
 
   // ─── Subscriptions ─────────────────────────────────────────────────
@@ -154,21 +161,21 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'subscription.created',
     title: 'Subscription Activated',
     body: 'Your subscription to "{{planName}}" has been activated successfully.',
-    actionUrl: '/subscriptions',
+    actionUrl: '/account/subscriptions',
   },
   SUBSCRIPTION_CANCELLED: {
     channel: 'in_app',
     type: 'subscription.cancelled',
     title: 'Subscription Cancelled',
     body: 'Your subscription to "{{planName}}" has been cancelled.',
-    actionUrl: '/subscriptions',
+    actionUrl: '/account/subscriptions',
   },
   SUBSCRIPTION_RENEWAL: {
     channel: 'in_app',
     type: 'subscription.renewal',
     title: 'Subscription Renewed',
     body: 'Your subscription to "{{planName}}" has been renewed for another {{interval}}.',
-    actionUrl: '/subscriptions',
+    actionUrl: '/account/subscriptions',
   },
 
   // ─── Chat ──────────────────────────────────────────────────────────
@@ -177,7 +184,7 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'chat.new_message',
     title: 'New Message',
     body: '{{senderName}} sent you a message: "{{preview}}"',
-    actionUrl: '/chat/{{conversationId}}',
+    actionUrl: '/account/chat',
   },
 
   // ─── Admin ─────────────────────────────────────────────────────────
@@ -186,7 +193,7 @@ export const NotificationTemplates: Record<string, NotificationTemplate> = {
     type: 'admin.role_changed',
     title: 'Role Updated',
     body: 'Your account role has been updated to "{{roleName}}".',
-    actionUrl: '/dashboard',
+    actionUrl: '/account',
   },
   ACCOUNT_DEACTIVATED: {
     channel: 'in_app',

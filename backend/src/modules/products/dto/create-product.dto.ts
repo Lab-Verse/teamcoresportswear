@@ -8,10 +8,27 @@ import {
   MaxLength,
   Length,
   Min,
+  IsIn,
+  IsInt,
+  Max,
 } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateProductDto {
+  @IsOptional()
+  @IsIn(['direct', 'quote_only', 'both'])
+  purchaseMode?: 'direct' | 'quote_only' | 'both';
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(1000000)
+  minimumOrderQuantity?: number;
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(1000000)
+  quantityIncrement?: number;
+
   @ApiPropertyOptional({
     example: '550e8400-e29b-41d4-a716-446655440001',
     description: 'Category UUID',

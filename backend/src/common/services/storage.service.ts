@@ -12,6 +12,9 @@ import {
 } from '@aws-sdk/client-s3';
 import { SafeLogger } from '../utils/logger.util';
 import { withRetry } from '../utils/retry.util';
+import { mkdir, writeFile, unlink, access } from 'fs/promises';
+import { resolve, sep } from 'path';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class StorageService {
@@ -49,6 +52,43 @@ export class StorageService {
    */
   async upload(file: Express.Multer.File, folder: string): Promise<string> {
     this.validateFile(file);
+
+    if (this.config.get('STORAGE_DRIVER') === 'local') {
+      const extensions = {
+        'image/jpeg': 'jpg',
+        'image/png': 'png',
+        'image/webp': 'webp',
+        'image/gif': 'gif',
+      };
+      const ext = extensions[file.mimetype];
+      if (!ext || !/^[a-z0-9_-]+$/i.test(folder))
+        throw new BadRequestException('Unsupported image or folder');
+      const b = file.buffer;
+      const valid =
+        ext === 'jpg'
+          ? b.subarray(0, 3).equals(Buffer.from([255, 216, 255]))
+          : ext === 'png'
+            ? b
+                .subarray(0, 8)
+                .equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+            : ext === 'gif'
+              ? /^GIF8[79]a$/.test(b.subarray(0, 6).toString())
+              : b.subarray(0, 4).toString() === 'RIFF' &&
+                b.subarray(8, 12).toString() === 'WEBP';
+      if (!valid)
+        throw new BadRequestException('Image contents do not match its type');
+      const root = resolve(
+        this.config.get<string>('UPLOAD_DIR', '/var/lib/teamcore/uploads'),
+      );
+      const directory = resolve(root, folder);
+      await mkdir(directory, { recursive: true, mode: 0o750 });
+      const name = `${randomUUID()}.${ext}`;
+      await writeFile(resolve(directory, name), file.buffer, {
+        flag: 'wx',
+        mode: 0o640,
+      });
+      return `${this.config.get<string>('UPLOAD_PUBLIC_URL')}/${folder}/${name}`;
+    }
 
     const ext = file.originalname.split('.').pop()?.toLowerCase() || 'bin';
     const key = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2, 10)}.${ext}`;
@@ -94,6 +134,21 @@ export class StorageService {
    */
   async delete(fileUrl: string): Promise<void> {
     if (!fileUrl) return;
+    if (this.config.get('STORAGE_DRIVER') === 'local') {
+      const prefix = this.config.get<string>('UPLOAD_PUBLIC_URL') + '/';
+      if (!fileUrl.startsWith(prefix)) return;
+      const root = resolve(
+        this.config.get<string>('UPLOAD_DIR', '/var/lib/teamcore/uploads'),
+      );
+      const key = fileUrl.slice(prefix.length);
+      if (!/^[a-z0-9_-]+\/[a-f0-9-]+\.(jpg|png|webp|gif)$/i.test(key)) return;
+      const target = resolve(root, key);
+      if (!target.startsWith(root + sep)) return;
+      await unlink(target).catch((error) => {
+        if (error.code !== 'ENOENT') throw error;
+      });
+      return;
+    }
     const key = this.extractKey(fileUrl);
     if (!key) return;
 
@@ -112,6 +167,12 @@ export class StorageService {
    */
   async testConnection(): Promise<boolean> {
     try {
+      if (this.config.get('STORAGE_DRIVER') === 'local') {
+        await access(
+          this.config.get<string>('UPLOAD_DIR', '/var/lib/teamcore/uploads'),
+        );
+        return true;
+      }
       await this.s3.send(new HeadBucketCommand({ Bucket: this.bucket }));
       return true;
     } catch {

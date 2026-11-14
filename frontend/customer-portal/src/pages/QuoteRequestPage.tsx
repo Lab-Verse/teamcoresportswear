@@ -1,255 +1,227 @@
-import { useEffect, useMemo, useState } from "react";
-import type { FormEvent } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { ArrowRight, FileText, PackageCheck, ShieldCheck } from "lucide-react";
-import { toast } from "sonner";
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { LoadingSpinner } from "@/components/common/LoadingSpinner";
-import { SEOHead } from "@/components/common/SEOHead";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { ROUTES } from "@/constants/routes";
-import { cartApi, wholesaleApi } from "@/services/api";
+import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { useBasket } from "@/store/basket.store";
 import { useAuthStore } from "@/store/auth.store";
-import { useCartStore } from "@/store/cart.store";
-import type { CartItem } from "@/types";
-
+import { wholesaleApi } from "@/services/api";
+import { storefront, errorMessage } from "@/services/storefront";
+import { SEOHead } from "@/components/common/SEOHead";
+export function QuoteSuccessPage() {
+  const { id = "" } = useParams();
+  const inquiry = useQuery({
+    queryKey: ["inquiry", id],
+    queryFn: () => wholesaleApi.getInquiry(id),
+  });
+  return (
+    <div className="container-main section data-notice">
+      <SEOHead title="Quotation request received" />
+      <CheckCircle2 size={45} />
+      <h1 className="content-title">Your requirements are with us.</h1>
+      {inquiry.data ? (
+        <p>
+          Reference: {inquiry.data.reference}. Follow progress and review
+          quotations from your account.
+        </p>
+      ) : (
+        <p>
+          {inquiry.isError
+            ? "Sign in with the account that submitted this request to view its details."
+            : "Loading your reference…"}
+        </p>
+      )}
+      <Link className="action action-red" to="/account/wholesale">
+        View your enquiries
+      </Link>
+    </div>
+  );
+}
 export default function QuoteRequestPage() {
+  const user = useAuthStore((s) => s.user);
+  const items = useBasket((s) => s.quotes);
+  const clear = useBasket((s) => s.clear);
   const navigate = useNavigate();
-  const user = useAuthStore((state) => state.user);
-  const clearLocalCart = useCartStore((state) => state.clearCart);
-  const [items, setItems] = useState<CartItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
-  const [companyName, setCompanyName] = useState("");
-  const [contactName, setContactName] = useState(
-    `${user?.firstName ?? ""} ${user?.lastName ?? ""}`.trim(),
-  );
-  const [contactEmail, setContactEmail] = useState(user?.email ?? "");
-  const [contactPhone, setContactPhone] = useState(user?.phone ?? "");
-  const [deliveryCountry, setDeliveryCountry] = useState("PK");
-  const [deliveryCity, setDeliveryCity] = useState("");
-  const [notes, setNotes] = useState("");
-
-  useEffect(() => {
-    cartApi
-      .getItems()
-      .then((data) => {
-        if (!data.length) navigate(ROUTES.CART, { replace: true });
-        setItems(data);
-      })
-      .catch(() => navigate(ROUTES.CART, { replace: true }))
-      .finally(() => setLoading(false));
-  }, [navigate]);
-
-  const totalPieces = useMemo(
-    () => items.reduce((sum, item) => sum + item.quantity, 0),
-    [items],
-  );
-
-  const submit = async (event: FormEvent) => {
-    event.preventDefault();
-    const normalizedCountry = deliveryCountry.trim().toUpperCase();
-    if (!/^[A-Z]{2}$/.test(normalizedCountry)) {
-      toast.error("Use a two-letter country code, for example PK or AE.");
-      return;
-    }
-    setSubmitting(true);
+  const [form, setForm] = useState(() => {
+    const defaults = {
+      companyName: "",
+      contactName: `${user?.firstName || ""} ${user?.lastName || ""}`.trim(),
+      contactEmail: user?.email || "",
+      contactPhone: "",
+      deliveryCountry: "",
+      deliveryCity: "",
+      deliveryAddress: "",
+      notes: "",
+    };
     try {
-      await wholesaleApi.createInquiry({
-        companyName: companyName.trim(),
-        contactName: contactName.trim(),
-        contactEmail: contactEmail.trim(),
-        contactPhone: contactPhone.trim() || undefined,
-        deliveryCountry: normalizedCountry,
-        deliveryCity: deliveryCity.trim() || undefined,
-        notes: notes.trim() || undefined,
-        items: items.map((item) => ({
-          variantId: item.variantId,
-          requestedQuantity: item.quantity,
-        })),
-      });
-      await cartApi.clear().catch(() => undefined);
-      clearLocalCart();
-      toast.success("Your wholesale inquiry has been sent.");
-      navigate(ROUTES.ACCOUNT_WHOLESALE, { replace: true });
-    } catch (error) {
-      const response = axios.isAxiosError(error) ? error.response?.data : null;
-      const detail = Array.isArray(response?.details)
-        ? response.details[0]
-        : response?.message;
-      toast.error(
-        detail ||
-          "We could not send your inquiry. Please review the form and try again.",
+      const saved = JSON.parse(
+        sessionStorage.getItem("teamcore-quote-draft:" + user?.id) || "{}",
       );
-    } finally {
-      setSubmitting(false);
+      return Object.fromEntries(
+        Object.entries(defaults).map(([key, value]) => [
+          key,
+          typeof saved[key] === "string" ? saved[key] : value,
+        ]),
+      ) as typeof defaults;
+    } catch {
+      return defaults;
     }
-  };
-
-  if (loading)
+  });
+  const resolved = useQuery({
+    queryKey: ["quote-basket", items],
+    queryFn: () => storefront.resolve(items),
+    enabled: items.length > 0,
+  });
+  const send = useMutation({
+    mutationFn: () =>
+      wholesaleApi.createInquiry({
+        ...form,
+        contactPhone: form.contactPhone || undefined,
+        deliveryCountry: form.deliveryCountry.toUpperCase(),
+        items: items.map((i) => ({
+          variantId: i.variantId,
+          requestedQuantity: i.quantity,
+        })),
+      }),
+    onSuccess: (r) => {
+      sessionStorage.removeItem("teamcore-quote-draft:" + user?.id);
+      clear("quotes");
+      navigate(`/request-quote/success/${r.id}`, { replace: true });
+    },
+  });
+  if (!items.length)
     return (
-      <div className="flex justify-center py-24">
-        <LoadingSpinner />
+      <div className="container-main section data-notice">
+        <h1>Your quote basket is empty.</h1>
+        <Link className="action action-red" to="/products">
+          Choose products
+        </Link>
       </div>
     );
-
   return (
     <>
-      <SEOHead title="Request a Wholesale Quote" />
-      <div className="container-main py-8 sm:py-10">
-        <Breadcrumb
-          items={[
-            { label: "Inquiry Basket", to: ROUTES.CART },
-            { label: "Request Quote" },
-          ]}
-        />
-        <div className="mx-auto mt-6 grid max-w-6xl gap-7 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
-          <form
-            onSubmit={submit}
-            className="relative space-y-7 overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-card before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary before:via-primary before:to-secondary sm:p-8"
-          >
-            <div>
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-primary shadow-lg shadow-secondary/15">
-                <FileText className="h-5 w-5" />
-              </div>
-              <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-primary">Wholesale inquiry</p>
-              <h1 className="text-2xl font-bold tracking-tight text-text-primary sm:text-3xl">
-                Request wholesale pricing
-              </h1>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-text-secondary">
-                Tell us where the goods are needed. Our team will review
-                availability and send a formal quotation—no payment is collected
-                here.
-              </p>
-            </div>
-
-            <div className="grid gap-x-5 gap-y-6 border-t border-border pt-6 sm:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="company">Company name</Label>
-                <Input
-                  id="company"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  minLength={2}
-                  maxLength={200}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="contact">Contact person</Label>
-                <Input
-                  id="contact"
-                  value={contactName}
-                  onChange={(e) => setContactName(e.target.value)}
-                  minLength={2}
-                  maxLength={200}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Business email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone / WhatsApp</Label>
-                <Input
-                  id="phone"
-                  value={contactPhone}
-                  onChange={(e) => setContactPhone(e.target.value)}
-                  placeholder="+92..."
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="country">Delivery country code</Label>
-                <Input
-                  id="country"
-                  value={deliveryCountry}
-                  onChange={(e) => setDeliveryCountry(e.target.value)}
-                  minLength={2}
-                  maxLength={2}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="city">Delivery city</Label>
-                <Input
-                  id="city"
-                  value={deliveryCity}
-                  onChange={(e) => setDeliveryCity(e.target.value)}
-                  maxLength={120}
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="notes">
-                Requirements or special instructions
-              </Label>
-              <Textarea
-                id="notes"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                rows={5}
-                maxLength={3000}
-                placeholder="Packaging, delivery deadline, customization, or other requirements..."
-              />
-            </div>
-            <Button
-              type="submit"
-              className="h-13 w-full gap-2 font-bold"
-              disabled={submitting || !items.length}
-            >
-              {submitting ? "Sending inquiry…" : "Send wholesale inquiry"}
-              {!submitting && <ArrowRight className="h-4 w-4" />}
-            </Button>
-            <div className="flex items-center justify-center gap-2 text-center text-xs text-text-muted">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
-              No payment is collected when submitting this request.
-            </div>
-          </form>
-
-          <aside className="h-fit overflow-hidden rounded-3xl border border-border bg-card shadow-card lg:sticky lg:top-24">
-            <div className="flex items-center gap-3 bg-secondary px-6 py-5 text-white">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-black"><PackageCheck className="h-5 w-5" /></div>
-              <div>
-                <p className="font-bold text-white">
-                  Requested products
-                </p>
-                <p className="text-xs text-white/60">
-                  {totalPieces} total pieces
-                </p>
-              </div>
-            </div>
-            <div className="divide-y divide-border px-6">
-              {items.map((item) => (
-                <div key={item.id} className="py-5 text-sm">
-                  <p className="font-medium text-text-primary">
-                    {item.variant?.product?.name ??
-                      item.variant?.sku ??
-                      "Product variant"}
-                  </p>
-                  <div className="mt-1 flex justify-between text-text-secondary">
-                    <span>SKU {item.variant?.sku ?? "—"}</span>
-                    <span className="font-semibold">Qty {item.quantity}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="mx-6 mb-6 mt-2 rounded-xl border border-primary/20 bg-primary/10 p-4 text-xs leading-5 text-text-secondary">
-              Final unit prices, delivery charges, taxes, and validity will
-              appear in the admin-issued quotation.
-            </p>
-          </aside>
+      <SEOHead title="Request a quotation" />
+      <div className="page-intro">
+        <div className="container-main">
+          <p className="eyebrow">TEAM & TRADE</p>
+          <h1>Let's build your next order.</h1>
+          <p>
+            Tell us about your requirements. No payment is collected when you
+            send an enquiry.
+          </p>
         </div>
+      </div>
+      <div className="container-main section basket-layout">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            send.mutate();
+          }}
+        >
+          <div className="form-grid">
+            {(
+              [
+                ["companyName", "Company / team name", "text"],
+                ["contactName", "Contact name", "text"],
+                ["contactEmail", "Email address", "email"],
+                ["contactPhone", "Phone (optional)", "tel"],
+                ["deliveryCountry", "Country code (e.g. PK)", "text"],
+                ["deliveryCity", "Delivery city", "text"],
+                ["deliveryAddress", "Delivery address", "text"],
+              ] as const
+            ).map(([name, label, type]) => (
+              <label key={name}>
+                <span className="field-label">{label}</span>
+                <input
+                  className="field"
+                  type={type}
+                  required={name !== "contactPhone"}
+                  minLength={
+                    ["companyName", "contactName", "deliveryCountry"].includes(
+                      name,
+                    )
+                      ? 2
+                      : undefined
+                  }
+                  maxLength={
+                    name === "deliveryCountry"
+                      ? 2
+                      : name === "contactEmail"
+                        ? 320
+                        : name === "contactPhone"
+                          ? 25
+                          : 200
+                  }
+                  value={form[name]}
+                  onChange={(e) => {
+                    const next = { ...form, [name]: e.target.value };
+                    setForm(next);
+                    sessionStorage.setItem(
+                      "teamcore-quote-draft:" + user?.id,
+                      JSON.stringify(next),
+                    );
+                  }}
+                />
+              </label>
+            ))}
+          </div>
+          <label>
+            <span className="field-label">Anything else we should know?</span>
+            <textarea
+              className="field"
+              rows={5}
+              maxLength={3000}
+              value={form.notes}
+              onChange={(e) => {
+                const next = { ...form, notes: e.target.value };
+                setForm(next);
+                sessionStorage.setItem(
+                  "teamcore-quote-draft:" + user?.id,
+                  JSON.stringify(next),
+                );
+              }}
+              placeholder="Delivery requirements, quantities or questions for our team…"
+            />
+          </label>
+          <button
+            className="action action-red mt-6"
+            disabled={send.isPending || resolved.isError || resolved.isPending}
+          >
+            {send.isPending
+              ? "Sending your request…"
+              : "Send quotation request"}{" "}
+            <ArrowUpRight size={18} />
+          </button>
+          {send.isError && (
+            <p className="form-error" role="alert">
+              {errorMessage(send.error)}
+            </p>
+          )}
+        </form>
+        <aside className="summary-panel">
+          <h2>Your selected products</h2>
+          {resolved.data?.map((i) => (
+            <div className="summary-row" key={i.variantId}>
+              <span>
+                {i.name}
+                <br />
+                <small>{i.sku}</small>
+              </span>
+              <span>× {i.quantity}</span>
+            </div>
+          ))}
+          {resolved.isError && (
+            <p className="form-error" role="alert">
+              {errorMessage(resolved.error)}
+            </p>
+          )}
+          <p>
+            Our team will confirm availability, prices, delivery and terms in
+            your quotation.
+          </p>
+          <Link className="text-link mt-6" to="/quote-basket">
+            Edit your requirements →
+          </Link>
+        </aside>
       </div>
     </>
   );

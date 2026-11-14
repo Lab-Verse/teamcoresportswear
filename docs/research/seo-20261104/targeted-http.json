@@ -1,0 +1,60 @@
+{
+  "ahmyz-sitemap": {
+    "requested": "https://ahmyzimpex.com/sitemap.xml",
+    "url": "https://ahmyzimpex.com/sitemap.xml",
+    "status": 200,
+    "redirects": [],
+    "locations": [
+      "https://aslamelectronics.pk/",
+      "https://aslamelectronics.pk/about.php",
+      "https://aslamelectronics.pk/contact.php",
+      "https://aslamelectronics.pk/Products_Catwise.php",
+      "https://aslamelectronics.pk/Product_Detail.php"
+    ]
+  },
+  "ahmyz-robots": {
+    "requested": "https://ahmyzimpex.com/robots.txt",
+    "url": "https://ahmyzimpex.com/robots.txt",
+    "status": 404,
+    "redirects": []
+  },
+  "juggle-root": {
+    "requested": "https://jugglesports.com/",
+    "url": "https://www.jugglesports.com/",
+    "status": 200,
+    "redirects": [
+      {
+        "url": "https://jugglesports.com/",
+        "status": 308
+      }
+    ],
+    "canonical": "https://jugglesports.com/",
+    "h1_count": 1,
+    "module_assets": []
+  },
+  "zipa-root": {
+    "requested": "https://www.zipasports.com/",
+    "url": "https://zipasports.com/",
+    "status": 200,
+    "redirects": [
+      {
+        "url": "https://www.zipasports.com/",
+        "status": 301
+      }
+    ],
+    "canonical": "https://zipasports.com/",
+    "h1_count": 1,
+    "module_assets": []
+  },
+  "delta-root": {
+    "requested": "https://deltacraft.biz/",
+    "url": "https://deltacraft.biz/",
+    "status": 200,
+    "redirects": [],
+    "canonical": null,
+    "h1_count": 0,
+    "module_assets": [
+      "https://deltacraft.biz/wp-content/themes/deltacraft-theme/assets/index-CUu3f34n.js"
+    ]
+  }
+}

@@ -47,10 +47,11 @@ import { RoleEnum } from '../roles/role.enum';
 import { Auditable } from '../../common/interceptor/audit.interceptor';
 import { StorageService } from '../../common/services/storage.service';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { Public } from '../../common/decorators/public.decorator';
 
 @ApiTags('Products')
 @Controller('products')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN)
 @UsePipes(new ValidationPipe({ whitelist: true }))
 export class ProductsController {
   constructor(
@@ -70,7 +71,6 @@ export class ProductsController {
   }
 
   @Get()
-  @Public()
   @ApiOperation({ summary: 'List products with filters and pagination' })
   @ApiQuery({ name: 'page', required: false, type: Number })
   @ApiQuery({ name: 'limit', required: false, type: Number })
@@ -110,7 +110,6 @@ export class ProductsController {
   }
 
   @Get('slug/:slug')
-  @Public()
   @ApiOperation({ summary: 'Find product by slug' })
   @ApiParam({ name: 'slug', description: 'Product URL slug' })
   @ApiResponse({ status: 200, description: 'Product found' })
@@ -119,7 +118,6 @@ export class ProductsController {
   }
 
   @Get(':id')
-  @Public()
   @ApiOperation({ summary: 'Get product by ID' })
   @ApiParam({ name: 'id', description: 'Product UUID' })
   @ApiResponse({ status: 200, description: 'Product found' })
@@ -169,7 +167,6 @@ export class ProductsController {
   }
 
   @Get(':productId/variants')
-  @Public()
   @ApiOperation({ summary: 'List variants for a product' })
   @ApiParam({ name: 'productId', description: 'Product UUID' })
   @ApiResponse({ status: 200, description: 'Variants list returned' })
@@ -214,7 +211,6 @@ export class ProductsController {
   }
 
   @Get(':productId/images')
-  @Public()
   @ApiOperation({ summary: 'List images for a product' })
   @ApiParam({ name: 'productId', description: 'Product UUID' })
   @ApiResponse({ status: 200, description: 'Images list returned' })
@@ -335,7 +331,6 @@ export class ProductsController {
   }
 
   @Get('attributes/keys')
-  @Public()
   @ApiOperation({ summary: 'List all attribute keys' })
   @ApiResponse({ status: 200, description: 'Attribute keys returned' })
   findAttributeKeys() {
@@ -343,7 +338,6 @@ export class ProductsController {
   }
 
   @Get('attributes/keys/:id')
-  @Public()
   @ApiOperation({ summary: 'Get attribute key by ID' })
   @ApiParam({ name: 'id', description: 'Attribute key UUID' })
   @ApiResponse({ status: 200, description: 'Attribute key found' })
@@ -393,7 +387,6 @@ export class ProductsController {
   }
 
   @Get('attributes/keys/:keyId/values')
-  @Public()
   @ApiOperation({ summary: 'List values for an attribute key' })
   @ApiParam({ name: 'keyId', description: 'Attribute key UUID' })
   @ApiResponse({ status: 200, description: 'Attribute values returned' })
@@ -434,7 +427,6 @@ export class ProductsController {
   }
 
   @Get('variants/:variantId/attributes')
-  @Public()
   @ApiOperation({ summary: 'List attributes for a variant' })
   @ApiParam({ name: 'variantId', description: 'Variant UUID' })
   @ApiResponse({ status: 200, description: 'Variant attributes returned' })
@@ -455,7 +447,12 @@ export class ProductsController {
     @Param('keyId') keyId: string,
     @CurrentUser() user: any,
   ) {
-    return this.svc.removeVariantAttribute(variantId, keyId, user.id, user.role);
+    return this.svc.removeVariantAttribute(
+      variantId,
+      keyId,
+      user.id,
+      user.role,
+    );
   }
 
   // ─── Product Categories ────────────────────────────────────────────────
@@ -482,7 +479,6 @@ export class ProductsController {
   }
 
   @Get(':productId/categories')
-  @Public()
   @ApiOperation({ summary: 'List categories for a product' })
   @ApiParam({ name: 'productId', description: 'Product UUID' })
   @ApiResponse({ status: 200, description: 'Product categories returned' })

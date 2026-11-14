@@ -1,3 +1,5 @@
+import { Link, useParams } from "react-router-dom";
+import { errorMessage } from "@/services/storefront";
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -30,10 +32,12 @@ const statusClass: Record<string, string> = {
 
 export default function WholesaleInquiriesPage() {
   const qc = useQueryClient();
-  const [expanded, setExpanded] = useState<string | null>(null);
-  const { data, isLoading } = useQuery({
-    queryKey: ["wholesale-inquiries"],
-    queryFn: () => wholesaleApi.listInquiries({ limit: 50 }),
+  const { id } = useParams();
+  const [page, setPage] = useState(1);
+  const [expanded, setExpanded] = useState<string | null>(id || null);
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: ["wholesale-inquiries", page],
+    queryFn: () => wholesaleApi.listInquiries({ page, limit: 10 }),
   });
   const detail = useQuery({
     queryKey: ["wholesale-inquiry", expanded],
@@ -71,7 +75,7 @@ export default function WholesaleInquiriesPage() {
     onError: () => toast.error("This inquiry can no longer be cancelled."),
   });
 
-  const inquiries = data?.items ?? [];
+  const inquiries = id && detail.data ? [detail.data] : (data?.items ?? []);
   return (
     <div className="space-y-6">
       <div>
@@ -82,7 +86,14 @@ export default function WholesaleInquiriesPage() {
           Track your wholesale requests and respond to quotations.
         </p>
       </div>
-      {isLoading ? (
+      {isError ? (
+        <div role="alert" className="data-notice">
+          <p>{errorMessage(error)}</p>
+          <button className="text-link" onClick={() => refetch()}>
+            Try again
+          </button>
+        </div>
+      ) : isLoading ? (
         <div className="py-16 text-center text-text-muted">
           Loading inquiries…
         </div>
@@ -105,11 +116,42 @@ export default function WholesaleInquiriesPage() {
             onToggle={() =>
               setExpanded(expanded === inquiry.id ? null : inquiry.id)
             }
-            onRespond={(quote, accept) => respond.mutate({ quote, accept })}
-            onCancel={() => cancel.mutate(inquiry.id)}
+            onRespond={(quote, accept) => {
+              if (
+                window.confirm(
+                  accept
+                    ? `Accept ${quote.reference} for ${formatPrice(quote.totalAmount, quote.currency)}? This creates an order awaiting payment.`
+                    : "Decline this quotation?",
+                )
+              )
+                respond.mutate({ quote, accept });
+            }}
+            onCancel={() => {
+              if (window.confirm("Cancel this enquiry?"))
+                cancel.mutate(inquiry.id);
+            }}
             busy={respond.isPending || cancel.isPending}
           />
         ))
+      )}
+      {detail.isError && (
+        <p role="alert" className="form-error">
+          {errorMessage(detail.error)}
+        </p>
+      )}
+      {!id && data && data.total > 10 && (
+        <nav className="flex gap-4" aria-label="Enquiry pages">
+          <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+            Previous
+          </button>
+          <span>Page {page}</span>
+          <button
+            disabled={page * 10 >= data.total}
+            onClick={() => setPage(page + 1)}
+          >
+            Next
+          </button>
+        </nav>
       )}
     </div>
   );
@@ -162,6 +204,7 @@ function InquiryCard({
             {inquiry.items?.map((item) => (
               <div key={item.id} className="rounded-xl bg-surface p-3 text-sm">
                 <p className="font-semibold">{item.productNameSnapshot}</p>
+                {item.designRevisionId && <Link className="text-link" to="/account/designs">Custom design · {item.designRevisionId.slice(0,8)}</Link>}
                 <p className="text-text-secondary">
                   SKU {item.skuSnapshot} · Qty {item.requestedQuantity}
                 </p>
@@ -219,7 +262,15 @@ function QuotationCard({
             variant="outline"
             size="sm"
             className="print:hidden"
-            onClick={() => window.print()}
+            onClick={(e) => {
+              document
+                .querySelectorAll(".print-selected")
+                .forEach((el) => el.classList.remove("print-selected"));
+              e.currentTarget
+                .closest(".quotation-print-area")
+                ?.classList.add("print-selected");
+              window.print();
+            }}
           >
             <Printer className="mr-2 h-4 w-4" />
             Print / PDF
@@ -241,6 +292,16 @@ function QuotationCard({
           <span>Subtotal</span>
           <span>{formatPrice(quote.subtotal, quote.currency)}</span>
         </div>
+        {[
+          ["Discount", -Number(quote.discountAmount)],
+          ["Delivery", quote.shippingAmount],
+          ["Tax", quote.taxAmount],
+        ].map(([label, value]) => (
+          <div key={label} className="flex justify-between">
+            <span>{label}</span>
+            <span>{formatPrice(Number(value), quote.currency)}</span>
+          </div>
+        ))}
         <div className="mt-2 flex justify-between text-lg font-bold">
           <span>Total</span>
           <span>{formatPrice(quote.totalAmount, quote.currency)}</span>
@@ -257,8 +318,11 @@ function QuotationCard({
             Wholesale order {quote.order.orderNumber ?? quote.order.id}
           </p>
           <p className="mt-1 capitalize">
-            Fulfilment status: {quote.order.status.replace(/_/g, " ")}
+            Order status: {quote.order.status.replace(/_/g, " ")}
           </p>
+          <Link className="text-link" to={`/account/orders/${quote.order.id}`}>
+            View order & payment →
+          </Link>
         </div>
       )}
       {quote.status === "sent" && (

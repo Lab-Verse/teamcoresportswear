@@ -8,6 +8,7 @@ import { Repository, DataSource } from 'typeorm';
 import { ChatThread } from './entities/chat-thread.entity';
 import { ChatThreadParticipant } from './entities/chat-thread-participant.entity';
 import { ChatMessage } from './entities/chat-message.entity';
+import { MailService } from '../../common/modules/mail/mail.service';
 
 @Injectable()
 export class ChatService {
@@ -17,6 +18,7 @@ export class ChatService {
     private participantRepo: Repository<ChatThreadParticipant>,
     @InjectRepository(ChatMessage) private messageRepo: Repository<ChatMessage>,
     private dataSource: DataSource,
+    private mail: MailService,
   ) {}
 
   async createThread(
@@ -67,7 +69,22 @@ export class ChatService {
     if (dto.threadId && dto.senderId)
       await this.ensureParticipant(dto.threadId, dto.senderId);
     const msg = this.messageRepo.create(dto);
-    return this.messageRepo.save(msg);
+    const saved = await this.messageRepo.save(msg);
+    const recipients = await this.dataSource.query(
+      'SELECT u.email FROM chat_thread_participants p JOIN users u ON u.id=p.user_id WHERE p.thread_id=$1 AND p.user_id<>$2 AND u.is_active=true',
+      [saved.threadId, saved.senderId],
+    );
+    await Promise.all(
+      recipients.map((recipient: { email: string }) =>
+        this.mail.sendActivity(
+          recipient.email,
+          'New conversation message',
+          'You have a new message from Team Core Sports Wear or a participant in your conversation. Sign in to read and reply.',
+          '/account/chat',
+        ),
+      ),
+    );
+    return saved;
   }
 
   async getMessages(

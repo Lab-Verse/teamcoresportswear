@@ -18,6 +18,9 @@ import {
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateWholesaleQuotationItemDto {
+  @IsOptional()
+  @IsUUID()
+  designRevisionId?: string;
   @ApiProperty({ format: 'uuid' })
   @IsUUID()
   variantId: string;

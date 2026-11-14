@@ -1,0 +1,1350 @@
+{
+  "mode": "isolated local review; not a production import",
+  "categories": 6,
+  "designs": 37,
+  "products": [
+    {
+      "id": "c76d6dcf-7501-426b-acfb-da20ace532a6",
+      "slug": "american-football-smaf-101",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/01.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/01.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "7283ffc6-578b-4b0f-bf69-5af811f7f99e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "ec90b000-a2b1-441f-8654-18c55b0b40db",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "668ee58a-2682-4f7e-9b44-76d4a1b44ea0",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "48b6b18e-924a-4938-9738-5ec89f268400",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "045e75a0-5752-4a68-996d-0abdd6eb6ed3",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "063c931c-2704-401d-be05-dfd209e68cea",
+      "slug": "american-football-smaf-102",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/02.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/02.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "46028117-c47a-4442-8873-05d2424b4975",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "563591ae-9883-471c-8b00-f8d03507b386",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "037edba4-6b0c-4e03-8c72-a20f93599448",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "ddf4eecd-a20a-4941-a105-8458d38bdc43",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "dde0a95f-2c5a-47b9-882c-fe49f1ccbb24",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "3716cce2-ff83-4c9e-b8e5-0386716b5b27",
+      "slug": "american-football-smaf-103",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/03.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/03.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "5937cafe-324d-46cf-8cab-8851069ffbdf",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "8db9dba3-8ce5-44d5-a2b3-39731896dfb2",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "7adbb8ab-1fcf-4e44-b431-a8a550421b5f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "38159759-a00c-4a2d-822f-cc21aec318af",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "bcd6d8dc-8f25-4aea-8b8c-ec389b09c32a",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "9ac5d802-197e-424e-bb9b-d5215ae051bf",
+      "slug": "american-football-smaf-104",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/04.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/04.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "23f88dc5-1515-4b10-9f06-8cb5f3557fcd",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "7ed70d8e-5353-40b9-99f8-a6306e55843b",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "c63a43c2-6934-4d2f-9bfa-be4be33df96d",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "93addf10-a5c2-42d5-96b1-500e3ed6476b",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "66141704-ac29-4978-8ba0-09d648811541",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "1b227834-11b4-4a3f-85b7-717afa954e25",
+      "slug": "american-football-smaf-105",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/05.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/05.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "ef3e80cc-b6c3-412d-beee-0f49c58bd55c",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "8e886a4e-d4ff-447d-b4bd-c4aa0a7d97fe",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "f269ec89-dc13-49b2-b68b-c221b458a8e1",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "2412c1cd-e31a-454b-8aca-74acf76dd5ae",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "aa5d3ff7-257f-4b52-82f7-0dd456f3b35e",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "baff0d12-3fae-4900-87b9-204ec4c6ffb9",
+      "slug": "american-football-smaf-106",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/06.JPG",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/06.JPG"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "582f0f47-8e3b-47a5-ab66-c243d892360f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "a435e17c-8fb5-45d4-b6ff-51849c50c183",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "4bcb83bb-5b1d-4d33-a105-a04eb186cf62",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "088d377a-854a-42df-9adf-769ea13ee977",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "529857fe-78d2-4613-b007-e2283cc161f7",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "3a016375-22ff-43df-81ed-cafd827f7159",
+      "slug": "american-football-smaf-107",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/07.JPG",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/07.JPG"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "151b9e83-a0b2-48f8-8ead-4f07d8f30c2c",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "5c711b95-5662-43c9-b00e-fdec71467bbe",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "dce445b1-50a3-48ec-9e31-5367f2ec802b",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "10113ab7-f60b-40e9-8273-da322e2bb6fc",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "c1377a27-2ba5-4ed6-bbb0-83320d24cf7b",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "ea74d788-91ad-430e-9e32-46380d2e54e7",
+      "slug": "american-football-smaf-108",
+      "category": "american-football",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/08.JPG",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/american%20football%20uniforms/08.JPG"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "3d3903fe-013e-4975-a407-548dce97c69e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "353733ac-62d1-4252-81f8-47b730ea5c77",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "59c08f9c-e349-49d8-9ce2-94c591ef76b6",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "33f3faf7-852b-4323-a2e1-a561bfe9e7c5",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "f8d17abd-1e93-4844-a4ec-563f160022f3",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "98a8bf70-5b32-4544-bbe2-7853ae94e5ca",
+      "slug": "baseball-smbs-101",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/11.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/11.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "f7f87114-e46d-4aa5-8e3a-58643dc5fc86",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "d7cf9a10-612a-4d2f-9826-3a14ee8f39ad",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "02b1fd87-2efe-45a0-ada0-82c988d26392",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "f6d0c23d-c6fa-4384-8157-83aea682338a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "22fb8248-6f9e-4f1d-a215-c231b3c24ccd",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "8b8ef44e-a7c4-43a3-903c-4019de481c11",
+      "slug": "baseball-smbs-102",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/12.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/12.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "745672c7-a380-4973-8559-44a6ab6aa15e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "d0a78205-ccc0-47f7-9230-be577497a80f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "ea49c439-e039-447c-80d9-80139674fa84",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "ac7114d7-c310-455f-b035-1e5774889588",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "ae3370bc-14ac-43a4-b355-2fa569410f88",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "0c3525d9-932b-45b6-82bd-02d666324834",
+      "slug": "baseball-smbs-103",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/13.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/13.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "c647eac9-fa19-4f4f-a3b1-82126690c847",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "a7dcfb02-22c3-4122-80cb-7413c86b9bf5",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "db6fde1e-f905-4cf3-b130-aa5c1aa6ffc1",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "998bcf55-6a2f-4135-b320-e74db7655d38",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "622d7f70-9db3-4530-a25d-c273667cf3a2",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "4b25ed54-35f5-45d8-bb14-55ff6ec3694d",
+      "slug": "baseball-smbs-104",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/14.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/14.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "ef8702a0-335f-4a33-86b9-0b5e4781373e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "0cb4ab59-bcfd-47d3-a497-720661ea43e2",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "bcb50753-c20b-4a71-a9c9-67ded9571992",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "4c2b723f-ab98-4ecb-abe5-cab68b70ea34",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "05c62a4a-9a62-4bbe-910e-f79c7b900b9a",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "a62e6da8-9d3d-4b31-ad7b-ad774dc56aa0",
+      "slug": "baseball-smbs-105",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/15.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/15.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "65b1c57a-de18-43b1-bee8-e58b482ab264",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "0e7cc1f5-faa4-4563-adb3-b303ab7b8c6f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "5abac7d8-a074-4ea4-8226-5a47e546fa67",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "ef52b85d-405b-4014-87ce-8bf2453d5e4e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "ff7f3dc6-837b-4d85-9bf9-213a4bc56e40",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "319a80b7-0810-4b56-9ec2-c4db13738a24",
+      "slug": "baseball-smbs-106",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/16.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/16.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "bb1d4437-ece4-43f3-96af-5a030febbcc9",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "3faf6e35-89c2-42e3-a88d-26a7adc9bbfa",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "4e1725f4-4f2e-41e3-b796-7aaacc6f7c8d",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "13cc2524-b29e-4e3a-9f91-171a6e77daff",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "2fb09916-c85a-4d41-afc2-31860b7a15e5",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "48fcc924-fbf1-473f-abdf-2b6d1895a5ef",
+      "slug": "baseball-smbs-108",
+      "category": "baseball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/18.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/baseball%20uniform/18.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "2a39d3cd-5c46-4bc0-8644-2680c1b70451",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "0b5a79e4-3a11-489b-870a-513b925b27e1",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "75452f51-a193-4bf4-8bf3-1f43060ff1d3",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "47702450-3d26-49bd-807d-a840109e1d85",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "a5bcb007-ec5d-4749-adb8-eeff6e8ae286",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "5e338970-4a42-4480-a066-7a1300009bed",
+      "slug": "basketball-smbb-101",
+      "category": "basketball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20a.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20a.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20b.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/01%20c.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "59f7e282-797b-4c42-9067-4384cbf9c07a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "b44bdaa8-84a5-4667-8d12-f180495f6591",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "7b5f56ed-4d74-459f-8d51-083c71c2e9be",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "4fb9ee86-abfc-4e3c-9746-8b9307766137",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "02db4df9-5334-48cb-8afe-81e8e22d0419",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "b4dc343c-5af6-4f1f-b86b-97ee44651c13",
+      "slug": "basketball-smbb-104",
+      "category": "basketball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/02%20a.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/02%20a.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/02%20b.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "8d317c87-afc7-4a8c-b90f-e00200dd823a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "abb49601-8fc0-4e64-b44e-f5b02ccb8229",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "fd58975d-a602-4c59-bd93-ac4220e8ac82",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "19de6c00-a718-4e19-ad58-5f39ed12b3d1",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "8f980c90-0831-40ec-91f0-39616508724a",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "ea96bac3-ac69-4da3-ba35-da7a911dee84",
+      "slug": "basketball-smbb-106",
+      "category": "basketball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/03%20a.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/03%20a.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/03%20b.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "39f40443-8b4c-4789-a1f0-a66fc72d1b20",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "7fe53181-60e7-4465-8584-6f5aa90ab473",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "2af3b406-9138-4745-bda4-790e961b4e21",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "1258d31c-1dbb-4a83-b4b7-e49badcea2e2",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "754b2932-82bc-42ca-9f79-5642c1e5003d",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "9a74de85-48ad-4152-8fb8-91eee75bd019",
+      "slug": "basketball-smbb-108",
+      "category": "basketball",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/04%20a.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/basketball%20uniform/04%20a.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "e3d36d2f-d953-4353-9dc4-e23367f29653",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "31dbf2c1-80c5-45b1-8742-2150f1b35319",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "cd0d9e6c-0062-49b8-80ba-4c0024b6cb80",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "6dc1891a-faf3-4da3-b234-22d6834aa88b",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "28510530-9bcf-4a28-9878-23f48b152100",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "f7b91154-0bb4-4370-9034-0a6518b1c2d3",
+      "slug": "ice-hockey-smih-101",
+      "category": "ice-hockey",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20a.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20a.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20b.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20c.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/01%20d.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "379d5610-151d-4783-8793-3aeb308a25ac",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "39a226e2-3eee-4457-b81a-7c4275b7c49f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "f3b8b552-03aa-47ab-a18b-086c27339034",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "7de4952e-733c-426a-a446-e911ef3125bd",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "28a68074-fac9-409b-8eb4-d88631e1ac98",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "96f9e3ff-5ea3-4c46-9539-e909220b809d",
+      "slug": "ice-hockey-smih-105",
+      "category": "ice-hockey",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20a.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20a.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20b.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20c.jpg",
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/ice%20hockey%20uniforms/02%20d.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "6c46a0a6-6bec-4d95-bec4-14b0b6ebe436",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "623c4ecd-4fa7-489b-a115-9150d73b4a76",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "88e9791d-ecf5-4847-9b1b-9150fa0fc1f6",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "06ca6fce-9faa-40ed-ab79-8467a756e901",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "9ac6b676-6b63-4540-aa4a-d43928fab4ed",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "8d7886be-38f3-4853-9ffb-d8b4a821a443",
+      "slug": "rugby-smrb-101",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/01.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/01.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "d7dc9af5-c4df-4d45-8b5e-cb2d8af927f6",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "98768a76-00d7-4e1f-8cdc-ad32c0766c62",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "08f8b53c-1c8b-49c5-b822-b95112b21409",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "83447874-79c9-4945-925c-317bce62e935",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "4e03e1e0-1df9-46c4-98d2-7251843a081c",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "1737f2bd-d865-4828-bfa4-c172343967df",
+      "slug": "rugby-smrb-102",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/02.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/02.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "76b5d196-3917-4f7f-beed-10cbe018b78d",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "9d48ff07-443f-4e18-8888-17cc87b7d1bc",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "d7843735-e9f3-4f7e-9859-fe1f0d6173c9",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "099917bb-ff19-423d-93f2-f90a1ff655f3",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "eca3257e-343f-4c34-8f18-df282c622512",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "2b8f361e-eaf0-43a0-9d45-6a921dfb396a",
+      "slug": "rugby-smrb-103",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/03.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/03.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "35371ee9-6a15-4eb3-83dd-63556f9312f1",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "c052fe85-41f8-453e-aca1-3f0f2360a292",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "7373620f-9598-406f-bc26-5bd5ea0af97c",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "3d1ac097-1055-4563-8699-0e2acbf9e5f7",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "a4352721-9c1d-4c71-b846-697f7817a992",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "9d882ef1-1578-409a-9599-51bc651e7555",
+      "slug": "rugby-smrb-104",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/04.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/04.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "d4e7c0dc-6ba1-48dd-985c-36027524f2ee",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "9582ee53-9a75-42aa-b7bc-15b31cfe195e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "ef6203a9-8f5d-4fa9-bb95-5f7ff89594a5",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "6cb1a2e0-723d-49b5-be53-96266c3ddf1c",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "a0c01c00-1386-4f9e-9e98-a19ac6eb424d",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "1ea23c37-7ddc-4484-b059-d0cb6258a3ac",
+      "slug": "rugby-smrb-105",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/05.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/05.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "2fb67609-b6d9-420d-a091-472c18a10eb8",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "837b9d20-3b68-40bc-9f30-2f386a737aaa",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "f990a787-3ce2-4fd0-be14-b9e7add14675",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "999dfb9b-1166-4d90-a3b9-735b4ae6b024",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "56dc765f-7ff0-473b-8f6c-3ff7ba887c9b",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "478e9dd4-31a6-4c91-9e8a-96eb1b8bd303",
+      "slug": "rugby-smrb-106",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/06.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/06.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "339aa794-0b06-408a-b910-f7049e28d4b3",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "c38f1c25-5089-4c2a-8523-b89122f72e2e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "0db66cfe-42be-40dc-ac42-077d912a14b7",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "9128eddd-a0d3-41bc-9035-cb0e840c1911",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "16e2d6c9-7969-4b8f-9985-a53cbcb4b5ab",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "fc47d596-e1b2-4c32-8719-7d12f343b79e",
+      "slug": "rugby-smrb-107",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/07.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/07.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "d2797d29-3e14-4780-9ad6-b2c0d5b3aa7e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "fe987ec3-899b-4fa3-82a6-7b337d8c89fd",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "e414386c-1e39-4886-90fc-f9e29d9dd430",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "0d5275c5-6482-4e1d-a32f-54bb3e63199e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "23041063-737e-49ea-bb05-76d09047f75d",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "26b46d4c-8b7a-496d-bd81-46e626924b40",
+      "slug": "rugby-smrb-108",
+      "category": "rugby",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/08.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/rugby%20uniforms/08.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "e461e2de-5038-4630-be9b-1d82dc40480b",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "f305f742-40b7-45ae-8e81-d9c1fa7d3be7",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "ec91b657-c65f-493a-9a8b-9a284c3d191a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "f3e178b2-ac69-4c84-994c-49a4e9a1c888",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "f9875b7c-e381-48a6-822a-fd47868f089e",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "c2f61ce6-d429-4ce8-8844-2a99cbec9817",
+      "slug": "soccer-smsc-101",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/01.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/01.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "3ee5e4ab-51c1-4300-ac16-6aa4def4c9bc",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "d0ed45ac-982b-40b3-9270-eeb516daecc4",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "69ea5d2c-97a0-47fe-89e0-3f3df16f2775",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "7d61af84-3f6a-46f8-9b47-a9ea913292da",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "015fa1ee-8d8c-42bf-9c27-0dea8d786a53",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "7d6d49d7-2a47-4d13-8997-0065751e1fb7",
+      "slug": "soccer-smsc-102",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/02.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/02.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "e9e2ac2c-b72a-4839-b998-cd95d53fae8a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "32105156-0d30-4099-9b4a-0a25c0b523d3",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "d7c7fa4a-9535-4d06-81ed-3adb027a7c76",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "f544366b-f69c-4a69-852c-2d4df13f308a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "a3c7a0c8-84b6-44bc-b0ab-49441e8ac609",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "b629b5b2-33e2-4d1e-8184-3105cd64d3e6",
+      "slug": "soccer-smsc-103",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/03.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/03.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "aaae2db6-0285-4f12-8846-cc47166f74c9",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "f8fc3788-c83d-4729-a7f5-91f33e6e6d0c",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "a32de19b-11bf-4695-ac27-c31ff008a567",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "69cf2ef3-f2e4-4c9c-a197-da67a9a36118",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "d3f42c37-20b4-4e27-9a7d-81ac25c0f5df",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "da79a559-6960-4a4b-90bb-78c1c8045332",
+      "slug": "soccer-smsc-104",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/04.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/04.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "f37a3527-85b3-466f-8d03-945c49bee689",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "9d5dfc2b-3031-45dd-b604-6bf35bc0efbc",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "ce745b29-8a20-476f-9270-fed29cba062e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "312142d8-f05a-4b16-8a42-4fa9afc3451e",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "53da85d2-ae39-46a3-a545-3a76c9def601",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "cda3824f-db75-45e5-bcfe-efecfe89c0b4",
+      "slug": "soccer-smsc-105",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/05.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/05.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "c5374aca-0e65-420c-baa9-e8dce66473ba",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "258ad8a7-9a05-487e-a24b-d848b66e82df",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "ad45e242-bec0-470c-b4ad-18903cdabbea",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "bd9c1c63-a892-47c4-828e-4d53f61958e2",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "1fbbdb48-7864-47c3-a56f-34aaee6761ae",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "a63e2300-3408-436c-88c5-84cca2f21a0d",
+      "slug": "soccer-smsc-106",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/06.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/06.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "55361366-d632-40af-8de0-efeb7cd2ff1a",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "463215b2-facc-47f2-befb-1fe9b8c1c3b6",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "4932ec76-f934-490d-a065-9a164912a804",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "e236eea0-e62f-4c97-b2ba-d140f3199709",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "aabe8a90-bce3-43df-9773-c1b593a891bf",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "2cd6dee5-5635-4c06-abb6-3706b5a36202",
+      "slug": "soccer-smsc-107",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/07.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/07.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "9fc16aed-3038-42c6-af09-6476e5f3d3ba",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "37b1b5c6-14cf-47ad-91b9-39f2812c761f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "0b7d224f-0d09-44f8-be79-2c2cdf02d4a4",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "b1ac8543-aadb-4582-918f-933fe4a4c755",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "b3c71542-4cb9-41f9-a0c1-6104011f7ab4",
+          "colour": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "478bb27b-d1d6-440c-a3b6-1f9669a21b36",
+      "slug": "soccer-smsc-108",
+      "category": "soccer",
+      "source": "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/08.jpg",
+      "gallery": [
+        "https://teamcoresportswear.com/wp-content/themes/theme/categories/soccer%20uniforms/08.jpg"
+      ],
+      "variants": [
+        {
+          "label": "S",
+          "variantId": "3e9c3005-ee55-462b-a229-eb5c68d95346",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "M",
+          "variantId": "46ba7d86-d82c-4ead-be20-fd190bcc466b",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "L",
+          "variantId": "d39e8756-48e5-4f5d-aa6e-93e52ad16f9f",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "XL",
+          "variantId": "0299b410-201b-48bb-a9f0-fab863db8334",
+          "colour": "#ffffff"
+        },
+        {
+          "label": "2XL",
+          "variantId": "55fc027a-cefa-4da9-8019-b91d3401621d",
+          "colour": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "templateId": "e2d81f27-1be5-4271-9726-766be97153a6"
+}

@@ -59,13 +59,21 @@ export class WholesaleInquiry {
   })
   deliveryCity: string | null;
 
+  @Column({
+    name: 'delivery_address',
+    type: 'varchar',
+    length: 300,
+    nullable: true,
+  })
+  deliveryAddress: string | null;
+
   @Column({ type: 'text', nullable: true })
   notes: string | null;
 
   @Column({ type: 'varchar', length: 30, default: InquiryStatus.SUBMITTED })
   status: InquiryStatus;
 
-  @Column({ name: 'admin_notes', type: 'text', nullable: true })
+  @Column({ name: 'admin_notes', type: 'text', nullable: true, select: false })
   adminNotes: string | null;
 
   @OneToMany(() => WholesaleInquiryItem, (item) => item.inquiry, {

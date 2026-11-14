@@ -79,6 +79,7 @@ const navGroups: NavGroup[] = [
     label: 'Commerce',
     items: [
       { label: 'Wholesale Inquiries', icon: FileText, path: '/wholesale', roles: ADMIN_ROLES },
+      { label: 'Design Studio', icon: FileText, path: '/design-studio', roles: ADMIN_ROLES },
       { label: 'Orders', icon: ShoppingCart, path: '/orders' },
       { label: 'Coupons', icon: Ticket, path: '/coupons' },
       { label: 'Flash Sales', icon: Zap, path: '/flash-sales' },
@@ -93,6 +94,7 @@ const navGroups: NavGroup[] = [
     items: [
       { label: 'Reviews', icon: Star, path: '/reviews' },
       { label: 'Notifications', icon: Bell, path: '/notifications' },
+      { label: 'Website enquiries', icon: MessageSquare, path: '/contacts', roles: ADMIN_ROLES },
       { label: 'Chat', icon: MessageSquare, path: '/chat' },
     ],
   },
